@@ -54,13 +54,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+// `default_nettype none
 `timescale 1ps/1ps
 
 module serdes_7to1_ddr_rx_top (
-input       reset,                  // reset (active high)
-input       refclkin,               // Reference clock for input delay control
-input       clkin1_p,  clkin1_n,            // lvds channel 1 clock input
-input   [3:0]   datain1_p, datain1_n,           // lvds channel 1 data inputs
+input wire      reset,                  // reset (active high)
+input wire      refclkin,               // Reference clock for input delay control
+input wire      clkin1_p,  clkin1_n,            // lvds channel 1 clock input
+input wire  [3:0]   datain1_p, datain1_n,           // lvds channel 1 data inputs
 output  reg dummy) ;                // Dummy output for test
 
 // Parameters
@@ -72,10 +73,11 @@ wire    [D*7-1:0]  rxd1 ;
 reg  [D*7-1:0]  old_rx1 ;       
 wire        refclkint ;         
 wire        rx_mmcm_lckdps ;        
-wire    [1:0]   rx_mmcm_lckdpsbs ;  
+wire    [N-1:0]   rx_mmcm_lckdpsbs ;  
 wire        rx_pixel_clk ;     
 wire        delay_ready ;       
-wire        rx_mmcm_lckd ;  
+wire        rx_mmcm_lckd ; 
+wire        refclkintbufg; 
 
 // 200 or 300 Mhz Generator Clock Input
 
@@ -135,10 +137,10 @@ rx0 (
 
 always @(posedge rx_pixel_clk) begin
     old_rx1 <= rxd1 ;
-    if (rx_mmcm_lckdpsbs[1] == 1'b0) begin
+    if (rx_mmcm_lckdpsbs[0] == 1'b0) begin
         dummy <= 1'b0 ;
     end
-    else if (rxd1 == {old_rx1[26:0], old_rx1[27]} ) begin
+    else if (rxd1 == {old_rx1[27:23],old_rx1[21:0],old_rx1[22]^old_rx1[17]} ) begin
         dummy <= 1'b1 ;
     end
     else begin

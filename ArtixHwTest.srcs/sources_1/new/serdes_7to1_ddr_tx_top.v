@@ -1,11 +1,11 @@
-
+// `default_nettype none
 `timescale 1ps/1ps
 
 module serdes_7to1_ddr_tx_top (
-input       clkint,          // pixel rate frequency generator clock input
-input       reset,                  // reset (active high)
-output      clkout1_p,  clkout1_n,          // lvds channel 1 clock output
-output  [3:0]   dataout1_p, dataout1_n         // lvds channel 1 data outputs
+input wire      clkint,          // pixel rate frequency generator clock input
+input wire      reset,                  // reset (active high)
+output wire     clkout1_p,  clkout1_n,          // lvds channel 1 clock output
+output wire [3:0]   dataout1_p, dataout1_n         // lvds channel 1 data outputs
 ) ;
 
 // Parameters 
@@ -69,7 +69,7 @@ dataout (
     .pixel_clk      (tx_pixel_clk),
     .reset          (not_tx_mmcm_lckd),
     .clk_pattern        (TX_CLK_GEN),           // Transmit a constant to make the clock
-    .datain         (txdata));
+    .datain         (txd1));
 
 // assign data to appropriate outputs
 
@@ -78,12 +78,14 @@ assign clkout1_p = clkout_p[0] ;    assign clkout1_n = clkout_n[0] ;
                                     
 
 // 'walking one' Data generation for testing, user logic will go here
-
+reg[22:0] prbs;
 always @ (posedge tx_pixel_clk) begin
     if (tx_mmcm_lckd == 1'b0) begin
-        txd1 <= 28'b00000000000000000000000000000000001 ;
+        prbs <= 23'b1;
+        txd1 <= {5'h12,prbs} ;
     end else begin
-        txd1 <= {txd1[26:0], txd1[27]} ;
+        prbs <= {prbs[21:0],prbs[22]^prbs[17]};
+        txd1 <= {5'h12,prbs} ;
     end 
 end
         
