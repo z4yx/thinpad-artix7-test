@@ -14,7 +14,7 @@ wire    [3:0]   dataout1_p ;
 wire    [3:0]   dataout1_n ;
 reg step_btn = 0;
 
-always #5000 clk = ~clk; //100MHz
+always #50000 clk = ~clk; //20MHz
 
 always #4348 clk_ser = ~clk_ser; //115MHz
 

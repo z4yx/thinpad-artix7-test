@@ -40,14 +40,14 @@ wire[27:0] tx_data;
 
 rstctrl ctrl(
     .clk      (sample_clk),
-    .rst_in_n (running),
+    .rst_in_n (tx_clock_rst_n),
     .rst_out_n(sample_clk_rstn)
 );
 
 sample_compress #(.CHANNEL(CHANNEL), .DATA_BITS(DATA_BITS))
 compressor(
     .clk            (sample_clk),
-    .rst_n          (sample_clk_rstn),
+    .rst_n          (running),
     .data_in        (data_in),
     .data_compressed(data_compressed),
     .diff_bitset    (diff_bitset)
@@ -81,18 +81,22 @@ assign running = (state == 2);
 assign bos = (state == 1);
 
 reg[10:0] init_wait_timer; //wait for 2048 cycles after start-up
+reg[1:0] init_timer_sync;
 
 always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_init_wait_timer
     if(~tx_clock_rst_n)
         init_wait_timer <= 0;
-    else if(!(&init_wait_timer))
-        init_wait_timer <= init_wait_timer+1;
+    else begin
+        if(!(&init_wait_timer))
+            init_wait_timer <= init_wait_timer+1;
+    end
 end
 
-always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_state
-    if(~tx_clock_rst_n) begin
+always @(posedge sample_clk or negedge sample_clk_rstn) begin : proc_state
+    if(~sample_clk_rstn) begin
         state <= 0;
     end else begin
+        init_timer_sync <= {init_timer_sync[0], &init_wait_timer};
         case (state)
             0: begin 
                 if(start_sample)
@@ -101,7 +105,7 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_state
             1: begin 
                 if(stop_sample)
                     state <= 0;
-                else if(&init_wait_timer)
+                else if(init_timer_sync[1])
                     state <= 2;
             end
             2: begin 
