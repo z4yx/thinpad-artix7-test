@@ -81,22 +81,27 @@ assign running = (state == 2);
 assign bos = (state == 1);
 
 reg[10:0] init_wait_timer; //wait for 2048 cycles after start-up
-reg[1:0] init_timer_sync;
+reg init_timer_done,init_timer_hold;
+(* ASYNC_REG = "TRUE" *) reg[1:0] init_timer_sync;
 
 always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_init_wait_timer
-    if(~tx_clock_rst_n)
+    if(~tx_clock_rst_n)begin
         init_wait_timer <= 0;
-    else begin
-        if(!(&init_wait_timer))
-            init_wait_timer <= init_wait_timer+1;
+        init_timer_hold <= 0;
+        init_timer_done <= 0;
+    end else begin
+        if(init_timer_done) init_timer_hold <= 1;
+        init_timer_done <= &init_wait_timer;
+        init_wait_timer <= init_wait_timer+1;
     end
 end
 
 always @(posedge sample_clk or negedge sample_clk_rstn) begin : proc_state
     if(~sample_clk_rstn) begin
         state <= 0;
+        init_timer_sync <= 0;
     end else begin
-        init_timer_sync <= {init_timer_sync[0], &init_wait_timer};
+        init_timer_sync <= {init_timer_sync[0], init_timer_hold};
         case (state)
             0: begin 
                 if(start_sample)

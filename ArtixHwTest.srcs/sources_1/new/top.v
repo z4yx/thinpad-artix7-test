@@ -58,7 +58,7 @@ clk_wiz_0  inclk
 );
 
 reg [255:0] testdata_in;
-wire start_sample;
+reg [1:0] start_sample;
 sampler la(
     .sample_clk    (clk),
     .txmit_ref_clk(clk_ser),
@@ -66,10 +66,14 @@ sampler la(
     .clkout1_n (clkout1_n),
     .dataout1_p(dataout1_p),
     .dataout1_n(dataout1_n),
-    .start_sample  (step_btn),
+    .start_sample  (start_sample[1]),
     .stop_sample  (0),
     .data_in       (testdata_in)
 );
+always@(posedge clk or posedge rst_in) begin 
+    if(rst_in) start_sample <= 0;
+    else start_sample <= {start_sample[0], step_btn};
+end
 always@(posedge clk or posedge rst_in) begin 
     if(rst_in) testdata_in <= 256'h1;
     else testdata_in <= {testdata_in[254:0], testdata_in[255]};
