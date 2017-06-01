@@ -25,11 +25,28 @@ reset = 1'b1 ;
 reset = 1'b0;
 end
 
+/*'walking one' Data generation for testing, user logic will go here*/
+reg[22:0] prbs;
+reg[27:0] txd1;
+wire tx_pixel_clk, tx_pixel_clk_rst_n;
+always @ (posedge tx_pixel_clk or negedge tx_pixel_clk_rst_n) begin
+    if (tx_pixel_clk_rst_n == 1'b0) begin
+        prbs <= 23'b1;
+        txd1 <= {5'h12,prbs} ;
+    end else begin
+        prbs <= {prbs[21:0],prbs[22]^prbs[17]};
+        txd1 <= {5'h12,prbs} ;
+    end 
+end
+
 serdes_7to1_ddr_tx_top #(
     .CLKIN_PERIOD(11.428)
 )tx(
     .clkint             (pixelclock_p),  
     .reset              (reset),
+    .txd1              (txd1),
+    .tx_pixel_clk      (tx_pixel_clk),
+    .tx_pixel_clk_rst_n(tx_pixel_clk_rst_n),
     .clkout1_p          (clkout1_p),  
     .clkout1_n          (clkout1_n),
     .dataout1_p         (dataout1_p), 

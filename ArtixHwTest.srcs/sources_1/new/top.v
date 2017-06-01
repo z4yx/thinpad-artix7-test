@@ -35,6 +35,7 @@ module top(
     output [31:0] gpio0,
     input clk,
     input rst_in,
+    input step_btn,
     output txd,
     input rxd,
     output         clkout1_p,  clkout1_n,          // lvds channel 1 clock output
@@ -55,17 +56,24 @@ clk_wiz_0  inclk
 // Clock in ports
     .clk_in1(clk)
 );
-serdes_7to1_ddr_tx_top 
-#(
-    .CLKIN_PERIOD(11.428571)
-)ser(
-    .clkint    (clk_ser),
-    .reset     (~locked),
+
+reg [255:0] testdata_in;
+wire start_sample;
+sampler la(
+    .sample_clk    (clk),
+    .txmit_ref_clk(clk_ser),
     .clkout1_p (clkout1_p),
     .clkout1_n (clkout1_n),
     .dataout1_p(dataout1_p),
-    .dataout1_n(dataout1_n)
+    .dataout1_n(dataout1_n),
+    .start_sample  (step_btn),
+    .stop_sample  (0),
+    .data_in       (testdata_in)
 );
+always@(posedge clk or posedge rst_in) begin 
+    if(rst_in) testdata_in <= 256'h1;
+    else testdata_in <= {testdata_in[254:0], testdata_in[255]};
+end
 
 always@(posedge clk or posedge rst_in) begin
     if(rst_in)counter<=0;

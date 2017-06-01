@@ -2,10 +2,9 @@
 `timescale 1ps/1ps
 
 module serdes_7to1_ddr_tx_top (
-input wire      clkint,          // pixel rate frequency generator clock input
-input wire      reset,                  // reset (active high)
-output wire     clkout1_p,  clkout1_n,          // lvds channel 1 clock output
-output wire [3:0]   dataout1_p, dataout1_n         // lvds channel 1 data outputs
+    clkint,reset,clkout1_p,clkout1_n,
+    dataout1_p,dataout1_n,
+    txd1,tx_pixel_clk,tx_pixel_clk_rst_n
 ) ;
 
 // Parameters 
@@ -19,8 +18,14 @@ parameter real   CLKIN_PERIOD = 6.6;
 parameter [6:0] TX_CLK_GEN   = 7'b1100001 ;     // Transmit a constant to make a 3:4 clock, two ticks in advance of bit0 of the data word
 //parameter [6:0] TX_CLK_GEN   = 7'b1100011 ;       // OR Transmit a constant to make a 4:3 clock, two ticks in advance of bit0 of the data word
                 
-reg     [D*7-1:0]  txd1 ;              
-wire        tx_pixel_clk ;      
+input wire      clkint;          // pixel rate frequency generator clock input
+input wire      reset;                  // reset (active high)
+output wire     clkout1_p, clkout1_n;         // lvds channel 1 clock output
+output wire [3:0]   dataout1_p, dataout1_n;         // lvds channel 1 data outputs
+input wire  [D*7-1:0]  txd1 ;        
+output wire        tx_pixel_clk ;      
+output wire        tx_pixel_clk_rst_n ;      
+
 wire        tx_bufpll_lckd ;        
 wire        tx_bufg_pll_x1 ;        
 wire        txclk ;         
@@ -75,18 +80,11 @@ dataout (
 
 assign dataout1_p = dataout_p[D-1:0] ;    assign dataout1_n = dataout_n[D-1:0] ;
 assign clkout1_p = clkout_p[0] ;    assign clkout1_n = clkout_n[0] ;
-                                    
 
-// 'walking one' Data generation for testing, user logic will go here
-reg[22:0] prbs;
-always @ (posedge tx_pixel_clk) begin
-    if (tx_mmcm_lckd == 1'b0) begin
-        prbs <= 23'b1;
-        txd1 <= {5'h12,prbs} ;
-    end else begin
-        prbs <= {prbs[21:0],prbs[22]^prbs[17]};
-        txd1 <= {5'h12,prbs} ;
-    end 
-end
-        
+rstctrl rst_logic(
+    .clk      (tx_pixel_clk),
+    .rst_in_n (tx_mmcm_lckd),
+    .rst_out_n(tx_pixel_clk_rst_n)
+    );
+
 endmodule
