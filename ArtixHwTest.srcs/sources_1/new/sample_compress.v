@@ -27,6 +27,7 @@ wire[CHANNEL-1:0] diff_pipeline[0:CHANNEL];
 reg keyframe_next;
 reg[DATA_BITS*CHANNEL-1:0] data_store;
 reg[CHANNEL-1:0] data_diff;
+wire[CHANNEL-1:0] const0 = 0;
 wire[CHANNEL-1:0] cmp_result;
 
 always @(posedge clk or negedge rst_n) begin : proc_kf
@@ -51,7 +52,7 @@ always @(posedge clk or negedge rst_n) begin : proc_cmp
     if(~rst_n) begin
         data_diff <= 0;
     end else if(keyframe_next) begin
-        data_diff <= 0;
+        data_diff <= ~const0;
     end else begin 
         data_diff <= cmp_result;
     end
