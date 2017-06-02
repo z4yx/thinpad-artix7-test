@@ -60,16 +60,54 @@ end
 integer i;
 reg [CHANNEL*DATA_BITS-1:0] flat_buf;
 reg [CHANNEL-1:0] bitset_buf;
+wire [CHANNEL*DATA_BITS-1:0] zip_pipeline[0:CHANNEL];
+wire [CHANNEL*DATA_BITS-1:0] unzip_pipeline[0:CHANNEL];
+wire [CHANNEL-1:0] bitset_pipeline[0:CHANNEL];
+reg update_pipeline[0:CHANNEL];
 always @(posedge clk or negedge rst_n) begin : proc_flat_buf
     if(~rst_n) begin
         bitset_buf <= 0;
     end else begin
         bitset_buf <= payload_buf[0][15:0];
+        update_pipeline[CHANNEL] <= update;
         for (i = 0; i < CHANNEL; i=i+1) begin
+            update_pipeline[i] <= update_pipeline[i+1];
             flat_buf[i*DATA_BITS +: DATA_BITS] <= payload_buf[(i+1)/3][(i+1)%3*16 +: 16];
         end
     end
 end
 
+assign zip_pipeline[CHANNEL] = flat_buf;
+assign bitset_pipeline[CHANNEL] = bitset_buf;
+genvar j;
+generate
+    for (j = CHANNEL-1; j >= 0; j=j-1) begin : gen_unzip
+        uncompress_pipeline
+        #(  .CHANNEL(CHANNEL),
+            .DATA_BITS(DATA_BITS),
+            .INDEX(j))
+        pipeline(
+            .clk(clk),
+            .rst_n(rst_n),
+            .zip_in(zip_pipeline[j+1]),
+            .zip_out(zip_pipeline[j]),
+            .unzip_in(unzip_pipeline[j+1]),
+            .unzip_out(unzip_pipeline[j]),
+            .bitset_in(bitset_pipeline[j+1]),
+            .bitset_out(bitset_pipeline[j])
+        );
+    end
+endgenerate
+
+integer k;
+always @(posedge clk or negedge rst_n) begin : proc_data_out
+    if(~rst_n) begin
+    end else if(update_pipeline[0]) begin
+        for (k = 0; k < CHANNEL; k=k+1) begin
+            if(bitset_pipeline[0][k])
+                data_out[k*DATA_BITS +: DATA_BITS] <= unzip_pipeline[0][k*DATA_BITS +: DATA_BITS];
+        end
+    end
+end
 
 endmodule

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="21013700000fs"></ZoomStartTime>
-      <ZoomEndTime time="21488465823fs"></ZoomEndTime>
-      <Cursor1Time time="21302794000fs"></Cursor1Time>
+      <ZoomStartTime time="18008333333fs"></ZoomStartTime>
+      <ZoomEndTime time="21898333334fs"></ZoomEndTime>
+      <Cursor1Time time="21253333000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="135"></NameColumnWidth>
       <ValueColumnWidth column_width="59"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="36" />
+   <WVObjectSize size="41" />
    <wvobject type="logic" fp_name="/sample_tb/la/sample_clk">
       <obj_property name="ElementShortName">sample_clk</obj_property>
       <obj_property name="ObjectShortName">sample_clk</obj_property>
@@ -27,6 +27,10 @@
    <wvobject type="logic" fp_name="/sample_tb/la/sample_clk_rstn">
       <obj_property name="ElementShortName">sample_clk_rstn</obj_property>
       <obj_property name="ObjectShortName">sample_clk_rstn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/la/data_in">
+      <obj_property name="ElementShortName">data_in[255:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[255:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/sample_tb/la/data_compressed">
       <obj_property name="ElementShortName">data_compressed[255:0]</obj_property>
@@ -165,5 +169,21 @@
    <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/bitset_buf">
       <obj_property name="ElementShortName">bitset_buf[15:0]</obj_property>
       <obj_property name="ObjectShortName">bitset_buf[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/unzip_pipeline[0]">
+      <obj_property name="ElementShortName">[0][255:0]</obj_property>
+      <obj_property name="ObjectShortName">[0][255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/bitset_pipeline[0]">
+      <obj_property name="ElementShortName">[0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">[0][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/recv/data_interpreter/update_pipeline[0]">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/raw_signal_result">
+      <obj_property name="ElementShortName">raw_signal_result[255:0]</obj_property>
+      <obj_property name="ObjectShortName">raw_signal_result[255:0]</obj_property>
    </wvobject>
 </wave_config>
