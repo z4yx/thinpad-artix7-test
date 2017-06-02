@@ -13,6 +13,7 @@ module packetizer (
 `define PACKET_T_NOP 6'h2a
 `define PACKET_T_FIRST 6'h11
 `define PACKET_T_NEXT  6'h22
+`define PACKET_T_LAST  6'h33
 
 parameter integer CHANNEL = 16;
 parameter integer DATA_BITS = 16;
@@ -79,26 +80,28 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_packet_state
         case (packet_state)
             1: begin 
                 packet_available <= rd_valid;
-                packet_type <= `PACKET_T_FIRST;
                 payload <= {data_from_fifo[31:0], diff_from_fifo};
                 if(~rd_valid)begin 
 
                 end else if(diff_bit_cnt > 2)begin //following packet required
+                    packet_type <= `PACKET_T_FIRST;
                     packet_state <= 2;
                     diff_bit_cnt_remain <= diff_bit_cnt-2;
                     data_remain <= data_from_fifo>>2*DATA_BITS;
                 end else begin //only one packet
+                    packet_type <= `PACKET_T_LAST;
                 end
             end
             2: begin 
                 packet_available <= 1;
-                packet_type <= `PACKET_T_NEXT;
                 payload <= data_remain[47:0];
                 if(diff_bit_cnt_remain > 3)begin //following packet required
+                    packet_type <= `PACKET_T_NEXT;
                     packet_state <= 2;
                     diff_bit_cnt_remain <= diff_bit_cnt_remain-3;
                     data_remain <= data_remain>>3*DATA_BITS;
                 end else begin // the last packet
+                    packet_type <= `PACKET_T_LAST;
                     packet_state <= 1;
                 end
 

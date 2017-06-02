@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="19076220000fs"></ZoomStartTime>
-      <ZoomEndTime time="19339232943fs"></ZoomEndTime>
-      <Cursor1Time time="19098484000fs"></Cursor1Time>
+      <ZoomStartTime time="21013700000fs"></ZoomStartTime>
+      <ZoomEndTime time="21488465823fs"></ZoomEndTime>
+      <Cursor1Time time="21302794000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="135"></NameColumnWidth>
-      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+      <ValueColumnWidth column_width="59"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="31" />
+   <WVObjectSize size="36" />
    <wvobject type="logic" fp_name="/sample_tb/la/sample_clk">
       <obj_property name="ElementShortName">sample_clk</obj_property>
       <obj_property name="ObjectShortName">sample_clk</obj_property>
@@ -67,10 +67,6 @@
    <wvobject type="logic" fp_name="/sample_tb/la/tx_clock">
       <obj_property name="ElementShortName">tx_clock</obj_property>
       <obj_property name="ObjectShortName">tx_clock</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/dout">
-      <obj_property name="ElementShortName">dout[271:0]</obj_property>
-      <obj_property name="ObjectShortName">dout[271:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/almost_empty">
       <obj_property name="ElementShortName">almost_empty</obj_property>
@@ -130,14 +126,6 @@
       <obj_property name="ElementShortName">valid</obj_property>
       <obj_property name="ObjectShortName">valid</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/txmit_fifo_inst/dout">
-      <obj_property name="ElementShortName">dout[55:0]</obj_property>
-      <obj_property name="ObjectShortName">dout[55:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/tx_state">
-      <obj_property name="ElementShortName">tx_state[2:0]</obj_property>
-      <obj_property name="ObjectShortName">tx_state[2:0]</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/nop_packet">
       <obj_property name="ElementShortName">nop_packet</obj_property>
       <obj_property name="ObjectShortName">nop_packet</obj_property>
@@ -145,6 +133,37 @@
    <wvobject type="array" fp_name="/sample_tb/la/tx/txd1">
       <obj_property name="ElementShortName">txd1[27:0]</obj_property>
       <obj_property name="ObjectShortName">txd1[27:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="divider74" type="divider">
+      <obj_property name="label">recv</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/lock_level">
+      <obj_property name="ElementShortName">lock_level[2:0]</obj_property>
+      <obj_property name="ObjectShortName">lock_level[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/acq_data_out">
+      <obj_property name="ElementShortName">acq_data_out[47:0]</obj_property>
+      <obj_property name="ObjectShortName">acq_data_out[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/recv/acq_data_valid">
+      <obj_property name="ElementShortName">acq_data_valid</obj_property>
+      <obj_property name="ObjectShortName">acq_data_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/nop_count">
+      <obj_property name="ElementShortName">nop_count[12:0]</obj_property>
+      <obj_property name="ObjectShortName">nop_count[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/acq_packet_type">
+      <obj_property name="ElementShortName">acq_packet_type[5:0]</obj_property>
+      <obj_property name="ObjectShortName">acq_packet_type[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/recv/data_interpreter/update">
+      <obj_property name="ElementShortName">update</obj_property>
+      <obj_property name="ObjectShortName">update</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/bitset_buf">
+      <obj_property name="ElementShortName">bitset_buf[15:0]</obj_property>
+      <obj_property name="ObjectShortName">bitset_buf[15:0]</obj_property>
    </wvobject>
 </wave_config>

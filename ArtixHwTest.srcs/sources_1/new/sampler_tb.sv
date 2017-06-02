@@ -4,7 +4,7 @@ module sample_tb ();
 parameter integer CHANNEL = 16;
 parameter integer DATA_BITS = 16;
 
-reg clk = 0, clk_ser = 0;
+reg clk = 0, clk_ser = 0, clk200 = 0;
 reg rst_n = 0;
 reg[DATA_BITS*CHANNEL-1:0] data_in;
 reg[CHANNEL-1:0] chn_mask;
@@ -17,6 +17,8 @@ reg step_btn = 0;
 always #50000 clk = ~clk; //20MHz
 
 always #4348 clk_ser = ~clk_ser; //115MHz
+
+always #2500 clk200 = ~clk200; //200MHz
 
 initial begin 
     repeat(5) @(negedge clk);
@@ -35,9 +37,12 @@ integer i;
 always @(posedge clk or negedge rst_n) begin : proc_data_in
     if(~rst_n) begin
         chn_mask <= 0;
-        data_in<= 0;
+        data_in <= 0;
     end else begin
-        chn_mask <= $random();
+        if($random() < 1000)
+            chn_mask <= 0;
+        else
+            chn_mask <= $random();
         for(i=0;i<CHANNEL;i=i+1) begin 
             if(chn_mask[i])
                 data_in[i*DATA_BITS +: DATA_BITS] <= $random();
@@ -55,6 +60,16 @@ sampler la(
     .start_sample  (step_btn),
     .stop_sample  (0),
     .data_in       (data_in)
+);
+
+la_receiver recv(
+    .reset            (~rst_n),
+    .refclkin         (clk200),
+    .clkin1_p           (clkout1_p),
+    .clkin1_n           (clkout1_n),    
+    .datain1_p          (dataout1_p),   
+    .datain1_n          (dataout1_n)
+
 );
 
 // reg[DATA_BITS*CHANNEL-1:0] data_uncompressed;

@@ -58,8 +58,9 @@ serdes_7to1_ddr_rx_top rx(
     .clkin1_p           (clkout1_p),
     .clkin1_n           (clkout1_n),    
     .datain1_p          (dataout1_p),   
-    .datain1_n          (dataout1_n),   
-    .dummy              (match)) ;
+    .datain1_n          (dataout1_n)) ;
+
+assign match = rx.dummy;
 
 endmodule
 
