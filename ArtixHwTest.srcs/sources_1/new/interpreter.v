@@ -2,6 +2,7 @@ module interpreter (
 /*autoport*/
 //output
             data_out,
+            data_update_out,
 //input
             clk,
             rst_n,
@@ -24,6 +25,7 @@ input wire[5:0] packet_type;
 input wire[47:0] payload;
 input wire payload_valid;
 output reg[DATA_BITS*CHANNEL-1:0] data_out;
+output reg data_update_out;
 
 reg [47:0] payload_buf[0:NUM_BUF_BLOCKS-1];
 reg [2:0]  buf_idx;
@@ -102,11 +104,15 @@ endgenerate
 integer k;
 always @(posedge clk or negedge rst_n) begin : proc_data_out
     if(~rst_n) begin
+        data_update_out <= 0;
     end else if(update_pipeline[0]) begin
+        data_update_out <= 1;
         for (k = 0; k < CHANNEL; k=k+1) begin
             if(bitset_pipeline[0][k])
                 data_out[k*DATA_BITS +: DATA_BITS] <= unzip_pipeline[0][k*DATA_BITS +: DATA_BITS];
         end
+    end else begin 
+        data_update_out <= 0;
     end
 end
 

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="18008333333fs"></ZoomStartTime>
-      <ZoomEndTime time="21898333334fs"></ZoomEndTime>
-      <Cursor1Time time="21253333000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="56450000001fs"></ZoomEndTime>
+      <Cursor1Time time="6771778000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="135"></NameColumnWidth>
-      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+      <ValueColumnWidth column_width="57"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="41" />
+   <WVObjectSize size="42" />
    <wvobject type="logic" fp_name="/sample_tb/la/sample_clk">
       <obj_property name="ElementShortName">sample_clk</obj_property>
       <obj_property name="ObjectShortName">sample_clk</obj_property>
@@ -134,10 +134,6 @@
       <obj_property name="ElementShortName">nop_packet</obj_property>
       <obj_property name="ObjectShortName">nop_packet</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/tx/txd1">
-      <obj_property name="ElementShortName">txd1[27:0]</obj_property>
-      <obj_property name="ObjectShortName">txd1[27:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="divider74" type="divider">
       <obj_property name="label">recv</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -145,14 +141,6 @@
    <wvobject type="array" fp_name="/sample_tb/recv/lock_level">
       <obj_property name="ElementShortName">lock_level[2:0]</obj_property>
       <obj_property name="ObjectShortName">lock_level[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/acq_data_out">
-      <obj_property name="ElementShortName">acq_data_out[47:0]</obj_property>
-      <obj_property name="ObjectShortName">acq_data_out[47:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/recv/acq_data_valid">
-      <obj_property name="ElementShortName">acq_data_valid</obj_property>
-      <obj_property name="ObjectShortName">acq_data_valid</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/nop_count">
       <obj_property name="ElementShortName">nop_count[12:0]</obj_property>
@@ -166,10 +154,6 @@
       <obj_property name="ElementShortName">update</obj_property>
       <obj_property name="ObjectShortName">update</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/bitset_buf">
-      <obj_property name="ElementShortName">bitset_buf[15:0]</obj_property>
-      <obj_property name="ObjectShortName">bitset_buf[15:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/unzip_pipeline[0]">
       <obj_property name="ElementShortName">[0][255:0]</obj_property>
       <obj_property name="ObjectShortName">[0][255:0]</obj_property>
@@ -182,8 +166,28 @@
       <obj_property name="ElementShortName">[0]</obj_property>
       <obj_property name="ObjectShortName">[0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/raw_signal_result">
-      <obj_property name="ElementShortName">raw_signal_result[255:0]</obj_property>
-      <obj_property name="ObjectShortName">raw_signal_result[255:0]</obj_property>
+   <wvobject type="array" fp_name="/sample_tb/received_data">
+      <obj_property name="ElementShortName">received_data[255:0]</obj_property>
+      <obj_property name="ObjectShortName">received_data[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/received_update">
+      <obj_property name="ElementShortName">received_update</obj_property>
+      <obj_property name="ObjectShortName">received_update</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider60" type="divider">
+      <obj_property name="label">verification</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/match">
+      <obj_property name="ElementShortName">match</obj_property>
+      <obj_property name="ObjectShortName">match</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/test_data_store/full">
+      <obj_property name="ElementShortName">full</obj_property>
+      <obj_property name="ObjectShortName">full</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/sample_tb/test_data_store/empty">
+      <obj_property name="ElementShortName">empty</obj_property>
+      <obj_property name="ObjectShortName">empty</obj_property>
    </wvobject>
 </wave_config>

@@ -4,6 +4,7 @@ module la_receiver (
             acq_data_out,
             acq_data_valid,
             raw_signal_result,
+            raw_signal_update,
             lock_level,
             rx_pixel_clk,
 //input
@@ -26,6 +27,7 @@ output wire[47:0] acq_data_out;
 output wire acq_data_valid;
 
 output wire[CHANNEL*DATA_BITS-1:0] raw_signal_result;
+output wire raw_signal_update;
 
 output wire[2:0]  lock_level;
 output wire rx_pixel_clk;
@@ -67,6 +69,7 @@ interpreter #(.CHANNEL(CHANNEL),.DATA_BITS(DATA_BITS)) data_interpreter(
     .packet_type(acq_packet_type),
     .payload_valid(acq_data_valid),
     .payload    (acq_data_out),
+    .data_update_out(raw_signal_update),
     .data_out   (raw_signal_result)
 );
 

@@ -13,6 +13,12 @@ wire        clkout1_n ;
 wire    [3:0]   dataout1_p ;
 wire    [3:0]   dataout1_n ;
 reg step_btn = 0;
+reg match;
+
+wire[DATA_BITS*CHANNEL-1:0] comparison_data;
+wire[DATA_BITS*CHANNEL-1:0] received_data;
+wire                        received_update;
+wire rx_pixel_clk;
 
 always #50000 clk = ~clk; //20MHz
 
@@ -68,28 +74,30 @@ la_receiver recv(
     .clkin1_p           (clkout1_p),
     .clkin1_n           (clkout1_n),    
     .datain1_p          (dataout1_p),   
-    .datain1_n          (dataout1_n)
-
+    .datain1_n          (dataout1_n),
+    .rx_pixel_clk     (rx_pixel_clk),
+    .raw_signal_result(received_data),
+    .raw_signal_update(received_update)
 );
 
-// reg[DATA_BITS*CHANNEL-1:0] data_uncompressed;
-// reg[DATA_BITS*CHANNEL-1:0] tmp;
-// reg correct;
-// integer j;
-// always @(posedge clk or negedge rst_n) begin 
-//     if(~rst_n) begin
-//         data_uncompressed = 0;
-//         correct = 0;
-//     end else begin 
-//         tmp = data_compressed;
-//         for (j = CHANNEL-1; j >= 0; j=j-1) begin
-//             if(bitmap_diff[j])begin
-//                 data_uncompressed[DATA_BITS*j +: DATA_BITS] = tmp[DATA_BITS-1:0];
-//                 tmp = tmp >> DATA_BITS;
-//             end
-//         end
-//         correct = (data_uncompressed==data_original);
-//     end
-// end
+fifo_for_tb test_data_store(
+  .rst(~rst_n),
+  .wr_clk(clk),
+  .rd_clk(rx_pixel_clk),
+  .din(data_in),
+  .wr_en(la.running),
+  .rd_en(received_update), //read ack
+  .dout(comparison_data),
+  .full(),
+  .empty()
+);
+
+always_ff @(posedge rx_pixel_clk or negedge rst_n) begin : proc_match
+    if(~rst_n) begin
+        match <= 0;
+    end else if(received_update) begin
+        match <= comparison_data == received_data;
+    end
+end
 
 endmodule
