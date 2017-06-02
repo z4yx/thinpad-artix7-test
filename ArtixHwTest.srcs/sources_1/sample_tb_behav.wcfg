@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="56450000001fs"></ZoomEndTime>
-      <Cursor1Time time="6771778000fs"></Cursor1Time>
+      <ZoomEndTime time="23000000001fs"></ZoomEndTime>
+      <Cursor1Time time="18965083000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="135"></NameColumnWidth>
       <ValueColumnWidth column_width="57"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="37" />
    <wvobject type="logic" fp_name="/sample_tb/la/sample_clk">
       <obj_property name="ElementShortName">sample_clk</obj_property>
       <obj_property name="ObjectShortName">sample_clk</obj_property>
@@ -52,14 +52,6 @@
       <obj_property name="ElementShortName">bos</obj_property>
       <obj_property name="ObjectShortName">bos</obj_property>
    </wvobject>
-   <wvobject fp_name="divider270" type="divider">
-      <obj_property name="label">wr-fifo</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/wr_en_hold">
-      <obj_property name="ElementShortName">wr_en_hold</obj_property>
-      <obj_property name="ObjectShortName">wr_en_hold</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/wr_en">
       <obj_property name="ElementShortName">wr_en</obj_property>
       <obj_property name="ObjectShortName">wr_en</obj_property>
@@ -71,14 +63,6 @@
    <wvobject type="logic" fp_name="/sample_tb/la/tx_clock">
       <obj_property name="ElementShortName">tx_clock</obj_property>
       <obj_property name="ObjectShortName">tx_clock</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/almost_empty">
-      <obj_property name="ElementShortName">almost_empty</obj_property>
-      <obj_property name="ObjectShortName">almost_empty</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/empty">
-      <obj_property name="ElementShortName">empty</obj_property>
-      <obj_property name="ObjectShortName">empty</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/rd_en">
       <obj_property name="ElementShortName">rd_en</obj_property>
@@ -141,10 +125,6 @@
    <wvobject type="array" fp_name="/sample_tb/recv/lock_level">
       <obj_property name="ElementShortName">lock_level[2:0]</obj_property>
       <obj_property name="ObjectShortName">lock_level[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/nop_count">
-      <obj_property name="ElementShortName">nop_count[12:0]</obj_property>
-      <obj_property name="ObjectShortName">nop_count[12:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/sample_tb/recv/acq_packet_type">
       <obj_property name="ElementShortName">acq_packet_type[5:0]</obj_property>

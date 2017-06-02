@@ -12,6 +12,10 @@ wire        clkout1_p ;
 wire        clkout1_n ;
 wire    [3:0]   dataout1_p ;
 wire    [3:0]   dataout1_n ;
+wire        clkin1_p ;
+wire        clkin1_n ;
+wire    [3:0]   datain1_p ;
+wire    [3:0]   datain1_n ;
 reg step_btn = 0;
 reg match;
 
@@ -68,13 +72,25 @@ sampler la(
     .data_in       (data_in)
 );
 
+//skew on PCB
+assign #1000 clkin1_p=clkout1_p;
+assign #1000 clkin1_n=clkout1_n;
+assign #1100 datain1_p[0]=dataout1_p[0];
+assign #1100 datain1_n[0]=dataout1_n[0];
+assign #1200 datain1_p[1]=dataout1_p[1];
+assign #1200 datain1_n[1]=dataout1_n[1];
+assign #800 datain1_p[2]=dataout1_p[2];
+assign #800 datain1_n[2]=dataout1_n[2];
+assign #700 datain1_p[3]=dataout1_p[3];
+assign #700 datain1_n[3]=dataout1_n[3];
+
 la_receiver recv(
     .reset            (~rst_n),
     .refclkin         (clk200),
-    .clkin1_p           (clkout1_p),
-    .clkin1_n           (clkout1_n),    
-    .datain1_p          (dataout1_p),   
-    .datain1_n          (dataout1_n),
+    .clkin1_p           (clkin1_p),
+    .clkin1_n           (clkin1_n),    
+    .datain1_p          (datain1_p),   
+    .datain1_n          (datain1_n),
     .rx_pixel_clk     (rx_pixel_clk),
     .raw_signal_result(received_data),
     .raw_signal_update(received_update)
