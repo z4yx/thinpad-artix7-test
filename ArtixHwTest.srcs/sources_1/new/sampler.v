@@ -64,9 +64,7 @@ packetizer packetizer_inst(
     .out_data       (tx_data)
 );
 
-serdes_7to1_ddr_tx_top #(
-    .CLKIN_PERIOD(8.69565)
-)tx(
+serdes_7to1_ddr_tx_top  tx(
     .clkint             (txmit_ref_clk),  
     .reset              (reset),
     .txd1              (tx_data),

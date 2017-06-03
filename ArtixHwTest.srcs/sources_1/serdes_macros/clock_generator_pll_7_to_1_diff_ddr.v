@@ -58,7 +58,7 @@
 
 module clock_generator_pll_7_to_1_diff_ddr (clkint, txclk, reset, pixel_clk, txclk_div, mmcm_lckd, status) ;
 
-parameter real 	  	CLKIN_PERIOD = 6.000 ;		// clock period (ns) of input clock on clkin_p
+parameter real 	  	CLKIN_PERIOD = 20.000 ;		// clock period (ns) of input clock on clkin_p
 parameter         	DIFF_TERM = "FALSE" ; 		// Parameter to enable internal differential termination
 parameter integer      	MMCM_MODE = 1 ;   		// Parameter to set multiplier for MMCM to get VCO in correct operating range. 1 multiplies input clock by 7, 2 multiplies clock by 14, etc
 parameter         	TX_CLOCK = "BUFIO" ;   		// Parameter to set transmission clock buffer type, BUFIO, BUF_H, BUF_G
@@ -76,6 +76,7 @@ output 	[6:0]		status ;	 		// clock status
                 	
 wire    		txpllmmcm_x1 ;      		// pll generated x1 clock
 wire    		txpllmmcm_xn ;      		// pll generated xn clock
+wire        txpllmmcm_fb ;
 
 generate
 if (USE_PLL == "FALSE") begin : loop8				// use an MMCM
@@ -83,7 +84,7 @@ assign status[6] = 1'b1 ;
      
 MMCME2_ADV #(
       .BANDWIDTH		("OPTIMIZED"),  		
-      .CLKFBOUT_MULT_F		(7*MMCM_MODE),       		
+      .CLKFBOUT_MULT_F		(16*MMCM_MODE),       		
       .CLKFBOUT_PHASE		(0.0),     			
       .CLKIN1_PERIOD		(CLKIN_PERIOD),  		
       .CLKIN2_PERIOD		(CLKIN_PERIOD),  		
@@ -109,7 +110,7 @@ MMCME2_ADV #(
       .DIVCLK_DIVIDE		(1),        			
       .REF_JITTER1		(0.100))       			
 tx_mmcme2_adv_inst (
-      .CLKFBOUT			(txpllmmcm_x1),              	
+      .CLKFBOUT			(txpllmmcm_fb),              	
       .CLKFBOUTB		(),              		
       .CLKFBSTOPPED		(),              		
       .CLKINSTOPPED		(),              		
@@ -117,7 +118,7 @@ tx_mmcme2_adv_inst (
       .CLKOUT0B			(),      			
       .CLKOUT1			(txpllmmcm_d2),      		
       .CLKOUT1B			(),      			
-      .CLKOUT2			(), 				
+      .CLKOUT2			(txpllmmcm_x1), 				
       .CLKOUT2B			(),      			
       .CLKOUT3			(),              		
       .CLKOUT3B			(),      			
@@ -132,7 +133,7 @@ tx_mmcme2_adv_inst (
       .PSINCDEC			(1'b0),  
       .PWRDWN			(1'b0),  
       .LOCKED			(mmcm_lckd),        		
-      .CLKFBIN			(pixel_clk),			
+      .CLKFBIN			(txpllmmcm_fb),			
       .CLKIN1			(clkint),     			
       .CLKIN2			(1'b0),		     		
       .CLKINSEL			(1'b1),             		
@@ -189,7 +190,7 @@ assign status[6] = 1'b0 ; 					// Use a PLL
 
 PLLE2_ADV #(
       .BANDWIDTH		("OPTIMIZED"),  		
-      .CLKFBOUT_MULT		(7*MMCM_MODE),       		
+      .CLKFBOUT_MULT		(16*MMCM_MODE),       		
       .CLKFBOUT_PHASE		(0.0),     			
       .CLKIN1_PERIOD		(CLKIN_PERIOD),  		
       .CLKIN2_PERIOD		(CLKIN_PERIOD),  		
@@ -215,10 +216,10 @@ PLLE2_ADV #(
       .DIVCLK_DIVIDE		(1),        			
       .REF_JITTER1		(0.100))       			
 tx_mmcme2_adv_inst (
-      .CLKFBOUT			(txpllmmcm_x1),              	
+      .CLKFBOUT			(txpllmmcm_fb),              	
       .CLKOUT0			(txpllmmcm_xn),      		
       .CLKOUT1			(txpllmmcm_d2),      		
-      .CLKOUT2			(), 				
+      .CLKOUT2			(txpllmmcm_x1), 				
       .CLKOUT3			(),              		
       .CLKOUT4			(),              		
       .CLKOUT5			(),              		
@@ -226,7 +227,7 @@ tx_mmcme2_adv_inst (
       .DRDY			(),                  		
       .PWRDWN			(1'b0),  
       .LOCKED			(mmcm_lckd),        		
-      .CLKFBIN			(pixel_clk),			
+      .CLKFBIN			(txpllmmcm_fb),			
       .CLKIN1			(clkint),     			
       .CLKIN2			(1'b0),		     		
       .CLKINSEL			(1'b1),             		

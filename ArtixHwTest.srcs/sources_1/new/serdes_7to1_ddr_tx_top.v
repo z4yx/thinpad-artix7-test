@@ -11,7 +11,7 @@ module serdes_7to1_ddr_tx_top (
 
 parameter integer     D = 4 ;
 parameter integer     N = 1 ;
-parameter real   CLKIN_PERIOD = 6.6;
+parameter real   CLKIN_PERIOD = 20;
 
 // Parameter for clock generation
 

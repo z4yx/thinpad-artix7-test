@@ -61,7 +61,7 @@ reg [255:0] testdata_in;
 reg [1:0] start_sample;
 sampler la(
     .sample_clk    (clk),
-    .txmit_ref_clk(clk_ser),
+    .txmit_ref_clk(clk),
     .clkout1_p (clkout1_p),
     .clkout1_n (clkout1_n),
     .dataout1_p(dataout1_p),

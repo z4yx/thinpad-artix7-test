@@ -26,7 +26,7 @@ wire rx_pixel_clk;
 
 always #50000 clk = ~clk; //20MHz
 
-always #4348 clk_ser = ~clk_ser; //115MHz
+always #10000 clk_ser = ~clk_ser; //50MHz
 
 always #2500 clk200 = ~clk200; //200MHz
 

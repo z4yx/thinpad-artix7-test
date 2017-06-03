@@ -16,7 +16,7 @@ initial pixelclock_p = 0 ;
 
 always #(2500) clk200 = ~clk200 ;
 
-always #(5714) pixelclock_p = ~pixelclock_p ;
+always #(10000) pixelclock_p = ~pixelclock_p ; //50MHz
 
 initial
 begin
@@ -39,9 +39,7 @@ always @ (posedge tx_pixel_clk or negedge tx_pixel_clk_rst_n) begin
     end 
 end
 
-serdes_7to1_ddr_tx_top #(
-    .CLKIN_PERIOD(11.428)
-)tx(
+serdes_7to1_ddr_tx_top tx(
     .clkint             (pixelclock_p),  
     .reset              (reset),
     .txd1              (txd1),
