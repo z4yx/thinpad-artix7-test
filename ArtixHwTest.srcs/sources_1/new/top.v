@@ -59,7 +59,7 @@ clk_wiz_0  inclk
 
 reg [255:0] testdata_in;
 reg [1:0] start_sample;
-sampler la(
+sampler_0 la(
     .sample_clk    (clk),
     .txmit_ref_clk(clk),
     .clkout1_p (clkout1_p),

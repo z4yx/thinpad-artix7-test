@@ -20,6 +20,7 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ThinpadNG_Zynq7/ip_repo/sample_receiver_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/signal_sampler"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPCachePermission" Val="read"/>
     <Option Name="IPCachePermission" Val="write"/>
@@ -29,20 +30,20 @@
     <Option Name="IPStaticSourceDir" Val="$PPRDIR/ArtixHwTest.ip_user_files/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="130"/>
+    <Option Name="WTXSimLaunchSim" Val="150"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="11"/>
-    <Option Name="WTModelSimExportSim" Val="11"/>
-    <Option Name="WTQuestaExportSim" Val="11"/>
-    <Option Name="WTIesExportSim" Val="11"/>
-    <Option Name="WTVcsExportSim" Val="11"/>
-    <Option Name="WTRivieraExportSim" Val="11"/>
-    <Option Name="WTActivehdlExportSim" Val="11"/>
+    <Option Name="WTXSimExportSim" Val="14"/>
+    <Option Name="WTModelSimExportSim" Val="14"/>
+    <Option Name="WTQuestaExportSim" Val="14"/>
+    <Option Name="WTIesExportSim" Val="14"/>
+    <Option Name="WTVcsExportSim" Val="14"/>
+    <Option Name="WTRivieraExportSim" Val="14"/>
+    <Option Name="WTActivehdlExportSim" Val="14"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -52,8 +53,15 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/top.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/serdes_macros/serdes_7_to_1_diff_ddr.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -61,6 +69,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/serdes_macros/n_x_serdes_7_to_1_diff_ddr.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -68,6 +77,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/serdes_macros/clock_generator_pll_7_to_1_diff_ddr.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -75,6 +85,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/rstctrl.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -82,34 +93,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/serdes_7to1_ddr_tx_top.v">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/sample_compress.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/packetizer.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/sampler.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/top.v">
-        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -155,14 +139,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/uncompress_pipeline.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/serdes_macros/n_x_serdes_1_to_7_mmcm_idelay_ddr.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -172,30 +148,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/serdes_7to1_ddr_rx_top.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/packet_decoder.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/interpreter.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/la_receiver.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -264,6 +216,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/sample_compress_tb.v">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -288,23 +241,8 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/interpreter.v">
+      <File Path="$PSRCDIR/sources_1/new/sampler_tb.sv">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/la_receiver.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/uncompress_pipeline.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -318,31 +256,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/packet_decoder.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/sampler_tb.sv">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/tb_serdes_7to1_ddr.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/sample_compress_tb.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -383,32 +297,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="sample_fifo_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/sample_fifo_0">
-      <File Path="$PSRCDIR/sources_1/ip/sample_fifo_0/sample_fifo_0.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopModule" Val="sample_fifo_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="txmit_fifo" Type="BlockSrcs" RelSrcDir="$PSRCDIR/txmit_fifo">
-      <File Path="$PSRCDIR/sources_1/ip/txmit_fifo/txmit_fifo.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopModule" Val="txmit_fifo"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="fifo_for_tb" Type="BlockSrcs" RelSrcDir="$PSRCDIR/fifo_for_tb">
       <File Path="$PSRCDIR/sources_1/ip/fifo_for_tb/fifo_for_tb.xci">
         <FileInfo>
@@ -417,9 +305,97 @@
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb.vho"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="doc/fifo_generator_v13_1_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb.xml"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="synth/fifo_for_tb.vhd"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="hdl/fifo_generator_v13_1_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb/fifo_for_tb_clocks.xdc"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb/fifo_for_tb.xdc"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="sim/fifo_for_tb.v"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="hdl/fifo_generator_v13_1_rfs.v"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="hdl/fifo_generator_v13_1_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="simulation/fifo_generator_vlog_beh.v"/>
+        <CompFileExtendedInfo CompFileName="fifo_for_tb.xci" FileRelPathName="fifo_for_tb.veo"/>
       </File>
       <Config>
         <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="sampler_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/sampler_0">
+      <File Path="$PSRCDIR/sources_1/ip/sampler_0/sampler_0.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0.dcp"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0_stub.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/sample_fifo_0/sample_fifo_0.xci"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/txmit_fifo/txmit_fifo.xci"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/sampler.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sim/sampler_0.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/io.xdc"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="synth/sampler_0.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/interpreter.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/la_receiver.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/tb_serdes_7to1_ddr_behav.wcfg"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/sample_tb_behav.wcfg"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0.xml"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0.veo"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="sampler_0.vho"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/serdes_7_to_1_diff_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/n_x_serdes_7_to_1_diff_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/clock_generator_pll_7_to_1_diff_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/rstctrl.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/serdes_7to1_ddr_tx_top.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/sample_compress.v"/>
+        <CompFileExtendedInfo CompFileName="sampler_0.xci" FileRelPathName="src/packetizer.v"/>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="sampler_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="la_receiver_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/la_receiver_0">
+      <File Path="$PSRCDIR/sources_1/ip/la_receiver_0/la_receiver_0.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/gearbox_4_to_7_slave.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/gearbox_4_to_7.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/delay_controller_wrap.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/serdes_1_to_7_slave_idelay_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/serdes_1_to_7_mmcm_idelay_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/uncompress_pipeline.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/n_x_serdes_1_to_7_mmcm_idelay_ddr.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0.xml"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/serdes_7to1_ddr_rx_top.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/packet_decoder.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/interpreter.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/rstctrl.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="src/la_receiver.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="sim/la_receiver_0.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="synth/la_receiver_0.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0.dcp"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0_stub.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0.vho"/>
+        <CompFileExtendedInfo CompFileName="la_receiver_0.xci" FileRelPathName="la_receiver_0.veo"/>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="la_receiver_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -462,27 +438,31 @@
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="sample_fifo_0_synth_1" Type="Ft3:Synth" SrcSet="sample_fifo_0" Part="xc7a100tfgg676-1" ConstrsSet="sample_fifo_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/sample_fifo_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="txmit_fifo_synth_1" Type="Ft3:Synth" SrcSet="txmit_fifo" Part="xc7a100tfgg676-1" ConstrsSet="txmit_fifo" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/txmit_fifo_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="fifo_for_tb_synth_1" Type="Ft3:Synth" SrcSet="fifo_for_tb" Part="xc7a100tfgg676-1" ConstrsSet="fifo_for_tb" Description="Vivado Synthesis Defaults" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="sampler_0_synth_1" Type="Ft3:Synth" SrcSet="sampler_0" Part="xc7a100tfgg676-1" ConstrsSet="sampler_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/sampler_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="la_receiver_0_synth_1" Type="Ft3:Synth" SrcSet="la_receiver_0" Part="xc7a100tfgg676-1" ConstrsSet="la_receiver_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/la_receiver_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
@@ -516,39 +496,43 @@
       </Strategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="sample_fifo_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="sample_fifo_0" Description="Default settings for Implementation." SynthRun="sample_fifo_0_synth_1" IncludeInArchive="false">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="txmit_fifo_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="txmit_fifo" Description="Default settings for Implementation." SynthRun="txmit_fifo_synth_1" IncludeInArchive="false">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="fifo_for_tb_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="fifo_for_tb" Description="Default settings for Implementation." SynthRun="fifo_for_tb_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="sampler_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="sampler_0" Description="Default settings for Implementation." SynthRun="sampler_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="la_receiver_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg676-1" ConstrsSet="la_receiver_0" Description="Default settings for Implementation." SynthRun="la_receiver_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

@@ -20,39 +20,39 @@
       <ValueColumnWidth column_width="57"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="37" />
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/sample_clk">
+   <wvobject type="logic" fp_name="/sample_tb/la/sample_clk">
       <obj_property name="ElementShortName">sample_clk</obj_property>
       <obj_property name="ObjectShortName">sample_clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/sample_clk_rstn">
+   <wvobject type="logic" fp_name="/sample_tb/la/sample_clk_rstn">
       <obj_property name="ElementShortName">sample_clk_rstn</obj_property>
       <obj_property name="ObjectShortName">sample_clk_rstn</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/data_in">
+   <wvobject type="array" fp_name="/sample_tb/la/data_in">
       <obj_property name="ElementShortName">data_in[255:0]</obj_property>
       <obj_property name="ObjectShortName">data_in[255:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/data_compressed">
+   <wvobject type="array" fp_name="/sample_tb/la/data_compressed">
       <obj_property name="ElementShortName">data_compressed[255:0]</obj_property>
       <obj_property name="ObjectShortName">data_compressed[255:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/diff_bitset">
+   <wvobject type="array" fp_name="/sample_tb/la/diff_bitset">
       <obj_property name="ElementShortName">diff_bitset[15:0]</obj_property>
       <obj_property name="ObjectShortName">diff_bitset[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/start_sample">
+   <wvobject type="logic" fp_name="/sample_tb/la/start_sample">
       <obj_property name="ElementShortName">start_sample</obj_property>
       <obj_property name="ObjectShortName">start_sample</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/running">
+   <wvobject type="logic" fp_name="/sample_tb/la/running">
       <obj_property name="ElementShortName">running</obj_property>
       <obj_property name="ObjectShortName">running</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/bos">
+   <wvobject type="logic" fp_name="/sample_tb/la/bos">
       <obj_property name="ElementShortName">bos</obj_property>
       <obj_property name="ObjectShortName">bos</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/sample_fifo/wr_en">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/wr_en">
       <obj_property name="ElementShortName">wr_en</obj_property>
       <obj_property name="ObjectShortName">wr_en</obj_property>
    </wvobject>
@@ -60,45 +60,45 @@
       <obj_property name="label">rd-fifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/tx_clock">
+   <wvobject type="logic" fp_name="/sample_tb/la/tx_clock">
       <obj_property name="ElementShortName">tx_clock</obj_property>
       <obj_property name="ObjectShortName">tx_clock</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/sample_fifo/rd_en">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/rd_en">
       <obj_property name="ElementShortName">rd_en</obj_property>
       <obj_property name="ObjectShortName">rd_en</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/sample_fifo/valid">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/valid">
       <obj_property name="ElementShortName">valid</obj_property>
       <obj_property name="ObjectShortName">valid</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/sample_fifo/dout">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/sample_fifo/dout">
       <obj_property name="ElementShortName">dout[271:0]</obj_property>
       <obj_property name="ObjectShortName">dout[271:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/packet_state">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/packet_state">
       <obj_property name="ElementShortName">packet_state[2:0]</obj_property>
       <obj_property name="ObjectShortName">packet_state[2:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/diff_bit_cnt">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/diff_bit_cnt">
       <obj_property name="ElementShortName">diff_bit_cnt[4:0]</obj_property>
       <obj_property name="ObjectShortName">diff_bit_cnt[4:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/diff_bit_cnt_remain">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/diff_bit_cnt_remain">
       <obj_property name="ElementShortName">diff_bit_cnt_remain[4:0]</obj_property>
       <obj_property name="ObjectShortName">diff_bit_cnt_remain[4:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/packet_available">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/packet_available">
       <obj_property name="ElementShortName">packet_available</obj_property>
       <obj_property name="ObjectShortName">packet_available</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/packet_type">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/packet_type">
       <obj_property name="ElementShortName">packet_type[5:0]</obj_property>
       <obj_property name="ObjectShortName">packet_type[5:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/la/inst/packetizer_inst/txmit_fifo_inst/din">
+   <wvobject type="array" fp_name="/sample_tb/la/packetizer_inst/txmit_fifo_inst/din">
       <obj_property name="ElementShortName">din[55:0]</obj_property>
       <obj_property name="ObjectShortName">din[55:0]</obj_property>
    </wvobject>
@@ -106,15 +106,15 @@
       <obj_property name="label">rd-packet-fifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/txmit_fifo_inst/rd_en">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/txmit_fifo_inst/rd_en">
       <obj_property name="ElementShortName">rd_en</obj_property>
       <obj_property name="ObjectShortName">rd_en</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/txmit_fifo_inst/valid">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/txmit_fifo_inst/valid">
       <obj_property name="ElementShortName">valid</obj_property>
       <obj_property name="ObjectShortName">valid</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/la/inst/packetizer_inst/nop_packet">
+   <wvobject type="logic" fp_name="/sample_tb/la/packetizer_inst/nop_packet">
       <obj_property name="ElementShortName">nop_packet</obj_property>
       <obj_property name="ObjectShortName">nop_packet</obj_property>
    </wvobject>
@@ -122,27 +122,27 @@
       <obj_property name="label">recv</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/inst/lock_level">
+   <wvobject type="array" fp_name="/sample_tb/recv/lock_level">
       <obj_property name="ElementShortName">lock_level[2:0]</obj_property>
       <obj_property name="ObjectShortName">lock_level[2:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/inst/acq_packet_type">
+   <wvobject type="array" fp_name="/sample_tb/recv/acq_packet_type">
       <obj_property name="ElementShortName">acq_packet_type[5:0]</obj_property>
       <obj_property name="ObjectShortName">acq_packet_type[5:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/recv/inst/data_interpreter/update">
+   <wvobject type="logic" fp_name="/sample_tb/recv/data_interpreter/update">
       <obj_property name="ElementShortName">update</obj_property>
       <obj_property name="ObjectShortName">update</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/inst/data_interpreter/unzip_pipeline[0]">
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/unzip_pipeline[0]">
       <obj_property name="ElementShortName">[0][255:0]</obj_property>
       <obj_property name="ObjectShortName">[0][255:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/sample_tb/recv/inst/data_interpreter/bitset_pipeline[0]">
+   <wvobject type="array" fp_name="/sample_tb/recv/data_interpreter/bitset_pipeline[0]">
       <obj_property name="ElementShortName">[0][15:0]</obj_property>
       <obj_property name="ObjectShortName">[0][15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/sample_tb/recv/inst/data_interpreter/update_pipeline[0]">
+   <wvobject type="logic" fp_name="/sample_tb/recv/data_interpreter/update_pipeline[0]">
       <obj_property name="ElementShortName">[0]</obj_property>
       <obj_property name="ObjectShortName">[0]</obj_property>
    </wvobject>

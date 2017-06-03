@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_serdes_7to1_ddr_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_serdes_7to1_ddr" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="7970160000fs"></ZoomStartTime>
+      <ZoomEndTime time="9970160000fs"></ZoomEndTime>
+      <Cursor1Time time="1384387000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="151"></NameColumnWidth>
+      <ValueColumnWidth column_width="57"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/clk200">
+      <obj_property name="ElementShortName">clk200</obj_property>
+      <obj_property name="ObjectShortName">clk200</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/pixelclock_p">
+      <obj_property name="ElementShortName">pixelclock_p</obj_property>
+      <obj_property name="ObjectShortName">pixelclock_p</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/clkout1_p">
+      <obj_property name="ElementShortName">clkout1_p</obj_property>
+      <obj_property name="ObjectShortName">clkout1_p</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/clkout1_n">
+      <obj_property name="ElementShortName">clkout1_n</obj_property>
+      <obj_property name="ObjectShortName">clkout1_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_serdes_7to1_ddr/tx/txd1">
+      <obj_property name="ElementShortName">txd1[27:0]</obj_property>
+      <obj_property name="ObjectShortName">txd1[27:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_serdes_7to1_ddr/dataout1_p">
+      <obj_property name="ElementShortName">dataout1_p[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dataout1_p[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_serdes_7to1_ddr/dataout1_n">
+      <obj_property name="ElementShortName">dataout1_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dataout1_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/rx/rx_mmcm_lckd">
+      <obj_property name="ElementShortName">rx_mmcm_lckd</obj_property>
+      <obj_property name="ObjectShortName">rx_mmcm_lckd</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/rx/rx_mmcm_lckdps">
+      <obj_property name="ElementShortName">rx_mmcm_lckdps</obj_property>
+      <obj_property name="ObjectShortName">rx_mmcm_lckdps</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_serdes_7to1_ddr/rx/rx_mmcm_lckdpsbs">
+      <obj_property name="ElementShortName">rx_mmcm_lckdpsbs[0:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_mmcm_lckdpsbs[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_serdes_7to1_ddr/rx/rxd1">
+      <obj_property name="ElementShortName">rxd1[27:0]</obj_property>
+      <obj_property name="ObjectShortName">rxd1[27:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_serdes_7to1_ddr/match">
+      <obj_property name="ElementShortName">match</obj_property>
+      <obj_property name="ObjectShortName">match</obj_property>
+   </wvobject>
+</wave_config>

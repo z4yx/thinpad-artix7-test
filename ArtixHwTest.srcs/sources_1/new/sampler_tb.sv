@@ -63,7 +63,7 @@ always @(posedge clk or negedge rst_n) begin : proc_data_in
     end
 end
 
-sampler la(
+sampler_0 la(
     .sample_clk    (clk),
     .txmit_ref_clk(clk_ser),
     .clkout1_p (clkout1_p),
@@ -87,7 +87,7 @@ assign #800 datain1_n[2]=dataout1_n[2];
 assign #700 datain1_p[3]=dataout1_p[3];
 assign #700 datain1_n[3]=dataout1_n[3];
 
-la_receiver recv(
+la_receiver_0 recv(
     .reset            (~rst_n),
     .refclkin         (clk200),
     .clkin1_p           (clkin1_p),
@@ -104,7 +104,7 @@ fifo_for_tb test_data_store(
   .wr_clk(clk),
   .rd_clk(rx_pixel_clk),
   .din(data_in),
-  .wr_en(la.running),
+  .wr_en(la.inst.running),
   .rd_en(received_update), //read ack
   .dout(comparison_data),
   .full(),
