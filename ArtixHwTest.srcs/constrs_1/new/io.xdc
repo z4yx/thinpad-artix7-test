@@ -162,3 +162,6 @@ set_property PACKAGE_PIN M5 [get_ports {gpio1[31]}]
 
 
 set_false_path -from [get_pins la/init_timer_hold_reg/C] -to [get_pins {la/init_timer_sync_reg[0]/D}]
+
+
+set_false_path -from [get_pins {la/tx/rst_logic/shifter_reg[2]/C}] -to [get_pins {la/ctrl/shifter_reg[*]/CLR}]

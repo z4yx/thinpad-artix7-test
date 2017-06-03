@@ -58,19 +58,36 @@ sample_fifo_0 sample_fifo(
     .almost_empty(rd_empty)
 );
 
+wire[$clog2(CHANNEL):0] diff_bit_cnt;
+bit_counter counter(
+    .data (diff_from_fifo),
+    .count(diff_bit_cnt)
+);
+
+reg rd_valid_dly1;
+reg[DATA_BITS*CHANNEL-1:0] data_dly1;
+reg[CHANNEL-1:0] diff_dly1;
+reg[$clog2(CHANNEL):0] diff_bit_cnt_dly1;
+
+always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_rd_dly1
+    if(~tx_clock_rst_n) begin
+        rd_valid_dly1 <= 0;
+    end else if(rd_en) begin
+        rd_valid_dly1 <= rd_valid;
+        diff_bit_cnt_dly1 <= diff_bit_cnt;
+        data_dly1 <= data_from_fifo;
+        diff_dly1 <= diff_from_fifo;
+    end
+end
+
 reg [16*3-1:0] payload;
 reg [5:0] packet_type;
 reg packet_available;
 reg [2:0] packet_state;
 reg[DATA_BITS*CHANNEL-1:0] data_remain;
 reg[$clog2(CHANNEL):0] diff_bit_cnt_remain;
-wire[$clog2(CHANNEL):0] diff_bit_cnt;
 
-bit_counter counter(
-    .data (diff_from_fifo),
-    .count(diff_bit_cnt)
-);
-assign rd_en = (packet_state==1 && (~rd_valid || diff_bit_cnt<=2))
+assign rd_en = (packet_state==1 && (~rd_valid_dly1 || diff_bit_cnt_dly1<=2))
             ||(packet_state==2 && diff_bit_cnt_remain <= 3);
 always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_packet_state
     if(~tx_clock_rst_n) begin
@@ -79,15 +96,15 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin : proc_packet_state
     end else begin
         case (packet_state)
             1: begin 
-                packet_available <= rd_valid;
-                payload <= {data_from_fifo[31:0], diff_from_fifo};
-                if(~rd_valid)begin 
+                packet_available <= rd_valid_dly1;
+                payload <= {data_dly1[31:0], diff_dly1};
+                if(~rd_valid_dly1)begin 
 
-                end else if(diff_bit_cnt > 2)begin //following packet required
+                end else if(diff_bit_cnt_dly1 > 2)begin //following packet required
                     packet_type <= `PACKET_T_FIRST;
                     packet_state <= 2;
-                    diff_bit_cnt_remain <= diff_bit_cnt-2;
-                    data_remain <= data_from_fifo>>2*DATA_BITS;
+                    diff_bit_cnt_remain <= diff_bit_cnt_dly1-2;
+                    data_remain <= data_dly1>>2*DATA_BITS;
                 end else begin //only one packet
                     packet_type <= `PACKET_T_LAST;
                 end

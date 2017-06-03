@@ -44,18 +44,21 @@ initial begin
 end
 
 integer i;
+integer rand_lbits;
+reg[CHANNEL-1:0] rand_mask;
 always @(posedge clk or negedge rst_n) begin : proc_data_in
     if(~rst_n) begin
         chn_mask <= 0;
         data_in <= 0;
+        rand_mask <= 0;
+        rand_lbits <= 0;
     end else begin
-        if($random() < 1000)
-            chn_mask <= 0;
-        else
-            chn_mask <= $random();
+        rand_mask <= (1<<($urandom()%(CHANNEL+1)))-1;
+        rand_lbits <= $urandom()%(CHANNEL-1)+1;
+        chn_mask <= (rand_mask>>rand_lbits) | (rand_mask<<(CHANNEL - rand_lbits));
         for(i=0;i<CHANNEL;i=i+1) begin 
             if(chn_mask[i])
-                data_in[i*DATA_BITS +: DATA_BITS] <= $random();
+                data_in[i*DATA_BITS +: DATA_BITS] <= $urandom();
         end
     end
 end
