@@ -46,8 +46,8 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: user.org:user:la_receiver:1.2
-// IP Revision: 1
+// IP VLNV: user.org:user:la_receiver:1.4
+// IP Revision: 5
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -55,12 +55,13 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 la_receiver_0 your_instance_name (
-  .acq_data_out(acq_data_out),            // output wire [47 : 0] acq_data_out
+  .acq_data_out(acq_data_out),            // output wire [50 : 0] acq_data_out
   .acq_data_valid(acq_data_valid),        // output wire acq_data_valid
   .raw_signal_result(raw_signal_result),  // output wire [255 : 0] raw_signal_result
   .raw_signal_update(raw_signal_update),  // output wire raw_signal_update
   .lock_level(lock_level),                // output wire [2 : 0] lock_level
   .rx_pixel_clk(rx_pixel_clk),            // output wire rx_pixel_clk
+  .sampler_idle(sampler_idle),            // output wire sampler_idle
   .reset(reset),                          // input wire reset
   .refclkin(refclkin),                    // input wire refclkin
   .clkin1_p(clkin1_p),                    // input wire clkin1_p

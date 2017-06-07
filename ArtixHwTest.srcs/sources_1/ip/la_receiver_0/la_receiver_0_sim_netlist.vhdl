@@ -1,7 +1,7 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
--- Date        : Sun Jun  4 00:10:02 2017
+-- Date        : Wed Jun  7 14:04:12 2017
 -- Host        : skyworks running 64-bit Ubuntu 16.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/skyworks/ArtixHwTest/ArtixHwTest.srcs/sources_1/ip/la_receiver_0/la_receiver_0_sim_netlist.vhdl
@@ -167,60 +167,60 @@ architecture STRUCTURE of la_receiver_0_delay_controller_wrap is
   signal \sdataoutc[2]_i_1_n_0\ : STD_LOGIC;
   signal \sdataoutc[3]_i_1_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \action[0]_i_1\ : label is "soft_lutpair1138";
-  attribute SOFT_HLUTNM of \action[1]_i_1\ : label is "soft_lutpair1138";
-  attribute SOFT_HLUTNM of \data_out[0]_i_1\ : label is "soft_lutpair1141";
-  attribute SOFT_HLUTNM of \data_out[1]_i_1\ : label is "soft_lutpair1141";
-  attribute SOFT_HLUTNM of \data_out[2]_i_1\ : label is "soft_lutpair1144";
-  attribute SOFT_HLUTNM of \data_out[3]_i_1\ : label is "soft_lutpair1144";
-  attribute SOFT_HLUTNM of delay_change_i_1 : label is "soft_lutpair1126";
-  attribute SOFT_HLUTNM of inc_run_i_2 : label is "soft_lutpair1145";
-  attribute SOFT_HLUTNM of inc_run_i_3 : label is "soft_lutpair1132";
-  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2\ : label is "soft_lutpair1131";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2\ : label is "soft_lutpair1146";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3\ : label is "soft_lutpair1142";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3\ : label is "soft_lutpair1142";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6\ : label is "soft_lutpair1133";
-  attribute SOFT_HLUTNM of meq_max_i_1 : label is "soft_lutpair1121";
-  attribute SOFT_HLUTNM of meq_min_i_1 : label is "soft_lutpair1146";
-  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1\ : label is "soft_lutpair1130";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1\ : label is "soft_lutpair1130";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2\ : label is "soft_lutpair1129";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3\ : label is "soft_lutpair1128";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4\ : label is "soft_lutpair1123";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5\ : label is "soft_lutpair1125";
-  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1\ : label is "soft_lutpair1135";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1\ : label is "soft_lutpair1135";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2\ : label is "soft_lutpair1129";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3\ : label is "soft_lutpair1128";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4\ : label is "soft_lutpair1123";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5\ : label is "soft_lutpair1125";
-  attribute SOFT_HLUTNM of \pd_hold[0]_i_1\ : label is "soft_lutpair1136";
-  attribute SOFT_HLUTNM of \pd_hold[1]_i_1\ : label is "soft_lutpair1139";
-  attribute SOFT_HLUTNM of \pd_hold[2]_i_1\ : label is "soft_lutpair1140";
-  attribute SOFT_HLUTNM of \pd_hold[3]_i_1\ : label is "soft_lutpair1140";
-  attribute SOFT_HLUTNM of \pd_hold[4]_i_1\ : label is "soft_lutpair1139";
-  attribute SOFT_HLUTNM of \pd_hold[5]_i_1\ : label is "soft_lutpair1137";
-  attribute SOFT_HLUTNM of \pd_hold[6]_i_1\ : label is "soft_lutpair1137";
-  attribute SOFT_HLUTNM of \pd_hold[7]_i_2\ : label is "soft_lutpair1136";
-  attribute SOFT_HLUTNM of pd_max_i_1 : label is "soft_lutpair1124";
-  attribute SOFT_HLUTNM of pd_max_i_2 : label is "soft_lutpair1134";
-  attribute SOFT_HLUTNM of pd_min_i_3 : label is "soft_lutpair1134";
-  attribute SOFT_HLUTNM of \pdcount[1]_i_1\ : label is "soft_lutpair1143";
-  attribute SOFT_HLUTNM of \pdcount[2]_i_1\ : label is "soft_lutpair1122";
-  attribute SOFT_HLUTNM of \pdcount[3]_i_1\ : label is "soft_lutpair1122";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_7\ : label is "soft_lutpair1143";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_8\ : label is "soft_lutpair1124";
-  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2\ : label is "soft_lutpair1147";
-  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2\ : label is "soft_lutpair1127";
-  attribute SOFT_HLUTNM of \s_delay_val_int[3]_i_2\ : label is "soft_lutpair1127";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3\ : label is "soft_lutpair1131";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4\ : label is "soft_lutpair1121";
-  attribute SOFT_HLUTNM of s_ovflw_i_3 : label is "soft_lutpair1126";
-  attribute SOFT_HLUTNM of \s_state[0]_i_1\ : label is "soft_lutpair1147";
-  attribute SOFT_HLUTNM of \s_state[1]_i_1\ : label is "soft_lutpair1145";
-  attribute SOFT_HLUTNM of \s_state[2]_i_1\ : label is "soft_lutpair1133";
-  attribute SOFT_HLUTNM of \s_state[3]_i_2\ : label is "soft_lutpair1132";
+  attribute SOFT_HLUTNM of \action[0]_i_1\ : label is "soft_lutpair1137";
+  attribute SOFT_HLUTNM of \action[1]_i_1\ : label is "soft_lutpair1137";
+  attribute SOFT_HLUTNM of \data_out[0]_i_1\ : label is "soft_lutpair1140";
+  attribute SOFT_HLUTNM of \data_out[1]_i_1\ : label is "soft_lutpair1140";
+  attribute SOFT_HLUTNM of \data_out[2]_i_1\ : label is "soft_lutpair1143";
+  attribute SOFT_HLUTNM of \data_out[3]_i_1\ : label is "soft_lutpair1143";
+  attribute SOFT_HLUTNM of delay_change_i_1 : label is "soft_lutpair1125";
+  attribute SOFT_HLUTNM of inc_run_i_2 : label is "soft_lutpair1144";
+  attribute SOFT_HLUTNM of inc_run_i_3 : label is "soft_lutpair1131";
+  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2\ : label is "soft_lutpair1130";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2\ : label is "soft_lutpair1145";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3\ : label is "soft_lutpair1141";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3\ : label is "soft_lutpair1141";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6\ : label is "soft_lutpair1132";
+  attribute SOFT_HLUTNM of meq_max_i_1 : label is "soft_lutpair1120";
+  attribute SOFT_HLUTNM of meq_min_i_1 : label is "soft_lutpair1145";
+  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1\ : label is "soft_lutpair1129";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1\ : label is "soft_lutpair1129";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2\ : label is "soft_lutpair1128";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3\ : label is "soft_lutpair1127";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4\ : label is "soft_lutpair1122";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5\ : label is "soft_lutpair1124";
+  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1\ : label is "soft_lutpair1134";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1\ : label is "soft_lutpair1134";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2\ : label is "soft_lutpair1128";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3\ : label is "soft_lutpair1127";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4\ : label is "soft_lutpair1122";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5\ : label is "soft_lutpair1124";
+  attribute SOFT_HLUTNM of \pd_hold[0]_i_1\ : label is "soft_lutpair1135";
+  attribute SOFT_HLUTNM of \pd_hold[1]_i_1\ : label is "soft_lutpair1138";
+  attribute SOFT_HLUTNM of \pd_hold[2]_i_1\ : label is "soft_lutpair1139";
+  attribute SOFT_HLUTNM of \pd_hold[3]_i_1\ : label is "soft_lutpair1139";
+  attribute SOFT_HLUTNM of \pd_hold[4]_i_1\ : label is "soft_lutpair1138";
+  attribute SOFT_HLUTNM of \pd_hold[5]_i_1\ : label is "soft_lutpair1136";
+  attribute SOFT_HLUTNM of \pd_hold[6]_i_1\ : label is "soft_lutpair1136";
+  attribute SOFT_HLUTNM of \pd_hold[7]_i_2\ : label is "soft_lutpair1135";
+  attribute SOFT_HLUTNM of pd_max_i_1 : label is "soft_lutpair1123";
+  attribute SOFT_HLUTNM of pd_max_i_2 : label is "soft_lutpair1133";
+  attribute SOFT_HLUTNM of pd_min_i_3 : label is "soft_lutpair1133";
+  attribute SOFT_HLUTNM of \pdcount[1]_i_1\ : label is "soft_lutpair1142";
+  attribute SOFT_HLUTNM of \pdcount[2]_i_1\ : label is "soft_lutpair1121";
+  attribute SOFT_HLUTNM of \pdcount[3]_i_1\ : label is "soft_lutpair1121";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_7\ : label is "soft_lutpair1142";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_8\ : label is "soft_lutpair1123";
+  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2\ : label is "soft_lutpair1146";
+  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2\ : label is "soft_lutpair1126";
+  attribute SOFT_HLUTNM of \s_delay_val_int[3]_i_2\ : label is "soft_lutpair1126";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3\ : label is "soft_lutpair1130";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4\ : label is "soft_lutpair1120";
+  attribute SOFT_HLUTNM of s_ovflw_i_3 : label is "soft_lutpair1125";
+  attribute SOFT_HLUTNM of \s_state[0]_i_1\ : label is "soft_lutpair1146";
+  attribute SOFT_HLUTNM of \s_state[1]_i_1\ : label is "soft_lutpair1144";
+  attribute SOFT_HLUTNM of \s_state[2]_i_1\ : label is "soft_lutpair1132";
+  attribute SOFT_HLUTNM of \s_state[3]_i_2\ : label is "soft_lutpair1131";
 begin
   \m_delay_val_int_reg[0]_0\ <= \^m_delay_val_int_reg[0]_0\;
   \m_delay_val_int_reg[1]_0\ <= \^m_delay_val_int_reg[1]_0\;
@@ -2117,60 +2117,60 @@ architecture STRUCTURE of la_receiver_0_delay_controller_wrap_0 is
   signal \sdataoutc[2]_i_1__0_n_0\ : STD_LOGIC;
   signal \sdataoutc[3]_i_1__0_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \action[0]_i_1__0\ : label is "soft_lutpair1163";
-  attribute SOFT_HLUTNM of \action[1]_i_1__0\ : label is "soft_lutpair1163";
-  attribute SOFT_HLUTNM of \data_out[0]_i_1__0\ : label is "soft_lutpair1170";
-  attribute SOFT_HLUTNM of \data_out[1]_i_1__0\ : label is "soft_lutpair1170";
-  attribute SOFT_HLUTNM of \data_out[2]_i_1__0\ : label is "soft_lutpair1171";
-  attribute SOFT_HLUTNM of \data_out[3]_i_1__0\ : label is "soft_lutpair1171";
-  attribute SOFT_HLUTNM of \delay_change_i_1__0\ : label is "soft_lutpair1148";
-  attribute SOFT_HLUTNM of \inc_run_i_2__0\ : label is "soft_lutpair1169";
-  attribute SOFT_HLUTNM of \inc_run_i_3__0\ : label is "soft_lutpair1162";
-  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__0\ : label is "soft_lutpair1167";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__0\ : label is "soft_lutpair1172";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__0\ : label is "soft_lutpair1168";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__0\ : label is "soft_lutpair1168";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__0\ : label is "soft_lutpair1165";
-  attribute SOFT_HLUTNM of \meq_max_i_1__0\ : label is "soft_lutpair1150";
-  attribute SOFT_HLUTNM of \meq_min_i_1__0\ : label is "soft_lutpair1172";
-  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__0\ : label is "soft_lutpair1160";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__0\ : label is "soft_lutpair1160";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__0\ : label is "soft_lutpair1155";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__0\ : label is "soft_lutpair1156";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__0\ : label is "soft_lutpair1152";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__0\ : label is "soft_lutpair1151";
-  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__0\ : label is "soft_lutpair1161";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__0\ : label is "soft_lutpair1161";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__0\ : label is "soft_lutpair1155";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__0\ : label is "soft_lutpair1156";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__0\ : label is "soft_lutpair1152";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__0\ : label is "soft_lutpair1151";
-  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__0\ : label is "soft_lutpair1166";
-  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__0\ : label is "soft_lutpair1166";
-  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__0\ : label is "soft_lutpair1157";
-  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__0\ : label is "soft_lutpair1158";
-  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__0\ : label is "soft_lutpair1164";
-  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__0\ : label is "soft_lutpair1164";
-  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__0\ : label is "soft_lutpair1158";
-  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__0\ : label is "soft_lutpair1157";
-  attribute SOFT_HLUTNM of \pd_max_i_1__0\ : label is "soft_lutpair1154";
-  attribute SOFT_HLUTNM of \pd_max_i_2__0\ : label is "soft_lutpair1159";
-  attribute SOFT_HLUTNM of \pd_min_i_2__0\ : label is "soft_lutpair1159";
-  attribute SOFT_HLUTNM of \pdcount[1]_i_1__0\ : label is "soft_lutpair1173";
-  attribute SOFT_HLUTNM of \pdcount[2]_i_1__0\ : label is "soft_lutpair1149";
-  attribute SOFT_HLUTNM of \pdcount[3]_i_1__0\ : label is "soft_lutpair1149";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_7__0\ : label is "soft_lutpair1173";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_8__0\ : label is "soft_lutpair1154";
-  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__0\ : label is "soft_lutpair1174";
-  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__0\ : label is "soft_lutpair1153";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__0\ : label is "soft_lutpair1162";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__0\ : label is "soft_lutpair1153";
-  attribute SOFT_HLUTNM of \s_ovflw_i_2__0\ : label is "soft_lutpair1150";
-  attribute SOFT_HLUTNM of \s_ovflw_i_3__0\ : label is "soft_lutpair1148";
-  attribute SOFT_HLUTNM of \s_state[0]_i_1__0\ : label is "soft_lutpair1174";
-  attribute SOFT_HLUTNM of \s_state[1]_i_1__0\ : label is "soft_lutpair1169";
-  attribute SOFT_HLUTNM of \s_state[2]_i_1__0\ : label is "soft_lutpair1167";
-  attribute SOFT_HLUTNM of \s_state[3]_i_2__0\ : label is "soft_lutpair1165";
+  attribute SOFT_HLUTNM of \action[0]_i_1__0\ : label is "soft_lutpair1162";
+  attribute SOFT_HLUTNM of \action[1]_i_1__0\ : label is "soft_lutpair1162";
+  attribute SOFT_HLUTNM of \data_out[0]_i_1__0\ : label is "soft_lutpair1169";
+  attribute SOFT_HLUTNM of \data_out[1]_i_1__0\ : label is "soft_lutpair1169";
+  attribute SOFT_HLUTNM of \data_out[2]_i_1__0\ : label is "soft_lutpair1170";
+  attribute SOFT_HLUTNM of \data_out[3]_i_1__0\ : label is "soft_lutpair1170";
+  attribute SOFT_HLUTNM of \delay_change_i_1__0\ : label is "soft_lutpair1147";
+  attribute SOFT_HLUTNM of \inc_run_i_2__0\ : label is "soft_lutpair1168";
+  attribute SOFT_HLUTNM of \inc_run_i_3__0\ : label is "soft_lutpair1161";
+  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__0\ : label is "soft_lutpair1166";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__0\ : label is "soft_lutpair1171";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__0\ : label is "soft_lutpair1167";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__0\ : label is "soft_lutpair1167";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__0\ : label is "soft_lutpair1164";
+  attribute SOFT_HLUTNM of \meq_max_i_1__0\ : label is "soft_lutpair1149";
+  attribute SOFT_HLUTNM of \meq_min_i_1__0\ : label is "soft_lutpair1171";
+  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__0\ : label is "soft_lutpair1159";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__0\ : label is "soft_lutpair1159";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__0\ : label is "soft_lutpair1154";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__0\ : label is "soft_lutpair1155";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__0\ : label is "soft_lutpair1151";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__0\ : label is "soft_lutpair1150";
+  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__0\ : label is "soft_lutpair1160";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__0\ : label is "soft_lutpair1160";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__0\ : label is "soft_lutpair1154";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__0\ : label is "soft_lutpair1155";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__0\ : label is "soft_lutpair1151";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__0\ : label is "soft_lutpair1150";
+  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__0\ : label is "soft_lutpair1165";
+  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__0\ : label is "soft_lutpair1165";
+  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__0\ : label is "soft_lutpair1156";
+  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__0\ : label is "soft_lutpair1157";
+  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__0\ : label is "soft_lutpair1163";
+  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__0\ : label is "soft_lutpair1163";
+  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__0\ : label is "soft_lutpair1157";
+  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__0\ : label is "soft_lutpair1156";
+  attribute SOFT_HLUTNM of \pd_max_i_1__0\ : label is "soft_lutpair1153";
+  attribute SOFT_HLUTNM of \pd_max_i_2__0\ : label is "soft_lutpair1158";
+  attribute SOFT_HLUTNM of \pd_min_i_2__0\ : label is "soft_lutpair1158";
+  attribute SOFT_HLUTNM of \pdcount[1]_i_1__0\ : label is "soft_lutpair1172";
+  attribute SOFT_HLUTNM of \pdcount[2]_i_1__0\ : label is "soft_lutpair1148";
+  attribute SOFT_HLUTNM of \pdcount[3]_i_1__0\ : label is "soft_lutpair1148";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_7__0\ : label is "soft_lutpair1172";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_8__0\ : label is "soft_lutpair1153";
+  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__0\ : label is "soft_lutpair1173";
+  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__0\ : label is "soft_lutpair1152";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__0\ : label is "soft_lutpair1161";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__0\ : label is "soft_lutpair1152";
+  attribute SOFT_HLUTNM of \s_ovflw_i_2__0\ : label is "soft_lutpair1149";
+  attribute SOFT_HLUTNM of \s_ovflw_i_3__0\ : label is "soft_lutpair1147";
+  attribute SOFT_HLUTNM of \s_state[0]_i_1__0\ : label is "soft_lutpair1173";
+  attribute SOFT_HLUTNM of \s_state[1]_i_1__0\ : label is "soft_lutpair1168";
+  attribute SOFT_HLUTNM of \s_state[2]_i_1__0\ : label is "soft_lutpair1166";
+  attribute SOFT_HLUTNM of \s_state[3]_i_2__0\ : label is "soft_lutpair1164";
 begin
   \m_delay_val_int_reg[0]_0\ <= \^m_delay_val_int_reg[0]_0\;
   \m_delay_val_int_reg[1]_0\ <= \^m_delay_val_int_reg[1]_0\;
@@ -4068,60 +4068,60 @@ architecture STRUCTURE of la_receiver_0_delay_controller_wrap_1 is
   signal \sdataoutc[2]_i_1__1_n_0\ : STD_LOGIC;
   signal \sdataoutc[3]_i_1__1_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \action[0]_i_1__1\ : label is "soft_lutpair1190";
-  attribute SOFT_HLUTNM of \action[1]_i_1__1\ : label is "soft_lutpair1190";
-  attribute SOFT_HLUTNM of \data_out[0]_i_1__1\ : label is "soft_lutpair1197";
-  attribute SOFT_HLUTNM of \data_out[1]_i_1__1\ : label is "soft_lutpair1197";
-  attribute SOFT_HLUTNM of \data_out[2]_i_1__1\ : label is "soft_lutpair1198";
-  attribute SOFT_HLUTNM of \data_out[3]_i_1__1\ : label is "soft_lutpair1198";
-  attribute SOFT_HLUTNM of \delay_change_i_1__1\ : label is "soft_lutpair1175";
-  attribute SOFT_HLUTNM of \inc_run_i_2__1\ : label is "soft_lutpair1196";
-  attribute SOFT_HLUTNM of \inc_run_i_3__1\ : label is "soft_lutpair1189";
-  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__1\ : label is "soft_lutpair1194";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__1\ : label is "soft_lutpair1199";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__1\ : label is "soft_lutpair1195";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__1\ : label is "soft_lutpair1195";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__1\ : label is "soft_lutpair1192";
-  attribute SOFT_HLUTNM of \meq_max_i_1__1\ : label is "soft_lutpair1177";
-  attribute SOFT_HLUTNM of \meq_min_i_1__1\ : label is "soft_lutpair1199";
-  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__1\ : label is "soft_lutpair1187";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__1\ : label is "soft_lutpair1187";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__1\ : label is "soft_lutpair1182";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__1\ : label is "soft_lutpair1183";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__1\ : label is "soft_lutpair1179";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__1\ : label is "soft_lutpair1178";
-  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__1\ : label is "soft_lutpair1188";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__1\ : label is "soft_lutpair1188";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__1\ : label is "soft_lutpair1182";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__1\ : label is "soft_lutpair1183";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__1\ : label is "soft_lutpair1179";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__1\ : label is "soft_lutpair1178";
-  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__1\ : label is "soft_lutpair1193";
-  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__1\ : label is "soft_lutpair1193";
-  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__1\ : label is "soft_lutpair1184";
-  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__1\ : label is "soft_lutpair1185";
-  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__1\ : label is "soft_lutpair1191";
-  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__1\ : label is "soft_lutpair1191";
-  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__1\ : label is "soft_lutpair1185";
-  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__1\ : label is "soft_lutpair1184";
-  attribute SOFT_HLUTNM of \pd_max_i_1__1\ : label is "soft_lutpair1181";
-  attribute SOFT_HLUTNM of \pd_max_i_2__1\ : label is "soft_lutpair1186";
-  attribute SOFT_HLUTNM of \pd_min_i_2__1\ : label is "soft_lutpair1186";
-  attribute SOFT_HLUTNM of \pdcount[1]_i_1__1\ : label is "soft_lutpair1200";
-  attribute SOFT_HLUTNM of \pdcount[2]_i_1__1\ : label is "soft_lutpair1176";
-  attribute SOFT_HLUTNM of \pdcount[3]_i_1__1\ : label is "soft_lutpair1176";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_7__1\ : label is "soft_lutpair1200";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_8__1\ : label is "soft_lutpair1181";
-  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__1\ : label is "soft_lutpair1201";
-  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__1\ : label is "soft_lutpair1180";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__1\ : label is "soft_lutpair1189";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__1\ : label is "soft_lutpair1180";
-  attribute SOFT_HLUTNM of \s_ovflw_i_2__1\ : label is "soft_lutpair1177";
-  attribute SOFT_HLUTNM of \s_ovflw_i_3__1\ : label is "soft_lutpair1175";
-  attribute SOFT_HLUTNM of \s_state[0]_i_1__1\ : label is "soft_lutpair1201";
-  attribute SOFT_HLUTNM of \s_state[1]_i_1__1\ : label is "soft_lutpair1196";
-  attribute SOFT_HLUTNM of \s_state[2]_i_1__1\ : label is "soft_lutpair1194";
-  attribute SOFT_HLUTNM of \s_state[3]_i_2__1\ : label is "soft_lutpair1192";
+  attribute SOFT_HLUTNM of \action[0]_i_1__1\ : label is "soft_lutpair1189";
+  attribute SOFT_HLUTNM of \action[1]_i_1__1\ : label is "soft_lutpair1189";
+  attribute SOFT_HLUTNM of \data_out[0]_i_1__1\ : label is "soft_lutpair1196";
+  attribute SOFT_HLUTNM of \data_out[1]_i_1__1\ : label is "soft_lutpair1196";
+  attribute SOFT_HLUTNM of \data_out[2]_i_1__1\ : label is "soft_lutpair1197";
+  attribute SOFT_HLUTNM of \data_out[3]_i_1__1\ : label is "soft_lutpair1197";
+  attribute SOFT_HLUTNM of \delay_change_i_1__1\ : label is "soft_lutpair1174";
+  attribute SOFT_HLUTNM of \inc_run_i_2__1\ : label is "soft_lutpair1195";
+  attribute SOFT_HLUTNM of \inc_run_i_3__1\ : label is "soft_lutpair1188";
+  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__1\ : label is "soft_lutpair1193";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__1\ : label is "soft_lutpair1198";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__1\ : label is "soft_lutpair1194";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__1\ : label is "soft_lutpair1194";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__1\ : label is "soft_lutpair1191";
+  attribute SOFT_HLUTNM of \meq_max_i_1__1\ : label is "soft_lutpair1176";
+  attribute SOFT_HLUTNM of \meq_min_i_1__1\ : label is "soft_lutpair1198";
+  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__1\ : label is "soft_lutpair1186";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__1\ : label is "soft_lutpair1186";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__1\ : label is "soft_lutpair1181";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__1\ : label is "soft_lutpair1182";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__1\ : label is "soft_lutpair1178";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__1\ : label is "soft_lutpair1177";
+  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__1\ : label is "soft_lutpair1187";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__1\ : label is "soft_lutpair1187";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__1\ : label is "soft_lutpair1181";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__1\ : label is "soft_lutpair1182";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__1\ : label is "soft_lutpair1178";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__1\ : label is "soft_lutpair1177";
+  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__1\ : label is "soft_lutpair1192";
+  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__1\ : label is "soft_lutpair1192";
+  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__1\ : label is "soft_lutpair1183";
+  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__1\ : label is "soft_lutpair1184";
+  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__1\ : label is "soft_lutpair1190";
+  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__1\ : label is "soft_lutpair1190";
+  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__1\ : label is "soft_lutpair1184";
+  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__1\ : label is "soft_lutpair1183";
+  attribute SOFT_HLUTNM of \pd_max_i_1__1\ : label is "soft_lutpair1180";
+  attribute SOFT_HLUTNM of \pd_max_i_2__1\ : label is "soft_lutpair1185";
+  attribute SOFT_HLUTNM of \pd_min_i_2__1\ : label is "soft_lutpair1185";
+  attribute SOFT_HLUTNM of \pdcount[1]_i_1__1\ : label is "soft_lutpair1199";
+  attribute SOFT_HLUTNM of \pdcount[2]_i_1__1\ : label is "soft_lutpair1175";
+  attribute SOFT_HLUTNM of \pdcount[3]_i_1__1\ : label is "soft_lutpair1175";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_7__1\ : label is "soft_lutpair1199";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_8__1\ : label is "soft_lutpair1180";
+  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__1\ : label is "soft_lutpair1200";
+  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__1\ : label is "soft_lutpair1179";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__1\ : label is "soft_lutpair1188";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__1\ : label is "soft_lutpair1179";
+  attribute SOFT_HLUTNM of \s_ovflw_i_2__1\ : label is "soft_lutpair1176";
+  attribute SOFT_HLUTNM of \s_ovflw_i_3__1\ : label is "soft_lutpair1174";
+  attribute SOFT_HLUTNM of \s_state[0]_i_1__1\ : label is "soft_lutpair1200";
+  attribute SOFT_HLUTNM of \s_state[1]_i_1__1\ : label is "soft_lutpair1195";
+  attribute SOFT_HLUTNM of \s_state[2]_i_1__1\ : label is "soft_lutpair1193";
+  attribute SOFT_HLUTNM of \s_state[3]_i_2__1\ : label is "soft_lutpair1191";
 begin
   \m_delay_val_int_reg[0]_0\ <= \^m_delay_val_int_reg[0]_0\;
   \m_delay_val_int_reg[1]_0\ <= \^m_delay_val_int_reg[1]_0\;
@@ -6027,60 +6027,60 @@ architecture STRUCTURE of la_receiver_0_delay_controller_wrap_2 is
   signal \sdataoutc[2]_i_1__2_n_0\ : STD_LOGIC;
   signal \sdataoutc[3]_i_1__2_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \action[0]_i_1__2\ : label is "soft_lutpair1217";
-  attribute SOFT_HLUTNM of \action[1]_i_1__2\ : label is "soft_lutpair1217";
-  attribute SOFT_HLUTNM of \data_out[0]_i_1__2\ : label is "soft_lutpair1224";
-  attribute SOFT_HLUTNM of \data_out[1]_i_1__2\ : label is "soft_lutpair1224";
-  attribute SOFT_HLUTNM of \data_out[2]_i_1__2\ : label is "soft_lutpair1225";
-  attribute SOFT_HLUTNM of \data_out[3]_i_1__2\ : label is "soft_lutpair1225";
-  attribute SOFT_HLUTNM of \delay_change_i_1__2\ : label is "soft_lutpair1202";
-  attribute SOFT_HLUTNM of \inc_run_i_2__2\ : label is "soft_lutpair1223";
-  attribute SOFT_HLUTNM of \inc_run_i_3__2\ : label is "soft_lutpair1216";
-  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__2\ : label is "soft_lutpair1221";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__2\ : label is "soft_lutpair1226";
-  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__2\ : label is "soft_lutpair1222";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__2\ : label is "soft_lutpair1222";
-  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__2\ : label is "soft_lutpair1219";
-  attribute SOFT_HLUTNM of \meq_max_i_1__2\ : label is "soft_lutpair1204";
-  attribute SOFT_HLUTNM of \meq_min_i_1__2\ : label is "soft_lutpair1226";
-  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__2\ : label is "soft_lutpair1214";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__2\ : label is "soft_lutpair1214";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__2\ : label is "soft_lutpair1209";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__2\ : label is "soft_lutpair1210";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__2\ : label is "soft_lutpair1206";
-  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__2\ : label is "soft_lutpair1205";
-  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__2\ : label is "soft_lutpair1215";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__2\ : label is "soft_lutpair1215";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__2\ : label is "soft_lutpair1209";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__2\ : label is "soft_lutpair1210";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__2\ : label is "soft_lutpair1206";
-  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__2\ : label is "soft_lutpair1205";
-  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__2\ : label is "soft_lutpair1220";
-  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__2\ : label is "soft_lutpair1220";
-  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__2\ : label is "soft_lutpair1211";
-  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__2\ : label is "soft_lutpair1212";
-  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__2\ : label is "soft_lutpair1218";
-  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__2\ : label is "soft_lutpair1218";
-  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__2\ : label is "soft_lutpair1212";
-  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__2\ : label is "soft_lutpair1211";
-  attribute SOFT_HLUTNM of \pd_max_i_1__2\ : label is "soft_lutpair1208";
-  attribute SOFT_HLUTNM of \pd_max_i_2__2\ : label is "soft_lutpair1213";
-  attribute SOFT_HLUTNM of \pd_min_i_2__2\ : label is "soft_lutpair1213";
-  attribute SOFT_HLUTNM of \pdcount[1]_i_1__2\ : label is "soft_lutpair1227";
-  attribute SOFT_HLUTNM of \pdcount[2]_i_1__2\ : label is "soft_lutpair1203";
-  attribute SOFT_HLUTNM of \pdcount[3]_i_1__2\ : label is "soft_lutpair1203";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_7__2\ : label is "soft_lutpair1227";
-  attribute SOFT_HLUTNM of \pdcount[5]_i_8__2\ : label is "soft_lutpair1208";
-  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__2\ : label is "soft_lutpair1228";
-  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__2\ : label is "soft_lutpair1207";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__2\ : label is "soft_lutpair1216";
-  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__2\ : label is "soft_lutpair1207";
-  attribute SOFT_HLUTNM of \s_ovflw_i_2__2\ : label is "soft_lutpair1204";
-  attribute SOFT_HLUTNM of \s_ovflw_i_3__2\ : label is "soft_lutpair1202";
-  attribute SOFT_HLUTNM of \s_state[0]_i_1__2\ : label is "soft_lutpair1228";
-  attribute SOFT_HLUTNM of \s_state[1]_i_1__2\ : label is "soft_lutpair1223";
-  attribute SOFT_HLUTNM of \s_state[2]_i_1__2\ : label is "soft_lutpair1221";
-  attribute SOFT_HLUTNM of \s_state[3]_i_2__2\ : label is "soft_lutpair1219";
+  attribute SOFT_HLUTNM of \action[0]_i_1__2\ : label is "soft_lutpair1216";
+  attribute SOFT_HLUTNM of \action[1]_i_1__2\ : label is "soft_lutpair1216";
+  attribute SOFT_HLUTNM of \data_out[0]_i_1__2\ : label is "soft_lutpair1223";
+  attribute SOFT_HLUTNM of \data_out[1]_i_1__2\ : label is "soft_lutpair1223";
+  attribute SOFT_HLUTNM of \data_out[2]_i_1__2\ : label is "soft_lutpair1224";
+  attribute SOFT_HLUTNM of \data_out[3]_i_1__2\ : label is "soft_lutpair1224";
+  attribute SOFT_HLUTNM of \delay_change_i_1__2\ : label is "soft_lutpair1201";
+  attribute SOFT_HLUTNM of \inc_run_i_2__2\ : label is "soft_lutpair1222";
+  attribute SOFT_HLUTNM of \inc_run_i_3__2\ : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of \m_delay_mux[1]_i_2__2\ : label is "soft_lutpair1220";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_2__2\ : label is "soft_lutpair1225";
+  attribute SOFT_HLUTNM of \m_delay_val_int[0]_i_3__2\ : label is "soft_lutpair1221";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_3__2\ : label is "soft_lutpair1221";
+  attribute SOFT_HLUTNM of \m_delay_val_int[4]_i_6__2\ : label is "soft_lutpair1218";
+  attribute SOFT_HLUTNM of \meq_max_i_1__2\ : label is "soft_lutpair1203";
+  attribute SOFT_HLUTNM of \meq_min_i_1__2\ : label is "soft_lutpair1225";
+  attribute SOFT_HLUTNM of \msxor_ctd[0]_i_1__2\ : label is "soft_lutpair1213";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_1__2\ : label is "soft_lutpair1213";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_2__2\ : label is "soft_lutpair1208";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_3__2\ : label is "soft_lutpair1209";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_4__2\ : label is "soft_lutpair1205";
+  attribute SOFT_HLUTNM of \msxor_ctd[1]_i_5__2\ : label is "soft_lutpair1204";
+  attribute SOFT_HLUTNM of \msxor_cti[0]_i_1__2\ : label is "soft_lutpair1214";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_1__2\ : label is "soft_lutpair1214";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_2__2\ : label is "soft_lutpair1208";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_3__2\ : label is "soft_lutpair1209";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_4__2\ : label is "soft_lutpair1205";
+  attribute SOFT_HLUTNM of \msxor_cti[1]_i_5__2\ : label is "soft_lutpair1204";
+  attribute SOFT_HLUTNM of \pd_hold[0]_i_1__2\ : label is "soft_lutpair1219";
+  attribute SOFT_HLUTNM of \pd_hold[1]_i_1__2\ : label is "soft_lutpair1219";
+  attribute SOFT_HLUTNM of \pd_hold[2]_i_1__2\ : label is "soft_lutpair1210";
+  attribute SOFT_HLUTNM of \pd_hold[3]_i_1__2\ : label is "soft_lutpair1211";
+  attribute SOFT_HLUTNM of \pd_hold[4]_i_1__2\ : label is "soft_lutpair1217";
+  attribute SOFT_HLUTNM of \pd_hold[5]_i_1__2\ : label is "soft_lutpair1217";
+  attribute SOFT_HLUTNM of \pd_hold[6]_i_1__2\ : label is "soft_lutpair1211";
+  attribute SOFT_HLUTNM of \pd_hold[7]_i_2__2\ : label is "soft_lutpair1210";
+  attribute SOFT_HLUTNM of \pd_max_i_1__2\ : label is "soft_lutpair1207";
+  attribute SOFT_HLUTNM of \pd_max_i_2__2\ : label is "soft_lutpair1212";
+  attribute SOFT_HLUTNM of \pd_min_i_2__2\ : label is "soft_lutpair1212";
+  attribute SOFT_HLUTNM of \pdcount[1]_i_1__2\ : label is "soft_lutpair1226";
+  attribute SOFT_HLUTNM of \pdcount[2]_i_1__2\ : label is "soft_lutpair1202";
+  attribute SOFT_HLUTNM of \pdcount[3]_i_1__2\ : label is "soft_lutpair1202";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_7__2\ : label is "soft_lutpair1226";
+  attribute SOFT_HLUTNM of \pdcount[5]_i_8__2\ : label is "soft_lutpair1207";
+  attribute SOFT_HLUTNM of \s_delay_mux[1]_i_2__2\ : label is "soft_lutpair1227";
+  attribute SOFT_HLUTNM of \s_delay_val_int[2]_i_2__2\ : label is "soft_lutpair1206";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_3__2\ : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of \s_delay_val_int[4]_i_4__2\ : label is "soft_lutpair1206";
+  attribute SOFT_HLUTNM of \s_ovflw_i_2__2\ : label is "soft_lutpair1203";
+  attribute SOFT_HLUTNM of \s_ovflw_i_3__2\ : label is "soft_lutpair1201";
+  attribute SOFT_HLUTNM of \s_state[0]_i_1__2\ : label is "soft_lutpair1227";
+  attribute SOFT_HLUTNM of \s_state[1]_i_1__2\ : label is "soft_lutpair1222";
+  attribute SOFT_HLUTNM of \s_state[2]_i_1__2\ : label is "soft_lutpair1220";
+  attribute SOFT_HLUTNM of \s_state[3]_i_2__2\ : label is "soft_lutpair1218";
 begin
   \m_delay_val_int_reg[0]_0\ <= \^m_delay_val_int_reg[0]_0\;
   \m_delay_val_int_reg[1]_0\ <= \^m_delay_val_int_reg[1]_0\;
@@ -7939,10 +7939,10 @@ architecture STRUCTURE of la_receiver_0_gearbox_4_to_7 is
   signal \NLW_loop2[7].ram_inst_DOC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \NLW_loop2[9].ram_inst_DOC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of data_different_i_4 : label is "soft_lutpair1109";
-  attribute SOFT_HLUTNM of flag1_i_2 : label is "soft_lutpair1118";
-  attribute SOFT_HLUTNM of flag2_i_2 : label is "soft_lutpair1118";
-  attribute SOFT_HLUTNM of flag2_i_3 : label is "soft_lutpair1109";
+  attribute SOFT_HLUTNM of data_different_i_4 : label is "soft_lutpair1108";
+  attribute SOFT_HLUTNM of flag1_i_2 : label is "soft_lutpair1117";
+  attribute SOFT_HLUTNM of flag2_i_2 : label is "soft_lutpair1117";
+  attribute SOFT_HLUTNM of flag2_i_3 : label is "soft_lutpair1108";
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of \loop2[0].ram_inst\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop2[1].ram_inst\ : label is "PRIMITIVE";
@@ -7954,26 +7954,26 @@ architecture STRUCTURE of la_receiver_0_gearbox_4_to_7 is
   attribute BOX_TYPE of \loop2[7].ram_inst\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop2[8].ram_inst\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop2[9].ram_inst\ : label is "PRIMITIVE";
-  attribute SOFT_HLUTNM of \mux[0]_i_1\ : label is "soft_lutpair1120";
-  attribute SOFT_HLUTNM of \mux[0]_i_2\ : label is "soft_lutpair1110";
-  attribute SOFT_HLUTNM of \mux[1]_i_1\ : label is "soft_lutpair1120";
-  attribute SOFT_HLUTNM of \mux[1]_i_2\ : label is "soft_lutpair1110";
-  attribute SOFT_HLUTNM of \read_addra[0]_i_1\ : label is "soft_lutpair1112";
-  attribute SOFT_HLUTNM of \read_addra[1]_i_1\ : label is "soft_lutpair1115";
-  attribute SOFT_HLUTNM of \read_addra[2]_i_1\ : label is "soft_lutpair1111";
-  attribute SOFT_HLUTNM of \read_addra[3]_i_1\ : label is "soft_lutpair1113";
-  attribute SOFT_HLUTNM of \read_addrb[0]_i_1\ : label is "soft_lutpair1114";
-  attribute SOFT_HLUTNM of \read_addrb[1]_i_1\ : label is "soft_lutpair1115";
-  attribute SOFT_HLUTNM of \read_addrb[2]_i_1\ : label is "soft_lutpair1116";
-  attribute SOFT_HLUTNM of \read_addrb[3]_i_1\ : label is "soft_lutpair1116";
-  attribute SOFT_HLUTNM of \read_addrc[0]_i_1\ : label is "soft_lutpair1112";
-  attribute SOFT_HLUTNM of \read_addrc[1]_i_1\ : label is "soft_lutpair1114";
-  attribute SOFT_HLUTNM of \read_addrc[2]_i_1\ : label is "soft_lutpair1111";
-  attribute SOFT_HLUTNM of \read_addrc[3]_i_1\ : label is "soft_lutpair1113";
-  attribute SOFT_HLUTNM of read_enable_i_1 : label is "soft_lutpair1117";
-  attribute SOFT_HLUTNM of \write_addr[1]_i_1\ : label is "soft_lutpair1117";
-  attribute SOFT_HLUTNM of \write_addr[2]_i_1\ : label is "soft_lutpair1119";
-  attribute SOFT_HLUTNM of \write_addr[3]_i_1\ : label is "soft_lutpair1119";
+  attribute SOFT_HLUTNM of \mux[0]_i_1\ : label is "soft_lutpair1119";
+  attribute SOFT_HLUTNM of \mux[0]_i_2\ : label is "soft_lutpair1109";
+  attribute SOFT_HLUTNM of \mux[1]_i_1\ : label is "soft_lutpair1119";
+  attribute SOFT_HLUTNM of \mux[1]_i_2\ : label is "soft_lutpair1109";
+  attribute SOFT_HLUTNM of \read_addra[0]_i_1\ : label is "soft_lutpair1111";
+  attribute SOFT_HLUTNM of \read_addra[1]_i_1\ : label is "soft_lutpair1114";
+  attribute SOFT_HLUTNM of \read_addra[2]_i_1\ : label is "soft_lutpair1110";
+  attribute SOFT_HLUTNM of \read_addra[3]_i_1\ : label is "soft_lutpair1112";
+  attribute SOFT_HLUTNM of \read_addrb[0]_i_1\ : label is "soft_lutpair1113";
+  attribute SOFT_HLUTNM of \read_addrb[1]_i_1\ : label is "soft_lutpair1114";
+  attribute SOFT_HLUTNM of \read_addrb[2]_i_1\ : label is "soft_lutpair1115";
+  attribute SOFT_HLUTNM of \read_addrb[3]_i_1\ : label is "soft_lutpair1115";
+  attribute SOFT_HLUTNM of \read_addrc[0]_i_1\ : label is "soft_lutpair1111";
+  attribute SOFT_HLUTNM of \read_addrc[1]_i_1\ : label is "soft_lutpair1113";
+  attribute SOFT_HLUTNM of \read_addrc[2]_i_1\ : label is "soft_lutpair1110";
+  attribute SOFT_HLUTNM of \read_addrc[3]_i_1\ : label is "soft_lutpair1112";
+  attribute SOFT_HLUTNM of read_enable_i_1 : label is "soft_lutpair1116";
+  attribute SOFT_HLUTNM of \write_addr[1]_i_1\ : label is "soft_lutpair1116";
+  attribute SOFT_HLUTNM of \write_addr[2]_i_1\ : label is "soft_lutpair1118";
+  attribute SOFT_HLUTNM of \write_addr[3]_i_1\ : label is "soft_lutpair1118";
 begin
   dataout(34 downto 0) <= \^dataout\(34 downto 0);
 data_different_i_1: unisim.vcomponents.LUT6
@@ -9563,15 +9563,18 @@ use UNISIM.VCOMPONENTS.ALL;
 entity la_receiver_0_packet_decoder is
   port (
     acq_data_valid : out STD_LOGIC;
-    \buf_idx_reg[1]\ : out STD_LOGIC;
+    sampler_idle_reg : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 25 downto 0 );
+    \buf_idx_reg[1]\ : out STD_LOGIC;
     \buf_idx_reg[1]_0\ : out STD_LOGIC;
     \buf_idx_reg[0]\ : out STD_LOGIC;
-    update : out STD_LOGIC;
-    acq_data_out : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    acq_data_out : out STD_LOGIC_VECTOR ( 26 downto 0 );
+    \buf_idx_reg[2]\ : out STD_LOGIC;
+    update1_out : out STD_LOGIC;
     rx_data : in STD_LOGIC_VECTOR ( 27 downto 0 );
     pixel_clk : in STD_LOGIC;
     \shifter_reg[15]\ : in STD_LOGIC;
+    sampler_idle : in STD_LOGIC;
     \buf_idx_reg[0]_0\ : in STD_LOGIC;
     \buf_idx_reg[1]_1\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -9584,62 +9587,101 @@ architecture STRUCTURE of la_receiver_0_packet_decoder is
   signal \^q\ : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal \^acq_data_valid\ : STD_LOGIC;
   signal acq_packet_type : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \buf_idx[2]_i_3_n_0\ : STD_LOGIC;
   signal \^buf_idx_reg[1]_0\ : STD_LOGIC;
+  signal sampler_idle_i_2_n_0 : STD_LOGIC;
   signal update_i_2_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \buf_idx[0]_i_1\ : label is "soft_lutpair1107";
-  attribute SOFT_HLUTNM of \buf_idx[1]_i_1\ : label is "soft_lutpair1107";
-  attribute SOFT_HLUTNM of \buf_idx[2]_i_2\ : label is "soft_lutpair1108";
-  attribute SOFT_HLUTNM of update_i_2 : label is "soft_lutpair1108";
+  attribute SOFT_HLUTNM of \buf_idx[2]_i_2\ : label is "soft_lutpair1107";
 begin
   Q(25 downto 0) <= \^q\(25 downto 0);
   acq_data_valid <= \^acq_data_valid\;
   \buf_idx_reg[1]_0\ <= \^buf_idx_reg[1]_0\;
-\buf_idx[0]_i_1\: unisim.vcomponents.LUT4
+\acq_data_out[0]_INST_0\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0F70"
+      INIT => X"0000000040001000"
+    )
+        port map (
+      I0 => acq_packet_type(3),
+      I1 => \^q\(25),
+      I2 => \^q\(24),
+      I3 => acq_packet_type(0),
+      I4 => acq_packet_type(1),
+      I5 => acq_packet_type(2),
+      O => acq_data_out(0)
+    );
+\acq_data_out[1]_INST_0\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000040040000"
+    )
+        port map (
+      I0 => acq_packet_type(3),
+      I1 => acq_packet_type(1),
+      I2 => \^q\(24),
+      I3 => acq_packet_type(0),
+      I4 => \^q\(25),
+      I5 => acq_packet_type(2),
+      O => acq_data_out(1)
+    );
+\acq_data_out[2]_INST_0\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFDFF7DBE"
+    )
+        port map (
+      I0 => acq_packet_type(1),
+      I1 => \^q\(24),
+      I2 => acq_packet_type(0),
+      I3 => \^q\(25),
+      I4 => acq_packet_type(3),
+      I5 => acq_packet_type(2),
+      O => acq_data_out(2)
+    );
+\buf_idx[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0FFF7000"
     )
         port map (
       I0 => \^q\(25),
       I1 => \^q\(24),
       I2 => \^buf_idx_reg[1]_0\,
-      I3 => \buf_idx_reg[0]_0\,
+      I3 => \^acq_data_valid\,
+      I4 => \buf_idx_reg[0]_0\,
       O => \buf_idx_reg[0]\
     );
-\buf_idx[1]_i_1\: unisim.vcomponents.LUT5
+\buf_idx[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"07FF7000"
+      INIT => X"07FFFFFF70000000"
     )
         port map (
-      I0 => \^q\(24),
-      I1 => \^q\(25),
+      I0 => \^q\(25),
+      I1 => \^q\(24),
       I2 => \buf_idx_reg[0]_0\,
       I3 => \^buf_idx_reg[1]_0\,
-      I4 => \buf_idx_reg[1]_1\,
+      I4 => \^acq_data_valid\,
+      I5 => \buf_idx_reg[1]_1\,
       O => \buf_idx_reg[1]\
     );
-\buf_idx[2]_i_2\: unisim.vcomponents.LUT5
+\buf_idx[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"80200800"
-    )
-        port map (
-      I0 => \buf_idx[2]_i_3_n_0\,
-      I1 => \^q\(24),
-      I2 => \^q\(25),
-      I3 => acq_packet_type(0),
-      I4 => acq_packet_type(1),
-      O => \^buf_idx_reg[1]_0\
-    );
-\buf_idx[2]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"10"
+      INIT => X"0000000040041000"
     )
         port map (
       I0 => acq_packet_type(3),
-      I1 => acq_packet_type(2),
-      I2 => \^acq_data_valid\,
-      O => \buf_idx[2]_i_3_n_0\
+      I1 => \^q\(25),
+      I2 => \^q\(24),
+      I3 => acq_packet_type(0),
+      I4 => acq_packet_type(1),
+      I5 => acq_packet_type(2),
+      O => \^buf_idx_reg[1]_0\
+    );
+\buf_idx[2]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \^buf_idx_reg[1]_0\,
+      I1 => \^acq_data_valid\,
+      O => \buf_idx_reg[2]\
     );
 \packet_buf0_reg[0]\: unisim.vcomponents.FDCE
      port map (
@@ -9863,7 +9905,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(0),
-      Q => acq_data_out(0)
+      Q => acq_data_out(3)
     );
 \packet_buf1_reg[10]\: unisim.vcomponents.FDCE
      port map (
@@ -9871,7 +9913,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(10),
-      Q => acq_data_out(10)
+      Q => acq_data_out(13)
     );
 \packet_buf1_reg[11]\: unisim.vcomponents.FDCE
      port map (
@@ -9879,7 +9921,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(11),
-      Q => acq_data_out(11)
+      Q => acq_data_out(14)
     );
 \packet_buf1_reg[12]\: unisim.vcomponents.FDCE
      port map (
@@ -9887,7 +9929,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(12),
-      Q => acq_data_out(12)
+      Q => acq_data_out(15)
     );
 \packet_buf1_reg[13]\: unisim.vcomponents.FDCE
      port map (
@@ -9895,7 +9937,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(13),
-      Q => acq_data_out(13)
+      Q => acq_data_out(16)
     );
 \packet_buf1_reg[14]\: unisim.vcomponents.FDCE
      port map (
@@ -9903,7 +9945,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(14),
-      Q => acq_data_out(14)
+      Q => acq_data_out(17)
     );
 \packet_buf1_reg[15]\: unisim.vcomponents.FDCE
      port map (
@@ -9911,7 +9953,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(15),
-      Q => acq_data_out(15)
+      Q => acq_data_out(18)
     );
 \packet_buf1_reg[16]\: unisim.vcomponents.FDCE
      port map (
@@ -9919,7 +9961,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(16),
-      Q => acq_data_out(16)
+      Q => acq_data_out(19)
     );
 \packet_buf1_reg[17]\: unisim.vcomponents.FDCE
      port map (
@@ -9927,7 +9969,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(17),
-      Q => acq_data_out(17)
+      Q => acq_data_out(20)
     );
 \packet_buf1_reg[18]\: unisim.vcomponents.FDCE
      port map (
@@ -9935,7 +9977,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(18),
-      Q => acq_data_out(18)
+      Q => acq_data_out(21)
     );
 \packet_buf1_reg[19]\: unisim.vcomponents.FDCE
      port map (
@@ -9943,7 +9985,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(19),
-      Q => acq_data_out(19)
+      Q => acq_data_out(22)
     );
 \packet_buf1_reg[1]\: unisim.vcomponents.FDCE
      port map (
@@ -9951,7 +9993,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(1),
-      Q => acq_data_out(1)
+      Q => acq_data_out(4)
     );
 \packet_buf1_reg[20]\: unisim.vcomponents.FDCE
      port map (
@@ -9959,7 +10001,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(20),
-      Q => acq_data_out(20)
+      Q => acq_data_out(23)
     );
 \packet_buf1_reg[21]\: unisim.vcomponents.FDCE
      port map (
@@ -9967,7 +10009,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(21),
-      Q => acq_data_out(21)
+      Q => acq_data_out(24)
     );
 \packet_buf1_reg[22]\: unisim.vcomponents.FDCE
      port map (
@@ -9975,7 +10017,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(22),
-      Q => acq_data_out(22)
+      Q => acq_data_out(25)
     );
 \packet_buf1_reg[23]\: unisim.vcomponents.FDCE
      port map (
@@ -9983,7 +10025,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(23),
-      Q => acq_data_out(23)
+      Q => acq_data_out(26)
     );
 \packet_buf1_reg[24]\: unisim.vcomponents.FDCE
      port map (
@@ -10015,7 +10057,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(2),
-      Q => acq_data_out(2)
+      Q => acq_data_out(5)
     );
 \packet_buf1_reg[3]\: unisim.vcomponents.FDCE
      port map (
@@ -10023,7 +10065,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(3),
-      Q => acq_data_out(3)
+      Q => acq_data_out(6)
     );
 \packet_buf1_reg[4]\: unisim.vcomponents.FDCE
      port map (
@@ -10031,7 +10073,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(4),
-      Q => acq_data_out(4)
+      Q => acq_data_out(7)
     );
 \packet_buf1_reg[5]\: unisim.vcomponents.FDCE
      port map (
@@ -10039,7 +10081,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(5),
-      Q => acq_data_out(5)
+      Q => acq_data_out(8)
     );
 \packet_buf1_reg[6]\: unisim.vcomponents.FDCE
      port map (
@@ -10047,7 +10089,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(6),
-      Q => acq_data_out(6)
+      Q => acq_data_out(9)
     );
 \packet_buf1_reg[7]\: unisim.vcomponents.FDCE
      port map (
@@ -10055,7 +10097,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(7),
-      Q => acq_data_out(7)
+      Q => acq_data_out(10)
     );
 \packet_buf1_reg[8]\: unisim.vcomponents.FDCE
      port map (
@@ -10063,7 +10105,7 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(8),
-      Q => acq_data_out(8)
+      Q => acq_data_out(11)
     );
 \packet_buf1_reg[9]\: unisim.vcomponents.FDCE
      port map (
@@ -10071,28 +10113,52 @@ begin
       CE => rx_data(27),
       CLR => \shifter_reg[15]\,
       D => rx_data(9),
-      Q => acq_data_out(9)
+      Q => acq_data_out(12)
     );
-update_i_1: unisim.vcomponents.LUT6
+sampler_idle_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000004000"
+      INIT => X"BF80"
     )
         port map (
-      I0 => update_i_2_n_0,
-      I1 => acq_packet_type(0),
-      I2 => acq_packet_type(1),
-      I3 => \^acq_data_valid\,
-      I4 => acq_packet_type(2),
-      I5 => acq_packet_type(3),
-      O => update
+      I0 => acq_packet_type(3),
+      I1 => sampler_idle_i_2_n_0,
+      I2 => \^acq_data_valid\,
+      I3 => sampler_idle,
+      O => sampler_idle_reg
     );
-update_i_2: unisim.vcomponents.LUT2
+sampler_idle_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7"
+      INIT => X"0000000002000240"
+    )
+        port map (
+      I0 => acq_packet_type(1),
+      I1 => acq_packet_type(0),
+      I2 => \^q\(24),
+      I3 => \^q\(25),
+      I4 => acq_packet_type(3),
+      I5 => acq_packet_type(2),
+      O => sampler_idle_i_2_n_0
+    );
+update_i_1: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00400000"
+    )
+        port map (
+      I0 => acq_packet_type(2),
+      I1 => \^q\(25),
+      I2 => update_i_2_n_0,
+      I3 => acq_packet_type(3),
+      I4 => \^acq_data_valid\,
+      O => update1_out
+    );
+update_i_2: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
     )
         port map (
       I0 => \^q\(24),
-      I1 => \^q\(25),
+      I1 => acq_packet_type(0),
+      I2 => acq_packet_type(1),
       O => update_i_2_n_0
     );
 valid_reg: unisim.vcomponents.FDCE
@@ -29843,22 +29909,22 @@ architecture STRUCTURE of \la_receiver_0_uncompress_pipeline__parameterized14\ i
   signal \unzip_out_reg[254]_srl16_i_1_n_0\ : STD_LOGIC;
   signal \unzip_out_reg[255]_srl16_i_1_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \data_out[111]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \data_out[127]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \data_out[143]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \data_out[159]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \data_out[15]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \data_out[175]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \data_out[191]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \data_out[207]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \data_out[223]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \data_out[239]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \data_out[255]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \data_out[31]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \data_out[47]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \data_out[63]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \data_out[79]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \data_out[95]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \data_out[111]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \data_out[127]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \data_out[143]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \data_out[159]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \data_out[15]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \data_out[175]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \data_out[191]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \data_out[207]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \data_out[223]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \data_out[239]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \data_out[255]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \data_out[31]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \data_out[47]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \data_out[63]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \data_out[79]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \data_out[95]_i_1\ : label is "soft_lutpair6";
   attribute srl_bus_name : string;
   attribute srl_bus_name of \unzip_out_reg[100]_srl7\ : label is "\inst/data_interpreter/gen_unzip[0].pipeline/unzip_out_reg ";
   attribute srl_name : string;
@@ -30460,8 +30526,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(6),
+      I1 => \bitset_pipeline[0]_15\(6),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(6)
     );
 \data_out[127]_i_1\: unisim.vcomponents.LUT3
@@ -30470,8 +30536,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(7),
+      I1 => \bitset_pipeline[0]_15\(7),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(7)
     );
 \data_out[143]_i_1\: unisim.vcomponents.LUT3
@@ -30480,8 +30546,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(8),
+      I1 => \bitset_pipeline[0]_15\(8),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(8)
     );
 \data_out[159]_i_1\: unisim.vcomponents.LUT3
@@ -30490,8 +30556,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(9),
+      I1 => \bitset_pipeline[0]_15\(9),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(9)
     );
 \data_out[15]_i_1\: unisim.vcomponents.LUT3
@@ -30500,8 +30566,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(0),
+      I1 => \bitset_pipeline[0]_15\(0),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(0)
     );
 \data_out[175]_i_1\: unisim.vcomponents.LUT3
@@ -30510,8 +30576,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(10),
+      I1 => \bitset_pipeline[0]_15\(10),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(10)
     );
 \data_out[191]_i_1\: unisim.vcomponents.LUT3
@@ -30520,8 +30586,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(11),
+      I1 => \bitset_pipeline[0]_15\(11),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(11)
     );
 \data_out[207]_i_1\: unisim.vcomponents.LUT3
@@ -30530,8 +30596,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(12),
+      I1 => \bitset_pipeline[0]_15\(12),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(12)
     );
 \data_out[223]_i_1\: unisim.vcomponents.LUT3
@@ -30540,8 +30606,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(13),
+      I1 => \bitset_pipeline[0]_15\(13),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(13)
     );
 \data_out[239]_i_1\: unisim.vcomponents.LUT3
@@ -30550,8 +30616,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(14),
+      I1 => \bitset_pipeline[0]_15\(14),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(14)
     );
 \data_out[255]_i_1\: unisim.vcomponents.LUT3
@@ -30560,8 +30626,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(15),
+      I1 => \bitset_pipeline[0]_15\(15),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(15)
     );
 \data_out[31]_i_1\: unisim.vcomponents.LUT3
@@ -30570,8 +30636,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(1),
+      I1 => \bitset_pipeline[0]_15\(1),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(1)
     );
 \data_out[47]_i_1\: unisim.vcomponents.LUT3
@@ -30580,8 +30646,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(2),
+      I1 => \bitset_pipeline[0]_15\(2),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(2)
     );
 \data_out[63]_i_1\: unisim.vcomponents.LUT3
@@ -30590,8 +30656,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(3),
+      I1 => \bitset_pipeline[0]_15\(3),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(3)
     );
 \data_out[79]_i_1\: unisim.vcomponents.LUT3
@@ -30600,8 +30666,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(4),
+      I1 => \bitset_pipeline[0]_15\(4),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(4)
     );
 \data_out[95]_i_1\: unisim.vcomponents.LUT3
@@ -30610,8 +30676,8 @@ begin
     )
         port map (
       I0 => Q(0),
-      I1 => \update_pipeline_reg[0]_1\,
-      I2 => \bitset_pipeline[0]_15\(5),
+      I1 => \bitset_pipeline[0]_15\(5),
+      I2 => \update_pipeline_reg[0]_1\,
       O => E(5)
     );
 \unzip_out_reg[0]\: unisim.vcomponents.FDRE
@@ -54649,17 +54715,21 @@ use UNISIM.VCOMPONENTS.ALL;
 entity la_receiver_0_interpreter is
   port (
     raw_signal_update : out STD_LOGIC;
+    sampler_idle : out STD_LOGIC;
     \buf_idx_reg[2]_0\ : out STD_LOGIC;
     \buf_idx_reg[2]_1\ : out STD_LOGIC;
     raw_signal_result : out STD_LOGIC_VECTOR ( 255 downto 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     pixel_clk : in STD_LOGIC;
     \shifter_reg[15]\ : in STD_LOGIC;
-    update : in STD_LOGIC;
-    \packet_buf0_reg[25]\ : in STD_LOGIC;
+    update1_out : in STD_LOGIC;
+    \packet_buf0_reg[24]\ : in STD_LOGIC;
     \packet_buf0_reg[26]\ : in STD_LOGIC;
-    \packet_buf0_reg[26]_0\ : in STD_LOGIC_VECTOR ( 25 downto 0 );
-    \packet_buf0_reg[25]_0\ : in STD_LOGIC;
+    \packet_buf0_reg[26]_0\ : in STD_LOGIC;
+    \packet_buf0_reg[26]_1\ : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    valid_reg : in STD_LOGIC;
+    \packet_buf0_reg[24]_0\ : in STD_LOGIC;
+    acq_data_valid : in STD_LOGIC;
     \packet_buf1_reg[23]\ : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -55069,9 +55139,9 @@ architecture STRUCTURE of la_receiver_0_interpreter is
   signal \payload_buf_reg_n_0_[0][9]\ : STD_LOGIC;
   signal \unzip_pipeline[0]_0\ : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal \unzip_pipeline[1]_33\ : STD_LOGIC_VECTOR ( 31 downto 16 );
+  signal update : STD_LOGIC;
   signal \update_pipeline_reg[0]_1\ : STD_LOGIC;
   signal \update_pipeline_reg[1]_srl16_n_0\ : STD_LOGIC;
-  signal update_reg_n_0 : STD_LOGIC;
   attribute ORIG_CELL_NAME : string;
   attribute ORIG_CELL_NAME of \bitset_buf_reg[15]\ : label is "bitset_buf_reg[15]";
   attribute ORIG_CELL_NAME of \bitset_buf_reg[15]_rep\ : label is "bitset_buf_reg[15]";
@@ -55151,14 +55221,14 @@ bitset_buf_reg_c: unisim.vcomponents.FDCE
     );
 \buf_idx[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0777FFFF08880000"
+      INIT => X"153FFFFF2A000000"
     )
         port map (
       I0 => \^buf_idx_reg[2]_1\,
-      I1 => \^buf_idx_reg[2]_0\,
-      I2 => \packet_buf0_reg[26]_0\(25),
-      I3 => \packet_buf0_reg[26]_0\(24),
-      I4 => \packet_buf0_reg[25]_0\,
+      I1 => \packet_buf0_reg[26]_1\(24),
+      I2 => \packet_buf0_reg[26]_1\(25),
+      I3 => \^buf_idx_reg[2]_0\,
+      I4 => valid_reg,
       I5 => \buf_idx_reg_n_0_[2]\,
       O => \buf_idx[2]_i_1_n_0\
     );
@@ -55167,7 +55237,7 @@ bitset_buf_reg_c: unisim.vcomponents.FDCE
       C => pixel_clk,
       CE => '1',
       CLR => \shifter_reg[15]\,
-      D => \packet_buf0_reg[26]\,
+      D => \packet_buf0_reg[26]_0\,
       Q => \^buf_idx_reg[2]_1\
     );
 \buf_idx_reg[1]\: unisim.vcomponents.FDCE
@@ -55175,7 +55245,7 @@ bitset_buf_reg_c: unisim.vcomponents.FDCE
       C => pixel_clk,
       CE => '1',
       CLR => \shifter_reg[15]\,
-      D => \packet_buf0_reg[25]\,
+      D => \packet_buf0_reg[26]\,
       Q => \^buf_idx_reg[2]_0\
     );
 \buf_idx_reg[2]\: unisim.vcomponents.FDCE
@@ -60434,76 +60504,82 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
       I1 => gen_unzip_c_0_n_0,
       O => gen_unzip_gate_rep_n_0
     );
-\payload_buf[0][47]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[0][47]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"01000000"
+      INIT => X"0000002000000000"
     )
         port map (
-      I0 => \buf_idx_reg_n_0_[2]\,
-      I1 => \^buf_idx_reg[2]_1\,
-      I2 => \^buf_idx_reg[2]_0\,
-      I3 => \packet_buf0_reg[25]_0\,
-      I4 => Q(0),
+      I0 => Q(0),
+      I1 => \^buf_idx_reg[2]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[0][47]_i_1_n_0\
     );
-\payload_buf[1][47]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[1][47]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"04000000"
+      INIT => X"0000200000000000"
     )
         port map (
-      I0 => \buf_idx_reg_n_0_[2]\,
-      I1 => \^buf_idx_reg[2]_1\,
-      I2 => \^buf_idx_reg[2]_0\,
-      I3 => \packet_buf0_reg[25]_0\,
-      I4 => Q(0),
+      I0 => Q(0),
+      I1 => \^buf_idx_reg[2]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[1][47]_i_1_n_0\
     );
-\payload_buf[2][47]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[2][47]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"04000000"
+      INIT => X"0000008000000000"
     )
         port map (
-      I0 => \^buf_idx_reg[2]_1\,
+      I0 => Q(0),
       I1 => \^buf_idx_reg[2]_0\,
-      I2 => \buf_idx_reg_n_0_[2]\,
-      I3 => Q(0),
-      I4 => \packet_buf0_reg[25]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[2][47]_i_1_n_0\
     );
-\payload_buf[3][47]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[3][47]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"40000000"
+      INIT => X"0000800000000000"
     )
         port map (
-      I0 => \buf_idx_reg_n_0_[2]\,
-      I1 => \^buf_idx_reg[2]_1\,
-      I2 => \^buf_idx_reg[2]_0\,
-      I3 => Q(0),
-      I4 => \packet_buf0_reg[25]_0\,
+      I0 => Q(0),
+      I1 => \^buf_idx_reg[2]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[3][47]_i_1_n_0\
     );
-\payload_buf[4][47]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[4][47]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"04000000"
+      INIT => X"0020000000000000"
     )
         port map (
-      I0 => \^buf_idx_reg[2]_1\,
-      I1 => \buf_idx_reg_n_0_[2]\,
-      I2 => \^buf_idx_reg[2]_0\,
-      I3 => \packet_buf0_reg[25]_0\,
-      I4 => Q(0),
+      I0 => Q(0),
+      I1 => \^buf_idx_reg[2]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[4][47]_i_1_n_0\
     );
-\payload_buf[5][31]_i_1\: unisim.vcomponents.LUT5
+\payload_buf[5][31]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"08000000"
+      INIT => X"2000000000000000"
     )
         port map (
-      I0 => \buf_idx_reg_n_0_[2]\,
-      I1 => \^buf_idx_reg[2]_1\,
-      I2 => \^buf_idx_reg[2]_0\,
-      I3 => \packet_buf0_reg[25]_0\,
-      I4 => Q(0),
+      I0 => Q(0),
+      I1 => \^buf_idx_reg[2]_0\,
+      I2 => \packet_buf0_reg[24]_0\,
+      I3 => \^buf_idx_reg[2]_1\,
+      I4 => \buf_idx_reg_n_0_[2]\,
+      I5 => acq_data_valid,
       O => \payload_buf[5][31]_i_1_n_0\
     );
 \payload_buf_reg[0][0]\: unisim.vcomponents.FDRE
@@ -60638,7 +60714,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => p_6_out(8),
       R => '0'
     );
@@ -60646,7 +60722,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => p_6_out(9),
       R => '0'
     );
@@ -60654,7 +60730,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => p_6_out(10),
       R => '0'
     );
@@ -60662,7 +60738,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => p_6_out(11),
       R => '0'
     );
@@ -60670,7 +60746,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => p_6_out(12),
       R => '0'
     );
@@ -60678,7 +60754,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => p_6_out(13),
       R => '0'
     );
@@ -60694,7 +60770,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => p_6_out(14),
       R => '0'
     );
@@ -60702,7 +60778,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => p_6_out(15),
       R => '0'
     );
@@ -60710,7 +60786,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(8),
+      D => \packet_buf0_reg[26]_1\(8),
       Q => p_6_out(16),
       R => '0'
     );
@@ -60718,7 +60794,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(9),
+      D => \packet_buf0_reg[26]_1\(9),
       Q => p_6_out(17),
       R => '0'
     );
@@ -60726,7 +60802,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(10),
+      D => \packet_buf0_reg[26]_1\(10),
       Q => p_6_out(18),
       R => '0'
     );
@@ -60734,7 +60810,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(11),
+      D => \packet_buf0_reg[26]_1\(11),
       Q => p_6_out(19),
       R => '0'
     );
@@ -60742,7 +60818,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(12),
+      D => \packet_buf0_reg[26]_1\(12),
       Q => p_6_out(20),
       R => '0'
     );
@@ -60750,7 +60826,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(13),
+      D => \packet_buf0_reg[26]_1\(13),
       Q => p_6_out(21),
       R => '0'
     );
@@ -60758,7 +60834,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(14),
+      D => \packet_buf0_reg[26]_1\(14),
       Q => p_6_out(22),
       R => '0'
     );
@@ -60766,7 +60842,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(15),
+      D => \packet_buf0_reg[26]_1\(15),
       Q => p_6_out(23),
       R => '0'
     );
@@ -60782,7 +60858,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(16),
+      D => \packet_buf0_reg[26]_1\(16),
       Q => p_6_out(24),
       R => '0'
     );
@@ -60790,7 +60866,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(17),
+      D => \packet_buf0_reg[26]_1\(17),
       Q => p_6_out(25),
       R => '0'
     );
@@ -60798,7 +60874,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(18),
+      D => \packet_buf0_reg[26]_1\(18),
       Q => p_6_out(26),
       R => '0'
     );
@@ -60806,7 +60882,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(19),
+      D => \packet_buf0_reg[26]_1\(19),
       Q => p_6_out(27),
       R => '0'
     );
@@ -60814,7 +60890,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(20),
+      D => \packet_buf0_reg[26]_1\(20),
       Q => p_6_out(28),
       R => '0'
     );
@@ -60822,7 +60898,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(21),
+      D => \packet_buf0_reg[26]_1\(21),
       Q => p_6_out(29),
       R => '0'
     );
@@ -60830,7 +60906,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(22),
+      D => \packet_buf0_reg[26]_1\(22),
       Q => p_6_out(30),
       R => '0'
     );
@@ -60838,7 +60914,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[0][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(23),
+      D => \packet_buf0_reg[26]_1\(23),
       Q => p_6_out(31),
       R => '0'
     );
@@ -61022,7 +61098,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => \payload_buf_reg[1]_34\(24),
       R => '0'
     );
@@ -61030,7 +61106,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => \payload_buf_reg[1]_34\(25),
       R => '0'
     );
@@ -61038,7 +61114,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => \payload_buf_reg[1]_34\(26),
       R => '0'
     );
@@ -61046,7 +61122,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => \payload_buf_reg[1]_34\(27),
       R => '0'
     );
@@ -61054,7 +61130,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => \payload_buf_reg[1]_34\(28),
       R => '0'
     );
@@ -61062,7 +61138,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => \payload_buf_reg[1]_34\(29),
       R => '0'
     );
@@ -61078,7 +61154,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => \payload_buf_reg[1]_34\(30),
       R => '0'
     );
@@ -61086,7 +61162,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => \payload_buf_reg[1]_34\(31),
       R => '0'
     );
@@ -61094,7 +61170,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(8),
+      D => \packet_buf0_reg[26]_1\(8),
       Q => \payload_buf_reg[1]_34\(32),
       R => '0'
     );
@@ -61102,7 +61178,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(9),
+      D => \packet_buf0_reg[26]_1\(9),
       Q => \payload_buf_reg[1]_34\(33),
       R => '0'
     );
@@ -61110,7 +61186,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(10),
+      D => \packet_buf0_reg[26]_1\(10),
       Q => \payload_buf_reg[1]_34\(34),
       R => '0'
     );
@@ -61118,7 +61194,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(11),
+      D => \packet_buf0_reg[26]_1\(11),
       Q => \payload_buf_reg[1]_34\(35),
       R => '0'
     );
@@ -61126,7 +61202,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(12),
+      D => \packet_buf0_reg[26]_1\(12),
       Q => \payload_buf_reg[1]_34\(36),
       R => '0'
     );
@@ -61134,7 +61210,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(13),
+      D => \packet_buf0_reg[26]_1\(13),
       Q => \payload_buf_reg[1]_34\(37),
       R => '0'
     );
@@ -61142,7 +61218,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(14),
+      D => \packet_buf0_reg[26]_1\(14),
       Q => \payload_buf_reg[1]_34\(38),
       R => '0'
     );
@@ -61150,7 +61226,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(15),
+      D => \packet_buf0_reg[26]_1\(15),
       Q => \payload_buf_reg[1]_34\(39),
       R => '0'
     );
@@ -61166,7 +61242,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(16),
+      D => \packet_buf0_reg[26]_1\(16),
       Q => \payload_buf_reg[1]_34\(40),
       R => '0'
     );
@@ -61174,7 +61250,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(17),
+      D => \packet_buf0_reg[26]_1\(17),
       Q => \payload_buf_reg[1]_34\(41),
       R => '0'
     );
@@ -61182,7 +61258,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(18),
+      D => \packet_buf0_reg[26]_1\(18),
       Q => \payload_buf_reg[1]_34\(42),
       R => '0'
     );
@@ -61190,7 +61266,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(19),
+      D => \packet_buf0_reg[26]_1\(19),
       Q => \payload_buf_reg[1]_34\(43),
       R => '0'
     );
@@ -61198,7 +61274,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(20),
+      D => \packet_buf0_reg[26]_1\(20),
       Q => \payload_buf_reg[1]_34\(44),
       R => '0'
     );
@@ -61206,7 +61282,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(21),
+      D => \packet_buf0_reg[26]_1\(21),
       Q => \payload_buf_reg[1]_34\(45),
       R => '0'
     );
@@ -61214,7 +61290,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(22),
+      D => \packet_buf0_reg[26]_1\(22),
       Q => \payload_buf_reg[1]_34\(46),
       R => '0'
     );
@@ -61222,7 +61298,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[1][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(23),
+      D => \packet_buf0_reg[26]_1\(23),
       Q => \payload_buf_reg[1]_34\(47),
       R => '0'
     );
@@ -61406,7 +61482,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => \payload_buf_reg[2]_35\(24),
       R => '0'
     );
@@ -61414,7 +61490,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => \payload_buf_reg[2]_35\(25),
       R => '0'
     );
@@ -61422,7 +61498,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => \payload_buf_reg[2]_35\(26),
       R => '0'
     );
@@ -61430,7 +61506,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => \payload_buf_reg[2]_35\(27),
       R => '0'
     );
@@ -61438,7 +61514,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => \payload_buf_reg[2]_35\(28),
       R => '0'
     );
@@ -61446,7 +61522,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => \payload_buf_reg[2]_35\(29),
       R => '0'
     );
@@ -61462,7 +61538,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => \payload_buf_reg[2]_35\(30),
       R => '0'
     );
@@ -61470,7 +61546,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => \payload_buf_reg[2]_35\(31),
       R => '0'
     );
@@ -61478,7 +61554,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(8),
+      D => \packet_buf0_reg[26]_1\(8),
       Q => \payload_buf_reg[2]_35\(32),
       R => '0'
     );
@@ -61486,7 +61562,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(9),
+      D => \packet_buf0_reg[26]_1\(9),
       Q => \payload_buf_reg[2]_35\(33),
       R => '0'
     );
@@ -61494,7 +61570,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(10),
+      D => \packet_buf0_reg[26]_1\(10),
       Q => \payload_buf_reg[2]_35\(34),
       R => '0'
     );
@@ -61502,7 +61578,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(11),
+      D => \packet_buf0_reg[26]_1\(11),
       Q => \payload_buf_reg[2]_35\(35),
       R => '0'
     );
@@ -61510,7 +61586,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(12),
+      D => \packet_buf0_reg[26]_1\(12),
       Q => \payload_buf_reg[2]_35\(36),
       R => '0'
     );
@@ -61518,7 +61594,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(13),
+      D => \packet_buf0_reg[26]_1\(13),
       Q => \payload_buf_reg[2]_35\(37),
       R => '0'
     );
@@ -61526,7 +61602,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(14),
+      D => \packet_buf0_reg[26]_1\(14),
       Q => \payload_buf_reg[2]_35\(38),
       R => '0'
     );
@@ -61534,7 +61610,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(15),
+      D => \packet_buf0_reg[26]_1\(15),
       Q => \payload_buf_reg[2]_35\(39),
       R => '0'
     );
@@ -61550,7 +61626,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(16),
+      D => \packet_buf0_reg[26]_1\(16),
       Q => \payload_buf_reg[2]_35\(40),
       R => '0'
     );
@@ -61558,7 +61634,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(17),
+      D => \packet_buf0_reg[26]_1\(17),
       Q => \payload_buf_reg[2]_35\(41),
       R => '0'
     );
@@ -61566,7 +61642,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(18),
+      D => \packet_buf0_reg[26]_1\(18),
       Q => \payload_buf_reg[2]_35\(42),
       R => '0'
     );
@@ -61574,7 +61650,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(19),
+      D => \packet_buf0_reg[26]_1\(19),
       Q => \payload_buf_reg[2]_35\(43),
       R => '0'
     );
@@ -61582,7 +61658,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(20),
+      D => \packet_buf0_reg[26]_1\(20),
       Q => \payload_buf_reg[2]_35\(44),
       R => '0'
     );
@@ -61590,7 +61666,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(21),
+      D => \packet_buf0_reg[26]_1\(21),
       Q => \payload_buf_reg[2]_35\(45),
       R => '0'
     );
@@ -61598,7 +61674,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(22),
+      D => \packet_buf0_reg[26]_1\(22),
       Q => \payload_buf_reg[2]_35\(46),
       R => '0'
     );
@@ -61606,7 +61682,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[2][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(23),
+      D => \packet_buf0_reg[26]_1\(23),
       Q => \payload_buf_reg[2]_35\(47),
       R => '0'
     );
@@ -61790,7 +61866,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => \payload_buf_reg[3]_36\(24),
       R => '0'
     );
@@ -61798,7 +61874,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => \payload_buf_reg[3]_36\(25),
       R => '0'
     );
@@ -61806,7 +61882,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => \payload_buf_reg[3]_36\(26),
       R => '0'
     );
@@ -61814,7 +61890,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => \payload_buf_reg[3]_36\(27),
       R => '0'
     );
@@ -61822,7 +61898,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => \payload_buf_reg[3]_36\(28),
       R => '0'
     );
@@ -61830,7 +61906,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => \payload_buf_reg[3]_36\(29),
       R => '0'
     );
@@ -61846,7 +61922,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => \payload_buf_reg[3]_36\(30),
       R => '0'
     );
@@ -61854,7 +61930,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => \payload_buf_reg[3]_36\(31),
       R => '0'
     );
@@ -61862,7 +61938,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(8),
+      D => \packet_buf0_reg[26]_1\(8),
       Q => \payload_buf_reg[3]_36\(32),
       R => '0'
     );
@@ -61870,7 +61946,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(9),
+      D => \packet_buf0_reg[26]_1\(9),
       Q => \payload_buf_reg[3]_36\(33),
       R => '0'
     );
@@ -61878,7 +61954,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(10),
+      D => \packet_buf0_reg[26]_1\(10),
       Q => \payload_buf_reg[3]_36\(34),
       R => '0'
     );
@@ -61886,7 +61962,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(11),
+      D => \packet_buf0_reg[26]_1\(11),
       Q => \payload_buf_reg[3]_36\(35),
       R => '0'
     );
@@ -61894,7 +61970,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(12),
+      D => \packet_buf0_reg[26]_1\(12),
       Q => \payload_buf_reg[3]_36\(36),
       R => '0'
     );
@@ -61902,7 +61978,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(13),
+      D => \packet_buf0_reg[26]_1\(13),
       Q => \payload_buf_reg[3]_36\(37),
       R => '0'
     );
@@ -61910,7 +61986,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(14),
+      D => \packet_buf0_reg[26]_1\(14),
       Q => \payload_buf_reg[3]_36\(38),
       R => '0'
     );
@@ -61918,7 +61994,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(15),
+      D => \packet_buf0_reg[26]_1\(15),
       Q => \payload_buf_reg[3]_36\(39),
       R => '0'
     );
@@ -61934,7 +62010,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(16),
+      D => \packet_buf0_reg[26]_1\(16),
       Q => \payload_buf_reg[3]_36\(40),
       R => '0'
     );
@@ -61942,7 +62018,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(17),
+      D => \packet_buf0_reg[26]_1\(17),
       Q => \payload_buf_reg[3]_36\(41),
       R => '0'
     );
@@ -61950,7 +62026,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(18),
+      D => \packet_buf0_reg[26]_1\(18),
       Q => \payload_buf_reg[3]_36\(42),
       R => '0'
     );
@@ -61958,7 +62034,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(19),
+      D => \packet_buf0_reg[26]_1\(19),
       Q => \payload_buf_reg[3]_36\(43),
       R => '0'
     );
@@ -61966,7 +62042,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(20),
+      D => \packet_buf0_reg[26]_1\(20),
       Q => \payload_buf_reg[3]_36\(44),
       R => '0'
     );
@@ -61974,7 +62050,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(21),
+      D => \packet_buf0_reg[26]_1\(21),
       Q => \payload_buf_reg[3]_36\(45),
       R => '0'
     );
@@ -61982,7 +62058,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(22),
+      D => \packet_buf0_reg[26]_1\(22),
       Q => \payload_buf_reg[3]_36\(46),
       R => '0'
     );
@@ -61990,7 +62066,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[3][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(23),
+      D => \packet_buf0_reg[26]_1\(23),
       Q => \payload_buf_reg[3]_36\(47),
       R => '0'
     );
@@ -62174,7 +62250,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => \payload_buf_reg[4]_37\(24),
       R => '0'
     );
@@ -62182,7 +62258,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => \payload_buf_reg[4]_37\(25),
       R => '0'
     );
@@ -62190,7 +62266,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => \payload_buf_reg[4]_37\(26),
       R => '0'
     );
@@ -62198,7 +62274,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => \payload_buf_reg[4]_37\(27),
       R => '0'
     );
@@ -62206,7 +62282,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => \payload_buf_reg[4]_37\(28),
       R => '0'
     );
@@ -62214,7 +62290,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => \payload_buf_reg[4]_37\(29),
       R => '0'
     );
@@ -62230,7 +62306,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => \payload_buf_reg[4]_37\(30),
       R => '0'
     );
@@ -62238,7 +62314,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => \payload_buf_reg[4]_37\(31),
       R => '0'
     );
@@ -62246,7 +62322,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(8),
+      D => \packet_buf0_reg[26]_1\(8),
       Q => \payload_buf_reg[4]_37\(32),
       R => '0'
     );
@@ -62254,7 +62330,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(9),
+      D => \packet_buf0_reg[26]_1\(9),
       Q => \payload_buf_reg[4]_37\(33),
       R => '0'
     );
@@ -62262,7 +62338,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(10),
+      D => \packet_buf0_reg[26]_1\(10),
       Q => \payload_buf_reg[4]_37\(34),
       R => '0'
     );
@@ -62270,7 +62346,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(11),
+      D => \packet_buf0_reg[26]_1\(11),
       Q => \payload_buf_reg[4]_37\(35),
       R => '0'
     );
@@ -62278,7 +62354,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(12),
+      D => \packet_buf0_reg[26]_1\(12),
       Q => \payload_buf_reg[4]_37\(36),
       R => '0'
     );
@@ -62286,7 +62362,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(13),
+      D => \packet_buf0_reg[26]_1\(13),
       Q => \payload_buf_reg[4]_37\(37),
       R => '0'
     );
@@ -62294,7 +62370,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(14),
+      D => \packet_buf0_reg[26]_1\(14),
       Q => \payload_buf_reg[4]_37\(38),
       R => '0'
     );
@@ -62302,7 +62378,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(15),
+      D => \packet_buf0_reg[26]_1\(15),
       Q => \payload_buf_reg[4]_37\(39),
       R => '0'
     );
@@ -62318,7 +62394,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(16),
+      D => \packet_buf0_reg[26]_1\(16),
       Q => \payload_buf_reg[4]_37\(40),
       R => '0'
     );
@@ -62326,7 +62402,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(17),
+      D => \packet_buf0_reg[26]_1\(17),
       Q => \payload_buf_reg[4]_37\(41),
       R => '0'
     );
@@ -62334,7 +62410,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(18),
+      D => \packet_buf0_reg[26]_1\(18),
       Q => \payload_buf_reg[4]_37\(42),
       R => '0'
     );
@@ -62342,7 +62418,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(19),
+      D => \packet_buf0_reg[26]_1\(19),
       Q => \payload_buf_reg[4]_37\(43),
       R => '0'
     );
@@ -62350,7 +62426,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(20),
+      D => \packet_buf0_reg[26]_1\(20),
       Q => \payload_buf_reg[4]_37\(44),
       R => '0'
     );
@@ -62358,7 +62434,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(21),
+      D => \packet_buf0_reg[26]_1\(21),
       Q => \payload_buf_reg[4]_37\(45),
       R => '0'
     );
@@ -62366,7 +62442,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(22),
+      D => \packet_buf0_reg[26]_1\(22),
       Q => \payload_buf_reg[4]_37\(46),
       R => '0'
     );
@@ -62374,7 +62450,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[4][47]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(23),
+      D => \packet_buf0_reg[26]_1\(23),
       Q => \payload_buf_reg[4]_37\(47),
       R => '0'
     );
@@ -62558,7 +62634,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(0),
+      D => \packet_buf0_reg[26]_1\(0),
       Q => \payload_buf_reg[5]_38\(24),
       R => '0'
     );
@@ -62566,7 +62642,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(1),
+      D => \packet_buf0_reg[26]_1\(1),
       Q => \payload_buf_reg[5]_38\(25),
       R => '0'
     );
@@ -62574,7 +62650,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(2),
+      D => \packet_buf0_reg[26]_1\(2),
       Q => \payload_buf_reg[5]_38\(26),
       R => '0'
     );
@@ -62582,7 +62658,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(3),
+      D => \packet_buf0_reg[26]_1\(3),
       Q => \payload_buf_reg[5]_38\(27),
       R => '0'
     );
@@ -62590,7 +62666,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(4),
+      D => \packet_buf0_reg[26]_1\(4),
       Q => \payload_buf_reg[5]_38\(28),
       R => '0'
     );
@@ -62598,7 +62674,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(5),
+      D => \packet_buf0_reg[26]_1\(5),
       Q => \payload_buf_reg[5]_38\(29),
       R => '0'
     );
@@ -62614,7 +62690,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(6),
+      D => \packet_buf0_reg[26]_1\(6),
       Q => \payload_buf_reg[5]_38\(30),
       R => '0'
     );
@@ -62622,7 +62698,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
      port map (
       C => pixel_clk,
       CE => \payload_buf[5][31]_i_1_n_0\,
-      D => \packet_buf0_reg[26]_0\(7),
+      D => \packet_buf0_reg[26]_1\(7),
       Q => \payload_buf_reg[5]_38\(31),
       R => '0'
     );
@@ -62682,6 +62758,14 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
       Q => \payload_buf_reg[5]_38\(9),
       R => '0'
     );
+sampler_idle_reg: unisim.vcomponents.FDPE
+     port map (
+      C => pixel_clk,
+      CE => '1',
+      D => \packet_buf0_reg[24]\,
+      PRE => \shifter_reg[15]\,
+      Q => sampler_idle
+    );
 \update_pipeline_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => pixel_clk,
@@ -62698,7 +62782,7 @@ gen_unzip_gate_rep: unisim.vcomponents.LUT2
       A3 => '1',
       CE => Q(0),
       CLK => pixel_clk,
-      D => update_reg_n_0,
+      D => update,
       Q => \update_pipeline_reg[1]_srl16_n_0\
     );
 update_reg: unisim.vcomponents.FDCE
@@ -62706,8 +62790,8 @@ update_reg: unisim.vcomponents.FDCE
       C => pixel_clk,
       CE => '1',
       CLR => \shifter_reg[15]\,
-      D => update,
-      Q => update_reg_n_0
+      D => update1_out,
+      Q => update
     );
 end STRUCTURE;
 library IEEE;
@@ -63078,27 +63162,27 @@ architecture STRUCTURE of la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr is
   signal \NLW_loop8.rx_mmcm_adv_inst_PSDONE_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_loop8.rx_mmcm_adv_inst_DO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_onehot_state2[4]_i_6\ : label is "soft_lutpair1239";
+  attribute SOFT_HLUTNM of \FSM_onehot_state2[4]_i_6\ : label is "soft_lutpair1238";
   attribute KEEP : string;
   attribute KEEP of \FSM_onehot_state2_reg[0]\ : label is "yes";
   attribute KEEP of \FSM_onehot_state2_reg[1]\ : label is "yes";
   attribute KEEP of \FSM_onehot_state2_reg[2]\ : label is "yes";
   attribute KEEP of \FSM_onehot_state2_reg[3]\ : label is "yes";
   attribute KEEP of \FSM_onehot_state2_reg[4]\ : label is "yes";
-  attribute SOFT_HLUTNM of \bcount[1]_i_1\ : label is "soft_lutpair1241";
-  attribute SOFT_HLUTNM of \bcount[2]_i_1\ : label is "soft_lutpair1241";
-  attribute SOFT_HLUTNM of \bcount[3]_i_3\ : label is "soft_lutpair1238";
-  attribute SOFT_HLUTNM of \bsstate[1]_i_2\ : label is "soft_lutpair1230";
-  attribute SOFT_HLUTNM of \bsstate[1]_i_3\ : label is "soft_lutpair1238";
-  attribute SOFT_HLUTNM of \bstate[0]_i_1\ : label is "soft_lutpair1235";
-  attribute SOFT_HLUTNM of \bstate[1]_i_1\ : label is "soft_lutpair1235";
-  attribute SOFT_HLUTNM of \c_delay_in[2]_i_3\ : label is "soft_lutpair1239";
-  attribute SOFT_HLUTNM of \c_delay_in[3]_i_5\ : label is "soft_lutpair1233";
-  attribute SOFT_HLUTNM of \c_delay_in_target[1]_i_1\ : label is "soft_lutpair1231";
-  attribute SOFT_HLUTNM of \c_delay_in_target[2]_i_1\ : label is "soft_lutpair1229";
-  attribute SOFT_HLUTNM of \c_delay_in_target[3]_i_1\ : label is "soft_lutpair1231";
-  attribute SOFT_HLUTNM of \c_delay_in_target[4]_i_2\ : label is "soft_lutpair1233";
-  attribute SOFT_HLUTNM of \c_loop_cnt[1]_i_2\ : label is "soft_lutpair1229";
+  attribute SOFT_HLUTNM of \bcount[1]_i_1\ : label is "soft_lutpair1240";
+  attribute SOFT_HLUTNM of \bcount[2]_i_1\ : label is "soft_lutpair1240";
+  attribute SOFT_HLUTNM of \bcount[3]_i_3\ : label is "soft_lutpair1237";
+  attribute SOFT_HLUTNM of \bsstate[1]_i_2\ : label is "soft_lutpair1229";
+  attribute SOFT_HLUTNM of \bsstate[1]_i_3\ : label is "soft_lutpair1237";
+  attribute SOFT_HLUTNM of \bstate[0]_i_1\ : label is "soft_lutpair1234";
+  attribute SOFT_HLUTNM of \bstate[1]_i_1\ : label is "soft_lutpair1234";
+  attribute SOFT_HLUTNM of \c_delay_in[2]_i_3\ : label is "soft_lutpair1238";
+  attribute SOFT_HLUTNM of \c_delay_in[3]_i_5\ : label is "soft_lutpair1232";
+  attribute SOFT_HLUTNM of \c_delay_in_target[1]_i_1\ : label is "soft_lutpair1230";
+  attribute SOFT_HLUTNM of \c_delay_in_target[2]_i_1\ : label is "soft_lutpair1228";
+  attribute SOFT_HLUTNM of \c_delay_in_target[3]_i_1\ : label is "soft_lutpair1230";
+  attribute SOFT_HLUTNM of \c_delay_in_target[4]_i_2\ : label is "soft_lutpair1232";
+  attribute SOFT_HLUTNM of \c_loop_cnt[1]_i_2\ : label is "soft_lutpair1228";
   attribute srl_bus_name : string;
   attribute srl_bus_name of \cdataoutb_reg[0]_srl2\ : label is "\inst/rx/rx0/rx0/cdataoutb_reg ";
   attribute srl_name : string;
@@ -63109,7 +63193,7 @@ architecture STRUCTURE of la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr is
   attribute srl_name of \cdataoutb_reg[2]_srl2\ : label is "\inst/rx/rx0/rx0/cdataoutb_reg[2]_srl2 ";
   attribute srl_bus_name of \cdataoutb_reg[3]_srl2\ : label is "\inst/rx/rx0/rx0/cdataoutb_reg ";
   attribute srl_name of \cdataoutb_reg[3]_srl2\ : label is "\inst/rx/rx0/rx0/cdataoutb_reg[3]_srl2 ";
-  attribute SOFT_HLUTNM of chfound_i_1 : label is "soft_lutpair1236";
+  attribute SOFT_HLUTNM of chfound_i_1 : label is "soft_lutpair1235";
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of idelay_cm : label is "PRIMITIVE";
   attribute SIM_DELAY_D : integer;
@@ -63120,10 +63204,10 @@ architecture STRUCTURE of la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr is
   attribute XILINX_LEGACY_PRIM : string;
   attribute XILINX_LEGACY_PRIM of iob_clk_in : label is "IBUFGDS_DIFF_OUT";
   attribute BOX_TYPE of iserdes_cs : label is "PRIMITIVE";
-  attribute SOFT_HLUTNM of jog_i_2 : label is "soft_lutpair1237";
-  attribute SOFT_HLUTNM of \lock_level[0]_INST_0\ : label is "soft_lutpair1236";
-  attribute SOFT_HLUTNM of \lock_level[1]_INST_0\ : label is "soft_lutpair1244";
-  attribute SOFT_HLUTNM of \lock_level[2]_INST_0\ : label is "soft_lutpair1243";
+  attribute SOFT_HLUTNM of jog_i_2 : label is "soft_lutpair1236";
+  attribute SOFT_HLUTNM of \lock_level[0]_INST_0\ : label is "soft_lutpair1235";
+  attribute SOFT_HLUTNM of \lock_level[1]_INST_0\ : label is "soft_lutpair1243";
+  attribute SOFT_HLUTNM of \lock_level[2]_INST_0\ : label is "soft_lutpair1242";
   attribute BOX_TYPE of \loop0[0].data_in\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop0[0].idelay_m\ : label is "PRIMITIVE";
   attribute SIM_DELAY_D of \loop0[0].idelay_m\ : label is 0;
@@ -63156,18 +63240,18 @@ architecture STRUCTURE of la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr is
   attribute BOX_TYPE of \loop8.bufg_mmcm_x1\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop8.bufg_mmcm_xn\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \loop8.rx_mmcm_adv_inst\ : label is "PRIMITIVE";
-  attribute SOFT_HLUTNM of not_bs_finished_dom_ch_i_1 : label is "soft_lutpair1243";
-  attribute SOFT_HLUTNM of not_rx_mmcm_lckd_intd4_i_1 : label is "soft_lutpair1244";
-  attribute SOFT_HLUTNM of \scount[1]_i_1\ : label is "soft_lutpair1240";
-  attribute SOFT_HLUTNM of \scount[2]_i_1\ : label is "soft_lutpair1240";
-  attribute SOFT_HLUTNM of \scount[3]_i_1\ : label is "soft_lutpair1234";
-  attribute SOFT_HLUTNM of \scount[4]_i_1\ : label is "soft_lutpair1234";
-  attribute SOFT_HLUTNM of \slip_count[2]_i_1\ : label is "soft_lutpair1237";
-  attribute SOFT_HLUTNM of \slip_count[2]_i_2\ : label is "soft_lutpair1230";
-  attribute SOFT_HLUTNM of \state2_count[1]_i_1\ : label is "soft_lutpair1242";
-  attribute SOFT_HLUTNM of \state2_count[2]_i_1\ : label is "soft_lutpair1242";
-  attribute SOFT_HLUTNM of \state2_count[3]_i_1\ : label is "soft_lutpair1232";
-  attribute SOFT_HLUTNM of \state2_count[4]_i_1\ : label is "soft_lutpair1232";
+  attribute SOFT_HLUTNM of not_bs_finished_dom_ch_i_1 : label is "soft_lutpair1242";
+  attribute SOFT_HLUTNM of not_rx_mmcm_lckd_intd4_i_1 : label is "soft_lutpair1243";
+  attribute SOFT_HLUTNM of \scount[1]_i_1\ : label is "soft_lutpair1239";
+  attribute SOFT_HLUTNM of \scount[2]_i_1\ : label is "soft_lutpair1239";
+  attribute SOFT_HLUTNM of \scount[3]_i_1\ : label is "soft_lutpair1233";
+  attribute SOFT_HLUTNM of \scount[4]_i_1\ : label is "soft_lutpair1233";
+  attribute SOFT_HLUTNM of \slip_count[2]_i_1\ : label is "soft_lutpair1236";
+  attribute SOFT_HLUTNM of \slip_count[2]_i_2\ : label is "soft_lutpair1229";
+  attribute SOFT_HLUTNM of \state2_count[1]_i_1\ : label is "soft_lutpair1241";
+  attribute SOFT_HLUTNM of \state2_count[2]_i_1\ : label is "soft_lutpair1241";
+  attribute SOFT_HLUTNM of \state2_count[3]_i_1\ : label is "soft_lutpair1231";
+  attribute SOFT_HLUTNM of \state2_count[4]_i_1\ : label is "soft_lutpair1231";
 begin
   CLK <= \^clk\;
   bs_finished_reg_0 <= \^bs_finished_reg_0\;
@@ -66052,8 +66136,9 @@ entity la_receiver_0_la_receiver is
     lock_level : out STD_LOGIC_VECTOR ( 2 downto 0 );
     raw_signal_result : out STD_LOGIC_VECTOR ( 255 downto 0 );
     raw_signal_update : out STD_LOGIC;
-    acq_data_out : out STD_LOGIC_VECTOR ( 47 downto 0 );
     acq_data_valid : out STD_LOGIC;
+    sampler_idle : out STD_LOGIC;
+    acq_data_out : out STD_LOGIC_VECTOR ( 50 downto 0 );
     refclkin : in STD_LOGIC;
     reset : in STD_LOGIC;
     clkin1_p : in STD_LOGIC;
@@ -66066,13 +66151,16 @@ entity la_receiver_0_la_receiver is
 end la_receiver_0_la_receiver;
 
 architecture STRUCTURE of la_receiver_0_la_receiver is
-  signal \^acq_data_out\ : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal \^acq_data_out\ : STD_LOGIC_VECTOR ( 50 downto 0 );
+  signal \^acq_data_valid\ : STD_LOGIC;
   signal acq_packet_type : STD_LOGIC_VECTOR ( 5 downto 4 );
-  signal data_interpreter_n_1 : STD_LOGIC;
   signal data_interpreter_n_2 : STD_LOGIC;
+  signal data_interpreter_n_3 : STD_LOGIC;
   signal decode_n_1 : STD_LOGIC;
   signal decode_n_28 : STD_LOGIC;
   signal decode_n_29 : STD_LOGIC;
+  signal decode_n_30 : STD_LOGIC;
+  signal decode_n_58 : STD_LOGIC;
   signal \^pixel_clk\ : STD_LOGIC;
   signal rst_n : STD_LOGIC;
   signal \rx0/rx0/mmcm_locked\ : STD_LOGIC;
@@ -66080,43 +66168,53 @@ architecture STRUCTURE of la_receiver_0_la_receiver is
   signal rx_n_4 : STD_LOGIC;
   signal rx_reset_n_0 : STD_LOGIC;
   signal rxd1 : STD_LOGIC_VECTOR ( 27 downto 0 );
-  signal update : STD_LOGIC;
+  signal \^sampler_idle\ : STD_LOGIC;
+  signal update1_out : STD_LOGIC;
 begin
-  acq_data_out(47 downto 0) <= \^acq_data_out\(47 downto 0);
+  acq_data_out(50 downto 0) <= \^acq_data_out\(50 downto 0);
+  acq_data_valid <= \^acq_data_valid\;
   pixel_clk <= \^pixel_clk\;
+  sampler_idle <= \^sampler_idle\;
 data_interpreter: entity work.la_receiver_0_interpreter
      port map (
       Q(0) => rst_n,
-      \buf_idx_reg[2]_0\ => data_interpreter_n_1,
-      \buf_idx_reg[2]_1\ => data_interpreter_n_2,
-      \packet_buf0_reg[25]\ => decode_n_1,
-      \packet_buf0_reg[25]_0\ => decode_n_28,
-      \packet_buf0_reg[26]\ => decode_n_29,
-      \packet_buf0_reg[26]_0\(25 downto 24) => acq_packet_type(5 downto 4),
-      \packet_buf0_reg[26]_0\(23 downto 0) => \^acq_data_out\(47 downto 24),
-      \packet_buf1_reg[23]\(23 downto 0) => \^acq_data_out\(23 downto 0),
+      acq_data_valid => \^acq_data_valid\,
+      \buf_idx_reg[2]_0\ => data_interpreter_n_2,
+      \buf_idx_reg[2]_1\ => data_interpreter_n_3,
+      \packet_buf0_reg[24]\ => decode_n_1,
+      \packet_buf0_reg[24]_0\ => decode_n_29,
+      \packet_buf0_reg[26]\ => decode_n_28,
+      \packet_buf0_reg[26]_0\ => decode_n_30,
+      \packet_buf0_reg[26]_1\(25 downto 24) => acq_packet_type(5 downto 4),
+      \packet_buf0_reg[26]_1\(23 downto 0) => \^acq_data_out\(50 downto 27),
+      \packet_buf1_reg[23]\(23 downto 0) => \^acq_data_out\(26 downto 3),
       pixel_clk => \^pixel_clk\,
       raw_signal_result(255 downto 0) => raw_signal_result(255 downto 0),
       raw_signal_update => raw_signal_update,
+      sampler_idle => \^sampler_idle\,
       \shifter_reg[15]\ => rx_reset_n_0,
-      update => update
+      update1_out => update1_out,
+      valid_reg => decode_n_58
     );
 decode: entity work.la_receiver_0_packet_decoder
      port map (
       E(0) => rx_n_4,
       Q(25 downto 24) => acq_packet_type(5 downto 4),
-      Q(23 downto 0) => \^acq_data_out\(47 downto 24),
-      acq_data_out(23 downto 0) => \^acq_data_out\(23 downto 0),
-      acq_data_valid => acq_data_valid,
-      \buf_idx_reg[0]\ => decode_n_29,
-      \buf_idx_reg[0]_0\ => data_interpreter_n_2,
-      \buf_idx_reg[1]\ => decode_n_1,
-      \buf_idx_reg[1]_0\ => decode_n_28,
-      \buf_idx_reg[1]_1\ => data_interpreter_n_1,
+      Q(23 downto 0) => \^acq_data_out\(50 downto 27),
+      acq_data_out(26 downto 0) => \^acq_data_out\(26 downto 0),
+      acq_data_valid => \^acq_data_valid\,
+      \buf_idx_reg[0]\ => decode_n_30,
+      \buf_idx_reg[0]_0\ => data_interpreter_n_3,
+      \buf_idx_reg[1]\ => decode_n_28,
+      \buf_idx_reg[1]_0\ => decode_n_29,
+      \buf_idx_reg[1]_1\ => data_interpreter_n_2,
+      \buf_idx_reg[2]\ => decode_n_58,
       pixel_clk => \^pixel_clk\,
       rx_data(27 downto 0) => rxd1(27 downto 0),
+      sampler_idle => \^sampler_idle\,
+      sampler_idle_reg => decode_n_1,
       \shifter_reg[15]\ => rx_reset_n_0,
-      update => update
+      update1_out => update1_out
     );
 rx: entity work.la_receiver_0_serdes_7to1_ddr_rx_top
      port map (
@@ -66148,12 +66246,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity la_receiver_0 is
   port (
-    acq_data_out : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    acq_data_out : out STD_LOGIC_VECTOR ( 50 downto 0 );
     acq_data_valid : out STD_LOGIC;
     raw_signal_result : out STD_LOGIC_VECTOR ( 255 downto 0 );
     raw_signal_update : out STD_LOGIC;
     lock_level : out STD_LOGIC_VECTOR ( 2 downto 0 );
     rx_pixel_clk : out STD_LOGIC;
+    sampler_idle : out STD_LOGIC;
     reset : in STD_LOGIC;
     refclkin : in STD_LOGIC;
     clkin1_p : in STD_LOGIC;
@@ -66175,7 +66274,7 @@ architecture STRUCTURE of la_receiver_0 is
 begin
 inst: entity work.la_receiver_0_la_receiver
      port map (
-      acq_data_out(47 downto 0) => acq_data_out(47 downto 0),
+      acq_data_out(50 downto 0) => acq_data_out(50 downto 0),
       acq_data_valid => acq_data_valid,
       clkin1_n => clkin1_n,
       clkin1_p => clkin1_p,
@@ -66186,6 +66285,7 @@ inst: entity work.la_receiver_0_la_receiver
       raw_signal_result(255 downto 0) => raw_signal_result(255 downto 0),
       raw_signal_update => raw_signal_update,
       refclkin => refclkin,
-      reset => reset
+      reset => reset,
+      sampler_idle => sampler_idle
     );
 end STRUCTURE;

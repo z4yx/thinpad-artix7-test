@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:sampler:1.0
-// IP Revision: 2
+// IP Revision: 4
 
 (* X_CORE_INFO = "sampler,Vivado 2016.4" *)
 (* CHECK_LICENSE_TYPE = "sampler_0,sampler,{}" *)

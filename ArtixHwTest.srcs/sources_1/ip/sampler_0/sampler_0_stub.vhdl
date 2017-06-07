@@ -1,7 +1,7 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
--- Date        : Sat Jun  3 23:56:27 2017
+-- Date        : Wed Jun  7 14:45:10 2017
 -- Host        : skyworks running 64-bit Ubuntu 16.04.2 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/skyworks/ArtixHwTest/ArtixHwTest.srcs/sources_1/ip/sampler_0/sampler_0_stub.vhdl

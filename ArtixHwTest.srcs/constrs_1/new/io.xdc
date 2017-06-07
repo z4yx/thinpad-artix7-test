@@ -13,6 +13,9 @@ set_property PACKAGE_PIN K21 [get_ports rxd]
 set_property -dict {PACKAGE_PIN J19 IOSTANDARD LVCMOS33} [get_ports step_btn[0]]
 set_property -dict {PACKAGE_PIN E25 IOSTANDARD LVCMOS33} [get_ports step_btn[1]]
 
+set_property -dict {PACKAGE_PIN H19 IOSTANDARD LVCMOS33} [get_ports step_clk]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets step_clk_IBUF]
+
 #SERDES
 set_property -dict {PACKAGE_PIN P20 IOSTANDARD TMDS_33} [get_ports clkout1_p]
 set_property -dict {PACKAGE_PIN P21 IOSTANDARD TMDS_33} [get_ports clkout1_n]

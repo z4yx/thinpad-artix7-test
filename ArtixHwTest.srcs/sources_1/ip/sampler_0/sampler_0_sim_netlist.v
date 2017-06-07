@@ -1,7 +1,7 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-// Date        : Sat Jun  3 23:56:27 2017
+// Date        : Wed Jun  7 14:45:10 2017
 // Host        : skyworks running 64-bit Ubuntu 16.04.2 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/skyworks/ArtixHwTest/ArtixHwTest.srcs/sources_1/ip/sampler_0/sampler_0_sim_netlist.v
@@ -41366,8 +41366,8 @@ module sampler_0_packetizer
     \shifter_reg[2] ,
     \state_reg[0] ,
     Q,
-    \state_reg[0]_0 ,
-    \state_reg[1] );
+    \state_reg[1] ,
+    \state_reg[0]_0 );
   output wr_en_hold_reg_0;
   output [27:0]D;
   input sample_clk;
@@ -41377,8 +41377,8 @@ module sampler_0_packetizer
   input \shifter_reg[2] ;
   input \state_reg[0] ;
   input [0:0]Q;
-  input \state_reg[0]_0 ;
   input \state_reg[1] ;
+  input \state_reg[0]_0 ;
 
   wire [27:0]D;
   wire [0:0]Q;
@@ -41809,6 +41809,8 @@ module sampler_0_packetizer
   wire \diff_bit_cnt_remain_reg_n_0_[4] ;
   wire [15:0]diff_dly1;
   wire [271:0]din;
+  wire idle_packet;
+  wire idle_packet_i_1_n_0;
   wire nop_packet;
   wire nop_packet_i_1_n_0;
   wire [54:0]packet;
@@ -41879,6 +41881,7 @@ module sampler_0_packetizer
   wire rd_valid;
   wire rd_valid_dly1;
   wire rd_valid_dly1_i_1_n_0;
+  wire running;
   wire sample_clk;
   wire sample_fifo_i_6_n_0;
   wire sample_fifo_n_256;
@@ -41897,6 +41900,8 @@ module sampler_0_packetizer
   wire sample_fifo_n_269;
   wire sample_fifo_n_270;
   wire sample_fifo_n_271;
+  wire sample_running_sync;
+  wire sample_running_txclk;
   wire \shifter_reg[2] ;
   wire \state_reg[0] ;
   wire \state_reg[0]_0 ;
@@ -43513,7 +43518,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[138]),
         .O(\data_remain[106]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1252" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1251" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[107]_i_1 
@@ -43521,7 +43526,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[139]),
         .O(\data_remain[107]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1251" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1250" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[108]_i_1 
@@ -43529,7 +43534,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[140]),
         .O(\data_remain[108]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1250" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1249" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[109]_i_1 
@@ -43545,7 +43550,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[42]),
         .O(\data_remain[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1249" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1248" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[110]_i_1 
@@ -43553,7 +43558,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[142]),
         .O(\data_remain[110]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1248" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1247" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[111]_i_1 
@@ -43561,7 +43566,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[143]),
         .O(\data_remain[111]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1247" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1246" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[112]_i_1 
@@ -43569,7 +43574,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[144]),
         .O(\data_remain[112]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1246" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1245" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[113]_i_1 
@@ -43577,7 +43582,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[145]),
         .O(\data_remain[113]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1245" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1244" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[114]_i_1 
@@ -43585,7 +43590,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[146]),
         .O(\data_remain[114]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1252" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[115]_i_1 
@@ -43593,7 +43598,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[147]),
         .O(\data_remain[115]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[116]_i_1 
@@ -43601,7 +43606,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[148]),
         .O(\data_remain[116]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[117]_i_1 
@@ -43609,7 +43614,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[149]),
         .O(\data_remain[117]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[118]_i_1 
@@ -43617,7 +43622,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[150]),
         .O(\data_remain[118]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[119]_i_1 
@@ -43633,7 +43638,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[43]),
         .O(\data_remain[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[120]_i_1 
@@ -43641,7 +43646,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[152]),
         .O(\data_remain[120]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[121]_i_1 
@@ -43649,7 +43654,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[153]),
         .O(\data_remain[121]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[122]_i_1 
@@ -43657,7 +43662,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[154]),
         .O(\data_remain[122]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[123]_i_1 
@@ -43665,7 +43670,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[155]),
         .O(\data_remain[123]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[124]_i_1 
@@ -43673,7 +43678,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[156]),
         .O(\data_remain[124]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[125]_i_1 
@@ -43681,7 +43686,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[157]),
         .O(\data_remain[125]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[126]_i_1 
@@ -43689,7 +43694,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[158]),
         .O(\data_remain[126]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[127]_i_1 
@@ -43697,7 +43702,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[159]),
         .O(\data_remain[127]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[128]_i_1 
@@ -43705,7 +43710,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[160]),
         .O(\data_remain[128]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[129]_i_1 
@@ -43721,7 +43726,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[44]),
         .O(\data_remain[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[130]_i_1 
@@ -43729,7 +43734,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[162]),
         .O(\data_remain[130]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[131]_i_1 
@@ -43737,7 +43742,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[163]),
         .O(\data_remain[131]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[132]_i_1 
@@ -43745,7 +43750,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[164]),
         .O(\data_remain[132]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[133]_i_1 
@@ -43753,7 +43758,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[165]),
         .O(\data_remain[133]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[134]_i_1 
@@ -43761,7 +43766,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[166]),
         .O(\data_remain[134]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[135]_i_1 
@@ -43769,7 +43774,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[167]),
         .O(\data_remain[135]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[136]_i_1 
@@ -43785,7 +43790,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[169]),
         .O(\data_remain[137]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[138]_i_1 
@@ -43793,7 +43798,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[170]),
         .O(\data_remain[138]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[139]_i_1 
@@ -43809,7 +43814,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[45]),
         .O(\data_remain[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[140]_i_1 
@@ -43817,7 +43822,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg_n_0_[1] ),
         .I2(data_dly1[172]),
         .O(\data_remain[140]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[141]_i_1 
@@ -44337,7 +44342,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[35]),
         .O(\data_remain[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1285" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[40]_i_1 
@@ -44345,7 +44350,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[72]),
         .O(\data_remain[40]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1284" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[41]_i_1 
@@ -44353,7 +44358,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[73]),
         .O(\data_remain[41]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1284" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[42]_i_1 
@@ -44361,7 +44366,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[74]),
         .O(\data_remain[42]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1285" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1283" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[43]_i_1 
@@ -44369,7 +44374,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[75]),
         .O(\data_remain[43]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1281" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1282" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[44]_i_1 
@@ -44377,7 +44382,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[76]),
         .O(\data_remain[44]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1283" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[45]_i_1 
@@ -44385,7 +44390,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[77]),
         .O(\data_remain[45]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1282" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[46]_i_1 
@@ -44393,7 +44398,7 @@ module sampler_0_packetizer
         .I1(\packet_state_reg[1]_rep_n_0 ),
         .I2(data_dly1[78]),
         .O(\data_remain[46]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1281" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_remain[47]_i_1 
@@ -46280,7 +46285,7 @@ module sampler_0_packetizer
         .I3(\diff_bit_cnt_dly1_reg_n_0_[1] ),
         .I4(\diff_bit_cnt_dly1_reg_n_0_[3] ),
         .O(\diff_bit_cnt_remain[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
   LUT4 #(
     .INIT(16'hEA15)) 
     \diff_bit_cnt_remain[3]_i_2 
@@ -46315,7 +46320,7 @@ module sampler_0_packetizer
         .I1(\diff_bit_cnt_remain_reg_n_0_[2] ),
         .I2(\diff_bit_cnt_remain_reg_n_0_[4] ),
         .O(\diff_bit_cnt_remain[4]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
   LUT5 #(
     .INIT(32'hFEEE0111)) 
     \diff_bit_cnt_remain[4]_i_4 
@@ -46451,258 +46456,300 @@ module sampler_0_packetizer
         .D(sample_fifo_n_262),
         .Q(diff_dly1[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
+  LUT4 #(
+    .INIT(16'hF704)) 
+    idle_packet_i_1
+       (.I0(sample_running_txclk),
+        .I1(tx_state[1]),
+        .I2(tx_state[0]),
+        .I3(idle_packet),
+        .O(idle_packet_i_1_n_0));
+  FDPE idle_packet_reg
+       (.C(pixel_clk),
+        .CE(1'b1),
+        .D(idle_packet_i_1_n_0),
+        .PRE(\shifter_reg[2] ),
+        .Q(idle_packet));
+  LUT6 #(
+    .INIT(64'hF30CF30CF3FBF308)) 
     \loop0[0].oserdes_m_i_1 
        (.I0(packet_out[0]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[28]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[28]),
+        .I5(nop_packet),
         .O(D[0]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF3F3F3F3F3FBF308)) 
     \loop0[0].oserdes_s_i_1 
        (.I0(packet_out[4]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[32]),
-        .I4(nop_packet),
+        .I3(nop_packet),
+        .I4(packet_out[32]),
+        .I5(idle_packet),
         .O(D[4]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF30CF30CF3FBF308)) 
     \loop0[0].oserdes_s_i_2 
        (.I0(packet_out[8]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[36]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[36]),
+        .I5(nop_packet),
         .O(D[8]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF3F3F3F3F3FBF308)) 
     \loop0[0].oserdes_s_i_3 
        (.I0(packet_out[12]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[40]),
-        .I4(nop_packet),
+        .I3(nop_packet),
+        .I4(packet_out[40]),
+        .I5(idle_packet),
         .O(D[12]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF30CF30CF3FBF308)) 
     \loop0[0].oserdes_s_i_4 
        (.I0(packet_out[16]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[44]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[44]),
+        .I5(nop_packet),
         .O(D[16]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF3F3F3F3F3FBF308)) 
     \loop0[0].oserdes_s_i_5 
        (.I0(packet_out[20]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[48]),
-        .I4(nop_packet),
+        .I3(nop_packet),
+        .I4(packet_out[48]),
+        .I5(idle_packet),
         .O(D[20]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[0].oserdes_s_i_6 
        (.I0(packet_out[24]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[52]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[52]),
+        .I5(nop_packet),
         .O(D[24]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_m_i_1 
        (.I0(packet_out[1]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[29]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[29]),
+        .I5(nop_packet),
         .O(D[1]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_1 
        (.I0(packet_out[5]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[33]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[33]),
+        .I5(nop_packet),
         .O(D[5]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_2 
        (.I0(packet_out[9]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[37]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[37]),
+        .I5(nop_packet),
         .O(D[9]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_3 
        (.I0(packet_out[13]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[41]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[41]),
+        .I5(nop_packet),
         .O(D[13]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_4 
        (.I0(packet_out[17]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[45]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[45]),
+        .I5(nop_packet),
         .O(D[17]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_5 
        (.I0(packet_out[21]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[49]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[49]),
+        .I5(nop_packet),
         .O(D[21]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[1].oserdes_s_i_6 
        (.I0(packet_out[25]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[53]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[53]),
+        .I5(nop_packet),
         .O(D[25]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_m_i_1 
        (.I0(packet_out[2]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[30]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[30]),
+        .I5(nop_packet),
         .O(D[2]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_1 
        (.I0(packet_out[6]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[34]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[34]),
+        .I5(nop_packet),
         .O(D[6]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_2 
        (.I0(packet_out[10]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[38]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[38]),
+        .I5(nop_packet),
         .O(D[10]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_3 
        (.I0(packet_out[14]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[42]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[42]),
+        .I5(nop_packet),
         .O(D[14]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_4 
        (.I0(packet_out[18]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[46]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[46]),
+        .I5(nop_packet),
         .O(D[18]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_5 
        (.I0(packet_out[22]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[50]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[50]),
+        .I5(nop_packet),
         .O(D[22]));
-  LUT5 #(
-    .INIT(32'hF3F3FB08)) 
+  LUT6 #(
+    .INIT(64'hF300F300F3FBF308)) 
     \loop0[2].oserdes_s_i_6 
        (.I0(packet_out[26]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[54]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[54]),
+        .I5(nop_packet),
         .O(D[26]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_m_i_1 
        (.I0(packet_out[3]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[31]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[31]),
+        .I5(nop_packet),
         .O(D[3]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_s_i_1 
        (.I0(packet_out[7]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[35]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[35]),
+        .I5(nop_packet),
         .O(D[7]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_s_i_2 
        (.I0(packet_out[11]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[39]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[39]),
+        .I5(nop_packet),
         .O(D[11]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_s_i_3 
        (.I0(packet_out[15]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[43]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[43]),
+        .I5(nop_packet),
         .O(D[15]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_s_i_4 
        (.I0(packet_out[19]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[47]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[47]),
+        .I5(nop_packet),
         .O(D[19]));
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C000C000CFB0C08)) 
     \loop0[3].oserdes_s_i_5 
        (.I0(packet_out[23]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[51]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[51]),
+        .I5(nop_packet),
         .O(D[23]));
-  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
-  LUT5 #(
-    .INIT(32'h0C0CFB08)) 
+  LUT6 #(
+    .INIT(64'h0C0C0C0C0CFB0C08)) 
     \loop0[3].oserdes_s_i_6 
        (.I0(packet_out[27]),
         .I1(tx_state[1]),
         .I2(tx_state[0]),
-        .I3(packet_out[55]),
-        .I4(nop_packet),
+        .I3(idle_packet),
+        .I4(packet_out[55]),
+        .I5(nop_packet),
         .O(D[27]));
   LUT4 #(
     .INIT(16'hFB08)) 
@@ -47556,6 +47603,24 @@ module sampler_0_packetizer
         .I4(\diff_bit_cnt_dly1_reg_n_0_[0] ),
         .I5(rd_valid_dly1),
         .O(sample_fifo_i_6_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    sample_running_sync_i_1
+       (.I0(\state_reg[1] ),
+        .I1(\state_reg[0]_0 ),
+        .O(running));
+  FDCE sample_running_sync_reg
+       (.C(pixel_clk),
+        .CE(1'b1),
+        .CLR(\shifter_reg[2] ),
+        .D(running),
+        .Q(sample_running_sync));
+  FDCE sample_running_txclk_reg
+       (.C(pixel_clk),
+        .CE(1'b1),
+        .CLR(\shifter_reg[2] ),
+        .D(sample_running_sync),
+        .Q(sample_running_txclk));
   FDCE \tx_state_reg[0] 
        (.C(pixel_clk),
         .CE(1'b1),
@@ -47581,7 +47646,7 @@ module sampler_0_packetizer
         .rst(bos),
         .valid(NLW_txmit_fifo_inst_valid_UNCONNECTED),
         .wr_en(packet_available));
-  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
   LUT2 #(
     .INIT(4'h2)) 
     txmit_fifo_inst_i_1

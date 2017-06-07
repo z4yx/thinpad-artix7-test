@@ -1,7 +1,7 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
--- Date        : Sat Jun  3 23:56:27 2017
+-- Date        : Wed Jun  7 14:45:11 2017
 -- Host        : skyworks running 64-bit Ubuntu 16.04.2 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/skyworks/ArtixHwTest/ArtixHwTest.srcs/sources_1/ip/sampler_0/sampler_0_sim_netlist.vhdl
@@ -73628,8 +73628,8 @@ entity sampler_0_packetizer is
     \shifter_reg[2]\ : in STD_LOGIC;
     \state_reg[0]\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \state_reg[0]_0\ : in STD_LOGIC;
-    \state_reg[1]\ : in STD_LOGIC
+    \state_reg[1]\ : in STD_LOGIC;
+    \state_reg[0]_0\ : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of sampler_0_packetizer : entity is "packetizer";
@@ -74062,6 +74062,8 @@ architecture STRUCTURE of sampler_0_packetizer is
   signal \diff_bit_cnt_remain_reg_n_0_[3]\ : STD_LOGIC;
   signal \diff_bit_cnt_remain_reg_n_0_[4]\ : STD_LOGIC;
   signal diff_dly1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal idle_packet : STD_LOGIC;
+  signal idle_packet_i_1_n_0 : STD_LOGIC;
   signal nop_packet : STD_LOGIC;
   signal nop_packet_i_1_n_0 : STD_LOGIC;
   signal packet : STD_LOGIC_VECTOR ( 54 downto 0 );
@@ -74131,6 +74133,7 @@ architecture STRUCTURE of sampler_0_packetizer is
   signal rd_valid : STD_LOGIC;
   signal rd_valid_dly1 : STD_LOGIC;
   signal rd_valid_dly1_i_1_n_0 : STD_LOGIC;
+  signal running : STD_LOGIC;
   signal sample_fifo_i_6_n_0 : STD_LOGIC;
   signal sample_fifo_n_256 : STD_LOGIC;
   signal sample_fifo_n_257 : STD_LOGIC;
@@ -74148,6 +74151,8 @@ architecture STRUCTURE of sampler_0_packetizer is
   signal sample_fifo_n_269 : STD_LOGIC;
   signal sample_fifo_n_270 : STD_LOGIC;
   signal sample_fifo_n_271 : STD_LOGIC;
+  signal sample_running_sync : STD_LOGIC;
+  signal sample_running_txclk : STD_LOGIC;
   signal tx_state : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal txmit_fifo_inst_i_1_n_0 : STD_LOGIC;
   signal NLW_sample_fifo_almost_empty_UNCONNECTED : STD_LOGIC;
@@ -74163,45 +74168,45 @@ architecture STRUCTURE of sampler_0_packetizer is
   attribute SOFT_HLUTNM of \data_remain[104]_i_1\ : label is "soft_lutpair1253";
   attribute SOFT_HLUTNM of \data_remain[105]_i_1\ : label is "soft_lutpair1253";
   attribute SOFT_HLUTNM of \data_remain[106]_i_1\ : label is "soft_lutpair1252";
-  attribute SOFT_HLUTNM of \data_remain[107]_i_1\ : label is "soft_lutpair1252";
-  attribute SOFT_HLUTNM of \data_remain[108]_i_1\ : label is "soft_lutpair1251";
-  attribute SOFT_HLUTNM of \data_remain[109]_i_1\ : label is "soft_lutpair1250";
+  attribute SOFT_HLUTNM of \data_remain[107]_i_1\ : label is "soft_lutpair1251";
+  attribute SOFT_HLUTNM of \data_remain[108]_i_1\ : label is "soft_lutpair1250";
+  attribute SOFT_HLUTNM of \data_remain[109]_i_1\ : label is "soft_lutpair1249";
   attribute SOFT_HLUTNM of \data_remain[10]_i_1\ : label is "soft_lutpair1300";
-  attribute SOFT_HLUTNM of \data_remain[110]_i_1\ : label is "soft_lutpair1249";
-  attribute SOFT_HLUTNM of \data_remain[111]_i_1\ : label is "soft_lutpair1248";
-  attribute SOFT_HLUTNM of \data_remain[112]_i_1\ : label is "soft_lutpair1247";
-  attribute SOFT_HLUTNM of \data_remain[113]_i_1\ : label is "soft_lutpair1246";
-  attribute SOFT_HLUTNM of \data_remain[114]_i_1\ : label is "soft_lutpair1245";
-  attribute SOFT_HLUTNM of \data_remain[115]_i_1\ : label is "soft_lutpair1244";
-  attribute SOFT_HLUTNM of \data_remain[116]_i_1\ : label is "soft_lutpair1243";
-  attribute SOFT_HLUTNM of \data_remain[117]_i_1\ : label is "soft_lutpair1242";
-  attribute SOFT_HLUTNM of \data_remain[118]_i_1\ : label is "soft_lutpair1241";
-  attribute SOFT_HLUTNM of \data_remain[119]_i_1\ : label is "soft_lutpair1240";
+  attribute SOFT_HLUTNM of \data_remain[110]_i_1\ : label is "soft_lutpair1248";
+  attribute SOFT_HLUTNM of \data_remain[111]_i_1\ : label is "soft_lutpair1247";
+  attribute SOFT_HLUTNM of \data_remain[112]_i_1\ : label is "soft_lutpair1246";
+  attribute SOFT_HLUTNM of \data_remain[113]_i_1\ : label is "soft_lutpair1245";
+  attribute SOFT_HLUTNM of \data_remain[114]_i_1\ : label is "soft_lutpair1244";
+  attribute SOFT_HLUTNM of \data_remain[115]_i_1\ : label is "soft_lutpair1252";
+  attribute SOFT_HLUTNM of \data_remain[116]_i_1\ : label is "soft_lutpair1242";
+  attribute SOFT_HLUTNM of \data_remain[117]_i_1\ : label is "soft_lutpair1241";
+  attribute SOFT_HLUTNM of \data_remain[118]_i_1\ : label is "soft_lutpair1240";
+  attribute SOFT_HLUTNM of \data_remain[119]_i_1\ : label is "soft_lutpair1243";
   attribute SOFT_HLUTNM of \data_remain[11]_i_1\ : label is "soft_lutpair1299";
-  attribute SOFT_HLUTNM of \data_remain[120]_i_1\ : label is "soft_lutpair1239";
-  attribute SOFT_HLUTNM of \data_remain[121]_i_1\ : label is "soft_lutpair1238";
-  attribute SOFT_HLUTNM of \data_remain[122]_i_1\ : label is "soft_lutpair1237";
-  attribute SOFT_HLUTNM of \data_remain[123]_i_1\ : label is "soft_lutpair1236";
-  attribute SOFT_HLUTNM of \data_remain[124]_i_1\ : label is "soft_lutpair1235";
-  attribute SOFT_HLUTNM of \data_remain[125]_i_1\ : label is "soft_lutpair1234";
-  attribute SOFT_HLUTNM of \data_remain[126]_i_1\ : label is "soft_lutpair1233";
-  attribute SOFT_HLUTNM of \data_remain[127]_i_1\ : label is "soft_lutpair1232";
-  attribute SOFT_HLUTNM of \data_remain[128]_i_1\ : label is "soft_lutpair1231";
-  attribute SOFT_HLUTNM of \data_remain[129]_i_1\ : label is "soft_lutpair1230";
+  attribute SOFT_HLUTNM of \data_remain[120]_i_1\ : label is "soft_lutpair1238";
+  attribute SOFT_HLUTNM of \data_remain[121]_i_1\ : label is "soft_lutpair1237";
+  attribute SOFT_HLUTNM of \data_remain[122]_i_1\ : label is "soft_lutpair1236";
+  attribute SOFT_HLUTNM of \data_remain[123]_i_1\ : label is "soft_lutpair1235";
+  attribute SOFT_HLUTNM of \data_remain[124]_i_1\ : label is "soft_lutpair1234";
+  attribute SOFT_HLUTNM of \data_remain[125]_i_1\ : label is "soft_lutpair1233";
+  attribute SOFT_HLUTNM of \data_remain[126]_i_1\ : label is "soft_lutpair1232";
+  attribute SOFT_HLUTNM of \data_remain[127]_i_1\ : label is "soft_lutpair1231";
+  attribute SOFT_HLUTNM of \data_remain[128]_i_1\ : label is "soft_lutpair1230";
+  attribute SOFT_HLUTNM of \data_remain[129]_i_1\ : label is "soft_lutpair1239";
   attribute SOFT_HLUTNM of \data_remain[12]_i_1\ : label is "soft_lutpair1299";
-  attribute SOFT_HLUTNM of \data_remain[130]_i_1\ : label is "soft_lutpair1229";
-  attribute SOFT_HLUTNM of \data_remain[131]_i_1\ : label is "soft_lutpair1228";
-  attribute SOFT_HLUTNM of \data_remain[132]_i_1\ : label is "soft_lutpair1227";
-  attribute SOFT_HLUTNM of \data_remain[133]_i_1\ : label is "soft_lutpair1226";
-  attribute SOFT_HLUTNM of \data_remain[134]_i_1\ : label is "soft_lutpair1225";
-  attribute SOFT_HLUTNM of \data_remain[135]_i_1\ : label is "soft_lutpair1224";
-  attribute SOFT_HLUTNM of \data_remain[136]_i_1\ : label is "soft_lutpair1223";
+  attribute SOFT_HLUTNM of \data_remain[130]_i_1\ : label is "soft_lutpair1228";
+  attribute SOFT_HLUTNM of \data_remain[131]_i_1\ : label is "soft_lutpair1229";
+  attribute SOFT_HLUTNM of \data_remain[132]_i_1\ : label is "soft_lutpair1226";
+  attribute SOFT_HLUTNM of \data_remain[133]_i_1\ : label is "soft_lutpair1225";
+  attribute SOFT_HLUTNM of \data_remain[134]_i_1\ : label is "soft_lutpair1224";
+  attribute SOFT_HLUTNM of \data_remain[135]_i_1\ : label is "soft_lutpair1223";
+  attribute SOFT_HLUTNM of \data_remain[136]_i_1\ : label is "soft_lutpair1227";
   attribute SOFT_HLUTNM of \data_remain[137]_i_1\ : label is "soft_lutpair1222";
-  attribute SOFT_HLUTNM of \data_remain[138]_i_1\ : label is "soft_lutpair1221";
-  attribute SOFT_HLUTNM of \data_remain[139]_i_1\ : label is "soft_lutpair1220";
+  attribute SOFT_HLUTNM of \data_remain[138]_i_1\ : label is "soft_lutpair1220";
+  attribute SOFT_HLUTNM of \data_remain[139]_i_1\ : label is "soft_lutpair1221";
   attribute SOFT_HLUTNM of \data_remain[13]_i_1\ : label is "soft_lutpair1298";
-  attribute SOFT_HLUTNM of \data_remain[140]_i_1\ : label is "soft_lutpair1219";
-  attribute SOFT_HLUTNM of \data_remain[141]_i_1\ : label is "soft_lutpair1218";
+  attribute SOFT_HLUTNM of \data_remain[140]_i_1\ : label is "soft_lutpair1218";
+  attribute SOFT_HLUTNM of \data_remain[141]_i_1\ : label is "soft_lutpair1219";
   attribute SOFT_HLUTNM of \data_remain[142]_i_1\ : label is "soft_lutpair1251";
   attribute SOFT_HLUTNM of \data_remain[143]_i_1\ : label is "soft_lutpair1250";
   attribute SOFT_HLUTNM of \data_remain[144]_i_1\ : label is "soft_lutpair1249";
@@ -74265,14 +74270,14 @@ architecture STRUCTURE of sampler_0_packetizer is
   attribute SOFT_HLUTNM of \data_remain[38]_i_1\ : label is "soft_lutpair1286";
   attribute SOFT_HLUTNM of \data_remain[39]_i_1\ : label is "soft_lutpair1285";
   attribute SOFT_HLUTNM of \data_remain[3]_i_1\ : label is "soft_lutpair1303";
-  attribute SOFT_HLUTNM of \data_remain[40]_i_1\ : label is "soft_lutpair1284";
-  attribute SOFT_HLUTNM of \data_remain[41]_i_1\ : label is "soft_lutpair1283";
-  attribute SOFT_HLUTNM of \data_remain[42]_i_1\ : label is "soft_lutpair1282";
-  attribute SOFT_HLUTNM of \data_remain[43]_i_1\ : label is "soft_lutpair1285";
-  attribute SOFT_HLUTNM of \data_remain[44]_i_1\ : label is "soft_lutpair1281";
-  attribute SOFT_HLUTNM of \data_remain[45]_i_1\ : label is "soft_lutpair1284";
-  attribute SOFT_HLUTNM of \data_remain[46]_i_1\ : label is "soft_lutpair1283";
-  attribute SOFT_HLUTNM of \data_remain[47]_i_1\ : label is "soft_lutpair1282";
+  attribute SOFT_HLUTNM of \data_remain[40]_i_1\ : label is "soft_lutpair1285";
+  attribute SOFT_HLUTNM of \data_remain[41]_i_1\ : label is "soft_lutpair1284";
+  attribute SOFT_HLUTNM of \data_remain[42]_i_1\ : label is "soft_lutpair1284";
+  attribute SOFT_HLUTNM of \data_remain[43]_i_1\ : label is "soft_lutpair1283";
+  attribute SOFT_HLUTNM of \data_remain[44]_i_1\ : label is "soft_lutpair1282";
+  attribute SOFT_HLUTNM of \data_remain[45]_i_1\ : label is "soft_lutpair1283";
+  attribute SOFT_HLUTNM of \data_remain[46]_i_1\ : label is "soft_lutpair1282";
+  attribute SOFT_HLUTNM of \data_remain[47]_i_1\ : label is "soft_lutpair1281";
   attribute SOFT_HLUTNM of \data_remain[48]_i_1\ : label is "soft_lutpair1281";
   attribute SOFT_HLUTNM of \data_remain[49]_i_1\ : label is "soft_lutpair1280";
   attribute SOFT_HLUTNM of \data_remain[4]_i_1\ : label is "soft_lutpair1303";
@@ -74332,9 +74337,9 @@ architecture STRUCTURE of sampler_0_packetizer is
   attribute SOFT_HLUTNM of \data_remain[9]_i_1\ : label is "soft_lutpair1300";
   attribute SOFT_HLUTNM of \diff_bit_cnt_remain[0]_i_1\ : label is "soft_lutpair1217";
   attribute SOFT_HLUTNM of \diff_bit_cnt_remain[1]_i_1\ : label is "soft_lutpair1217";
-  attribute SOFT_HLUTNM of \diff_bit_cnt_remain[3]_i_2\ : label is "soft_lutpair1216";
-  attribute SOFT_HLUTNM of \diff_bit_cnt_remain[4]_i_4\ : label is "soft_lutpair1216";
-  attribute SOFT_HLUTNM of \loop0[3].oserdes_s_i_6\ : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of \diff_bit_cnt_remain[3]_i_2\ : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of \diff_bit_cnt_remain[4]_i_4\ : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of idle_packet_i_1 : label is "soft_lutpair1216";
   attribute ORIG_CELL_NAME : string;
   attribute ORIG_CELL_NAME of \packet_state_reg[1]\ : label is "packet_state_reg[1]";
   attribute ORIG_CELL_NAME of \packet_state_reg[1]_rep\ : label is "packet_state_reg[1]";
@@ -74395,7 +74400,7 @@ architecture STRUCTURE of sampler_0_packetizer is
   attribute CHECK_LICENSE_TYPE of txmit_fifo_inst : label is "txmit_fifo,fifo_generator_v13_1_3,{}";
   attribute downgradeipidentifiedwarnings of txmit_fifo_inst : label is "yes";
   attribute x_core_info of txmit_fifo_inst : label is "fifo_generator_v13_1_3,Vivado 2016.4";
-  attribute SOFT_HLUTNM of txmit_fifo_inst_i_1 : label is "soft_lutpair1215";
+  attribute SOFT_HLUTNM of txmit_fifo_inst_i_1 : label is "soft_lutpair1216";
 begin
 counter: entity work.sampler_0_bit_counter
      port map (
@@ -80349,340 +80354,387 @@ counter: entity work.sampler_0_bit_counter
       Q => diff_dly1(9),
       R => '0'
     );
-\loop0[0].oserdes_m_i_1\: unisim.vcomponents.LUT5
+idle_packet_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F704"
+    )
+        port map (
+      I0 => sample_running_txclk,
+      I1 => tx_state(1),
+      I2 => tx_state(0),
+      I3 => idle_packet,
+      O => idle_packet_i_1_n_0
+    );
+idle_packet_reg: unisim.vcomponents.FDPE
+     port map (
+      C => pixel_clk,
+      CE => '1',
+      D => idle_packet_i_1_n_0,
+      PRE => \shifter_reg[2]\,
+      Q => idle_packet
+    );
+\loop0[0].oserdes_m_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F30CF30CF3FBF308"
     )
         port map (
       I0 => packet_out(0),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(28),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(28),
+      I5 => nop_packet,
       O => D(0)
     );
-\loop0[0].oserdes_s_i_1\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F3F3F3F3F3FBF308"
     )
         port map (
       I0 => packet_out(4),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(32),
-      I4 => nop_packet,
+      I3 => nop_packet,
+      I4 => packet_out(32),
+      I5 => idle_packet,
       O => D(4)
     );
-\loop0[0].oserdes_s_i_2\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F30CF30CF3FBF308"
     )
         port map (
       I0 => packet_out(8),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(36),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(36),
+      I5 => nop_packet,
       O => D(8)
     );
-\loop0[0].oserdes_s_i_3\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F3F3F3F3F3FBF308"
     )
         port map (
       I0 => packet_out(12),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(40),
-      I4 => nop_packet,
+      I3 => nop_packet,
+      I4 => packet_out(40),
+      I5 => idle_packet,
       O => D(12)
     );
-\loop0[0].oserdes_s_i_4\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F30CF30CF3FBF308"
     )
         port map (
       I0 => packet_out(16),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(44),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(44),
+      I5 => nop_packet,
       O => D(16)
     );
-\loop0[0].oserdes_s_i_5\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F3F3F3F3F3FBF308"
     )
         port map (
       I0 => packet_out(20),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(48),
-      I4 => nop_packet,
+      I3 => nop_packet,
+      I4 => packet_out(48),
+      I5 => idle_packet,
       O => D(20)
     );
-\loop0[0].oserdes_s_i_6\: unisim.vcomponents.LUT5
+\loop0[0].oserdes_s_i_6\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(24),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(52),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(52),
+      I5 => nop_packet,
       O => D(24)
     );
-\loop0[1].oserdes_m_i_1\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_m_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(1),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(29),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(29),
+      I5 => nop_packet,
       O => D(1)
     );
-\loop0[1].oserdes_s_i_1\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(5),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(33),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(33),
+      I5 => nop_packet,
       O => D(5)
     );
-\loop0[1].oserdes_s_i_2\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(9),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(37),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(37),
+      I5 => nop_packet,
       O => D(9)
     );
-\loop0[1].oserdes_s_i_3\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(13),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(41),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(41),
+      I5 => nop_packet,
       O => D(13)
     );
-\loop0[1].oserdes_s_i_4\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(17),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(45),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(45),
+      I5 => nop_packet,
       O => D(17)
     );
-\loop0[1].oserdes_s_i_5\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(21),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(49),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(49),
+      I5 => nop_packet,
       O => D(21)
     );
-\loop0[1].oserdes_s_i_6\: unisim.vcomponents.LUT5
+\loop0[1].oserdes_s_i_6\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(25),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(53),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(53),
+      I5 => nop_packet,
       O => D(25)
     );
-\loop0[2].oserdes_m_i_1\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_m_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(2),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(30),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(30),
+      I5 => nop_packet,
       O => D(2)
     );
-\loop0[2].oserdes_s_i_1\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(6),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(34),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(34),
+      I5 => nop_packet,
       O => D(6)
     );
-\loop0[2].oserdes_s_i_2\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(10),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(38),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(38),
+      I5 => nop_packet,
       O => D(10)
     );
-\loop0[2].oserdes_s_i_3\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(14),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(42),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(42),
+      I5 => nop_packet,
       O => D(14)
     );
-\loop0[2].oserdes_s_i_4\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(18),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(46),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(46),
+      I5 => nop_packet,
       O => D(18)
     );
-\loop0[2].oserdes_s_i_5\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(22),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(50),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(50),
+      I5 => nop_packet,
       O => D(22)
     );
-\loop0[2].oserdes_s_i_6\: unisim.vcomponents.LUT5
+\loop0[2].oserdes_s_i_6\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3F3FB08"
+      INIT => X"F300F300F3FBF308"
     )
         port map (
       I0 => packet_out(26),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(54),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(54),
+      I5 => nop_packet,
       O => D(26)
     );
-\loop0[3].oserdes_m_i_1\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_m_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(3),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(31),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(31),
+      I5 => nop_packet,
       O => D(3)
     );
-\loop0[3].oserdes_s_i_1\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(7),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(35),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(35),
+      I5 => nop_packet,
       O => D(7)
     );
-\loop0[3].oserdes_s_i_2\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(11),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(39),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(39),
+      I5 => nop_packet,
       O => D(11)
     );
-\loop0[3].oserdes_s_i_3\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(15),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(43),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(43),
+      I5 => nop_packet,
       O => D(15)
     );
-\loop0[3].oserdes_s_i_4\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(19),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(47),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(47),
+      I5 => nop_packet,
       O => D(19)
     );
-\loop0[3].oserdes_s_i_5\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C000C000CFB0C08"
     )
         port map (
       I0 => packet_out(23),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(51),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(51),
+      I5 => nop_packet,
       O => D(23)
     );
-\loop0[3].oserdes_s_i_6\: unisim.vcomponents.LUT5
+\loop0[3].oserdes_s_i_6\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0C0CFB08"
+      INIT => X"0C0C0C0C0CFB0C08"
     )
         port map (
       I0 => packet_out(27),
       I1 => tx_state(1),
       I2 => tx_state(0),
-      I3 => packet_out(55),
-      I4 => nop_packet,
+      I3 => idle_packet,
+      I4 => packet_out(55),
+      I5 => nop_packet,
       O => D(27)
     );
 nop_packet_i_1: unisim.vcomponents.LUT4
@@ -81796,6 +81848,31 @@ sample_fifo_i_6: unisim.vcomponents.LUT6
       I4 => \diff_bit_cnt_dly1_reg_n_0_[0]\,
       I5 => rd_valid_dly1,
       O => sample_fifo_i_6_n_0
+    );
+sample_running_sync_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \state_reg[1]\,
+      I1 => \state_reg[0]_0\,
+      O => running
+    );
+sample_running_sync_reg: unisim.vcomponents.FDCE
+     port map (
+      C => pixel_clk,
+      CE => '1',
+      CLR => \shifter_reg[2]\,
+      D => running,
+      Q => sample_running_sync
+    );
+sample_running_txclk_reg: unisim.vcomponents.FDCE
+     port map (
+      C => pixel_clk,
+      CE => '1',
+      CLR => \shifter_reg[2]\,
+      D => sample_running_sync,
+      Q => sample_running_txclk
     );
 \tx_state_reg[0]\: unisim.vcomponents.FDCE
      port map (

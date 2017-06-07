@@ -1,7 +1,7 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-// Date        : Sun Jun  4 00:10:02 2017
+// Date        : Wed Jun  7 14:04:12 2017
 // Host        : skyworks running 64-bit Ubuntu 16.04.2 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/skyworks/ArtixHwTest/ArtixHwTest.srcs/sources_1/ip/la_receiver_0/la_receiver_0_sim_netlist.v
@@ -21,18 +21,20 @@ module la_receiver_0
     raw_signal_update,
     lock_level,
     rx_pixel_clk,
+    sampler_idle,
     reset,
     refclkin,
     clkin1_p,
     clkin1_n,
     datain1_p,
     datain1_n);
-  output [47:0]acq_data_out;
+  output [50:0]acq_data_out;
   output acq_data_valid;
   output [255:0]raw_signal_result;
   output raw_signal_update;
   output [2:0]lock_level;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 rx_pixel_clk CLK" *) output rx_pixel_clk;
+  output sampler_idle;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 refclkin CLK" *) input refclkin;
   input clkin1_p;
@@ -40,7 +42,7 @@ module la_receiver_0
   input [3:0]datain1_p;
   input [3:0]datain1_n;
 
-  wire [47:0]acq_data_out;
+  wire [50:0]acq_data_out;
   wire acq_data_valid;
   (* DIFF_TERM *) (* IBUF_LOW_PWR = 0 *) wire clkin1_n;
   (* DIFF_TERM *) (* IBUF_LOW_PWR = 0 *) wire clkin1_p;
@@ -52,6 +54,7 @@ module la_receiver_0
   (* IBUF_LOW_PWR *) wire refclkin;
   wire reset;
   wire rx_pixel_clk;
+  wire sampler_idle;
 
   la_receiver_0_la_receiver inst
        (.acq_data_out(acq_data_out),
@@ -65,7 +68,8 @@ module la_receiver_0
         .raw_signal_result(raw_signal_result),
         .raw_signal_update(raw_signal_update),
         .refclkin(refclkin),
-        .reset(reset));
+        .reset(reset),
+        .sampler_idle(sampler_idle));
 endmodule
 
 (* ORIG_REF_NAME = "delay_controller_wrap" *) 
@@ -235,7 +239,7 @@ module la_receiver_0_delay_controller_wrap
   wire \sdataoutc[2]_i_1_n_0 ;
   wire \sdataoutc[3]_i_1_n_0 ;
 
-  (* SOFT_HLUTNM = "soft_lutpair1138" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1137" *) 
   LUT4 #(
     .INIT(16'h4D44)) 
     \action[0]_i_1 
@@ -244,7 +248,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(msxor_ctd[0]),
         .I3(msxor_cti[0]),
         .O(\action[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1138" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1137" *) 
   LUT4 #(
     .INIT(16'h22B2)) 
     \action[1]_i_1 
@@ -281,7 +285,7 @@ module la_receiver_0_delay_controller_wrap
         .D(data_mux_i_1_n_0),
         .Q(data_mux_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1141" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1140" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[0]_i_1 
@@ -289,7 +293,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[0]),
         .O(\data_out[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1141" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1140" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[1]_i_1 
@@ -297,7 +301,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[1]),
         .O(\data_out[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1144" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1143" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[2]_i_1 
@@ -305,7 +309,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[2]),
         .O(\data_out[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1144" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1143" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[3]_i_1 
@@ -363,7 +367,7 @@ module la_receiver_0_delay_controller_wrap
         .D(dec_run_i_1_n_0),
         .Q(dec_run_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1126" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1125" *) 
   LUT5 #(
     .INIT(32'hFFFFCCFE)) 
     delay_change_i_1
@@ -389,7 +393,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(inc_run_reg_n_0),
         .I5(meq_max),
         .O(inc_run_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1145" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1144" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     inc_run_i_2
@@ -397,7 +401,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(s_state[1]),
         .I2(s_state[3]),
         .O(dec_run));
-  (* SOFT_HLUTNM = "soft_lutpair1132" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1131" *) 
   LUT4 #(
     .INIT(16'hCFF7)) 
     inc_run_i_3
@@ -431,7 +435,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(\s_state[3]_i_1_n_0 ),
         .I4(m_delay_mux[1]),
         .O(\m_delay_mux[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1131" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1130" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_mux[1]_i_2 
@@ -462,14 +466,14 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int[4]_i_5_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\m_delay_val_int[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1146" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1145" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_2 
        (.I0(meq_min_reg_n_0),
         .I1(dec_run_reg_n_0),
         .O(m_delay_val_int1));
-  (* SOFT_HLUTNM = "soft_lutpair1142" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1141" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_3 
@@ -562,7 +566,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int_reg[1]_0 ),
         .I5(\m_delay_val_int_reg[3]_0 ),
         .O(\m_delay_val_int[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1142" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1141" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     \m_delay_val_int[4]_i_3 
@@ -590,7 +594,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int[4]_i_3_n_0 ),
         .I5(m_delay_val_int130_out),
         .O(\m_delay_val_int[4]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1133" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1132" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_val_int[4]_i_6 
@@ -719,7 +723,7 @@ module la_receiver_0_delay_controller_wrap
         .D(\mdataoutc[3]_i_1_n_0 ),
         .Q(mdataoutc[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1121" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1120" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     meq_max_i_1
@@ -735,7 +739,7 @@ module la_receiver_0_delay_controller_wrap
         .D(meq_max_i_1_n_0),
         .Q(meq_max),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1146" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1145" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     meq_min_i_1
@@ -759,7 +763,7 @@ module la_receiver_0_delay_controller_wrap
         .D(meq_min_i_1_n_0),
         .Q(meq_min_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1130" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1129" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_ctd[0]_i_1 
@@ -768,7 +772,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(p_15_out[3]),
         .I3(p_15_out[2]),
         .O(\msxor_ctd[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1130" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1129" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_ctd[1]_i_1 
@@ -777,7 +781,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(p_15_out[1]),
         .I3(p_15_out[0]),
         .O(\msxor_ctd[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1129" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1128" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_2 
@@ -787,7 +791,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(p_0_in14_in),
         .I4(p_0_in52_in),
         .O(p_15_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1128" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1127" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_3 
@@ -797,7 +801,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_15_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1123" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1122" *) 
   LUT5 #(
     .INIT(32'h0047B800)) 
     \msxor_ctd[1]_i_4 
@@ -807,7 +811,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_15_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1125" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1124" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_ctd[1]_i_5 
@@ -829,7 +833,7 @@ module la_receiver_0_delay_controller_wrap
         .D(\msxor_ctd[1]_i_1_n_0 ),
         .Q(msxor_ctd[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1135" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1134" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_cti[0]_i_1 
@@ -838,7 +842,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(p_14_out[3]),
         .I3(p_14_out[2]),
         .O(\msxor_cti[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1135" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1134" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_cti[1]_i_1 
@@ -847,7 +851,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(p_14_out[1]),
         .I3(p_14_out[0]),
         .O(\msxor_cti[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1129" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1128" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_cti[1]_i_2 
@@ -857,7 +861,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(p_0_in17_in),
         .I4(p_0_in52_in),
         .O(p_14_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1128" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1127" *) 
   LUT5 #(
     .INIT(32'h04B00780)) 
     \msxor_cti[1]_i_3 
@@ -867,7 +871,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_14_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1123" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1122" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_4 
@@ -877,7 +881,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_14_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1125" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1124" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_5 
@@ -899,7 +903,7 @@ module la_receiver_0_delay_controller_wrap
         .D(\msxor_cti[1]_i_1_n_0 ),
         .Q(msxor_cti[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1136" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1135" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \pd_hold[0]_i_1 
@@ -907,7 +911,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(delay_change_reg_n_0),
         .I2(inc_run_reg_n_0),
         .O(pdcount1));
-  (* SOFT_HLUTNM = "soft_lutpair1139" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1138" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[1]_i_1 
@@ -916,7 +920,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1140" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1139" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[2]_i_1 
@@ -925,7 +929,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1140" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1139" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[3]_i_1 
@@ -934,7 +938,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1139" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1138" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[4]_i_1 
@@ -943,7 +947,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1137" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1136" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[5]_i_1 
@@ -952,7 +956,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1137" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1136" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[6]_i_1 
@@ -969,7 +973,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1136" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1135" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[7]_i_2 
@@ -1026,7 +1030,7 @@ module la_receiver_0_delay_controller_wrap
         .D(\pd_hold[7]_i_2_n_0 ),
         .Q(p_0_in),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1124" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1123" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     pd_max_i_1
@@ -1036,7 +1040,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(pdcount_reg__0[4]),
         .I4(pd_max_i_2_n_0),
         .O(pd_max0));
-  (* SOFT_HLUTNM = "soft_lutpair1134" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1133" *) 
   LUT4 #(
     .INIT(16'hFF7F)) 
     pd_max_i_2
@@ -1060,7 +1064,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(pdcount_reg__0[5]),
         .I4(pd_min_i_3_n_0),
         .O(pd_min0));
-  (* SOFT_HLUTNM = "soft_lutpair1134" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1133" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     pd_min_i_3
@@ -1080,7 +1084,7 @@ module la_receiver_0_delay_controller_wrap
     \pdcount[0]_i_1 
        (.I0(pdcount_reg__0[0]),
         .O(\pdcount[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1143" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1142" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \pdcount[1]_i_1 
@@ -1088,7 +1092,7 @@ module la_receiver_0_delay_controller_wrap
         .I1(pdcount132_out),
         .I2(pdcount_reg__0[1]),
         .O(\pdcount[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1122" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1121" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \pdcount[2]_i_1 
@@ -1097,7 +1101,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(pdcount_reg__0[2]),
         .I3(pdcount_reg__0[1]),
         .O(\pdcount[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1122" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1121" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \pdcount[3]_i_1 
@@ -1173,14 +1177,14 @@ module la_receiver_0_delay_controller_wrap
         .I4(\pdcount[5]_i_8_n_0 ),
         .I5(\action_reg_n_0_[0] ),
         .O(\pdcount[5]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1143" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1142" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_7 
        (.I0(pdcount_reg__0[1]),
         .I1(pdcount_reg__0[0]),
         .O(\pdcount[5]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1124" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1123" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_8 
@@ -1243,7 +1247,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\s_state[3]_i_1_n_0 ),
         .I5(s_delay_mux[1]),
         .O(\s_delay_mux[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1147" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1146" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \s_delay_mux[1]_i_2 
@@ -1292,7 +1296,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int[4]_i_3_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1127" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1126" *) 
   LUT5 #(
     .INIT(32'hF1F51050)) 
     \s_delay_val_int[2]_i_2 
@@ -1312,7 +1316,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int[4]_i_3_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1127" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1126" *) 
   LUT5 #(
     .INIT(32'hFFFEE000)) 
     \s_delay_val_int[3]_i_2 
@@ -1342,7 +1346,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(\m_delay_val_int[4]_i_3_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1131" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1130" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \s_delay_val_int[4]_i_3 
@@ -1351,7 +1355,7 @@ module la_receiver_0_delay_controller_wrap
         .I2(s_state[0]),
         .I3(s_state[1]),
         .O(\s_delay_val_int[4]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1121" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1120" *) 
   LUT5 #(
     .INIT(32'hA9994440)) 
     \s_delay_val_int[4]_i_4 
@@ -1409,7 +1413,7 @@ module la_receiver_0_delay_controller_wrap
         .I3(\m_delay_val_int_reg[3]_0 ),
         .I4(\m_delay_val_int_reg[4]_0 ),
         .O(s_ovflw134_in));
-  (* SOFT_HLUTNM = "soft_lutpair1126" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1125" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     s_ovflw_i_3
@@ -1423,20 +1427,20 @@ module la_receiver_0_delay_controller_wrap
         .D(s_ovflw_i_1_n_0),
         .Q(s_ovflw_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1147" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1146" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \s_state[0]_i_1 
        (.I0(s_state[0]),
         .O(\s_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1145" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1144" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \s_state[1]_i_1 
        (.I0(s_state[0]),
         .I1(s_state[1]),
         .O(\s_state[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1133" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1132" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \s_state[2]_i_1 
@@ -1454,7 +1458,7 @@ module la_receiver_0_delay_controller_wrap
         .I4(dec_run_reg_n_0),
         .I5(meq_min_reg_n_0),
         .O(\s_state[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1132" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1131" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \s_state[3]_i_2 
@@ -1746,7 +1750,7 @@ module la_receiver_0_delay_controller_wrap_0
   wire \sdataoutc[2]_i_1__0_n_0 ;
   wire \sdataoutc[3]_i_1__0_n_0 ;
 
-  (* SOFT_HLUTNM = "soft_lutpair1163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1162" *) 
   LUT4 #(
     .INIT(16'h4D44)) 
     \action[0]_i_1__0 
@@ -1755,7 +1759,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(msxor_ctd[0]),
         .I3(msxor_cti[0]),
         .O(\action[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1162" *) 
   LUT4 #(
     .INIT(16'h22B2)) 
     \action[1]_i_1__0 
@@ -1792,7 +1796,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(data_mux_i_1__0_n_0),
         .Q(data_mux_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1169" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[0]_i_1__0 
@@ -1800,7 +1804,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[0]),
         .O(\data_out[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1169" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[1]_i_1__0 
@@ -1808,7 +1812,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[1]),
         .O(\data_out[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1170" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[2]_i_1__0 
@@ -1816,7 +1820,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[2]),
         .O(\data_out[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1170" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[3]_i_1__0 
@@ -1874,7 +1878,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(dec_run_i_1__0_n_0),
         .Q(dec_run_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1148" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1147" *) 
   LUT5 #(
     .INIT(32'hFFFFCCFE)) 
     delay_change_i_1__0
@@ -1900,7 +1904,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(inc_run_reg_n_0),
         .I5(meq_max),
         .O(inc_run_i_1__0_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1168" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     inc_run_i_2__0
@@ -1908,7 +1912,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(s_state[1]),
         .I2(s_state[3]),
         .O(dec_run));
-  (* SOFT_HLUTNM = "soft_lutpair1162" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1161" *) 
   LUT4 #(
     .INIT(16'hCFF7)) 
     inc_run_i_3__0
@@ -1942,7 +1946,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(\s_state[3]_i_1__0_n_0 ),
         .I4(m_delay_mux[1]),
         .O(\m_delay_mux[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1166" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_mux[1]_i_2__0 
@@ -1973,14 +1977,14 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\m_delay_val_int[4]_i_5__0_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\m_delay_val_int[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1171" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_2__0 
        (.I0(meq_min_reg_n_0),
         .I1(dec_run_reg_n_0),
         .O(m_delay_val_int1));
-  (* SOFT_HLUTNM = "soft_lutpair1168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1167" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_3__0 
@@ -2073,7 +2077,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\m_delay_val_int_reg[1]_0 ),
         .I5(\m_delay_val_int_reg[3]_0 ),
         .O(\m_delay_val_int[4]_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1167" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     \m_delay_val_int[4]_i_3__0 
@@ -2101,7 +2105,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\m_delay_val_int[4]_i_3__0_n_0 ),
         .I5(m_delay_val_int130_out),
         .O(\m_delay_val_int[4]_i_5__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1164" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_val_int[4]_i_6__0 
@@ -2230,7 +2234,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(\mdataoutc[3]_i_1__0_n_0 ),
         .Q(mdataoutc[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1150" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1149" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     meq_max_i_1__0
@@ -2246,7 +2250,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(meq_max_i_1__0_n_0),
         .Q(meq_max),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1171" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     meq_min_i_1__0
@@ -2270,7 +2274,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(meq_min_i_1__0_n_0),
         .Q(meq_min_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1160" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1159" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_ctd[0]_i_1__0 
@@ -2279,7 +2283,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(p_15_out[3]),
         .I3(p_15_out[2]),
         .O(\msxor_ctd[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1160" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1159" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_ctd[1]_i_1__0 
@@ -2288,7 +2292,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(p_15_out[1]),
         .I3(p_15_out[0]),
         .O(\msxor_ctd[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1155" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1154" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_2__0 
@@ -2298,7 +2302,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(p_0_in14_in),
         .I4(p_0_in52_in),
         .O(p_15_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1156" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1155" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_3__0 
@@ -2308,7 +2312,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_15_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1152" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1151" *) 
   LUT5 #(
     .INIT(32'h0047B800)) 
     \msxor_ctd[1]_i_4__0 
@@ -2318,7 +2322,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_15_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1151" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1150" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_ctd[1]_i_5__0 
@@ -2340,7 +2344,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(\msxor_ctd[1]_i_1__0_n_0 ),
         .Q(msxor_ctd[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1161" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1160" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_cti[0]_i_1__0 
@@ -2349,7 +2353,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(p_14_out[3]),
         .I3(p_14_out[2]),
         .O(\msxor_cti[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1161" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1160" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_cti[1]_i_1__0 
@@ -2358,7 +2362,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(p_14_out[1]),
         .I3(p_14_out[0]),
         .O(\msxor_cti[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1155" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1154" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_cti[1]_i_2__0 
@@ -2368,7 +2372,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(p_0_in17_in),
         .I4(p_0_in52_in),
         .O(p_14_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1156" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1155" *) 
   LUT5 #(
     .INIT(32'h04B00780)) 
     \msxor_cti[1]_i_3__0 
@@ -2378,7 +2382,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_14_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1152" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1151" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_4__0 
@@ -2388,7 +2392,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_14_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1151" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1150" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_5__0 
@@ -2410,7 +2414,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(\msxor_cti[1]_i_1__0_n_0 ),
         .Q(msxor_cti[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1165" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \pd_hold[0]_i_1__0 
@@ -2418,7 +2422,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(delay_change_reg_n_0),
         .I2(inc_run_reg_n_0),
         .O(pdcount1));
-  (* SOFT_HLUTNM = "soft_lutpair1166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1165" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[1]_i_1__0 
@@ -2427,7 +2431,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1157" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1156" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[2]_i_1__0 
@@ -2436,7 +2440,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1158" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1157" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[3]_i_1__0 
@@ -2445,7 +2449,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[3]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1163" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[4]_i_1__0 
@@ -2454,7 +2458,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[4]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1163" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[5]_i_1__0 
@@ -2463,7 +2467,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[5]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1158" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1157" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[6]_i_1__0 
@@ -2480,7 +2484,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[7]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1157" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1156" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[7]_i_2__0 
@@ -2537,7 +2541,7 @@ module la_receiver_0_delay_controller_wrap_0
         .D(\pd_hold[7]_i_2__0_n_0 ),
         .Q(p_0_in),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1154" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1153" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     pd_max_i_1__0
@@ -2547,7 +2551,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(pdcount_reg__0__0[4]),
         .I4(pd_max_i_2__0_n_0),
         .O(pd_max0));
-  (* SOFT_HLUTNM = "soft_lutpair1159" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1158" *) 
   LUT4 #(
     .INIT(16'hFF7F)) 
     pd_max_i_2__0
@@ -2571,7 +2575,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(pdcount_reg__0__0[5]),
         .I4(pd_min_i_2__0_n_0),
         .O(pd_min0));
-  (* SOFT_HLUTNM = "soft_lutpair1159" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1158" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     pd_min_i_2__0
@@ -2591,7 +2595,7 @@ module la_receiver_0_delay_controller_wrap_0
     \pdcount[0]_i_1__0 
        (.I0(pdcount_reg__0__0[0]),
         .O(\pdcount[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1172" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \pdcount[1]_i_1__0 
@@ -2599,7 +2603,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I1(pdcount132_out),
         .I2(pdcount_reg__0__0[1]),
         .O(\pdcount[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1149" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1148" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \pdcount[2]_i_1__0 
@@ -2608,7 +2612,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(pdcount_reg__0__0[2]),
         .I3(pdcount_reg__0__0[1]),
         .O(\pdcount[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1149" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1148" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \pdcount[3]_i_1__0 
@@ -2684,14 +2688,14 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\pdcount[5]_i_8__0_n_0 ),
         .I5(\action_reg_n_0_[0] ),
         .O(\pdcount[5]_i_6__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1172" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_7__0 
        (.I0(pdcount_reg__0__0[1]),
         .I1(pdcount_reg__0__0[0]),
         .O(\pdcount[5]_i_7__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1154" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1153" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_8__0 
@@ -2754,7 +2758,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\s_state[3]_i_1__0_n_0 ),
         .I5(s_delay_mux[1]),
         .O(\s_delay_mux[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1173" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \s_delay_mux[1]_i_2__0 
@@ -2803,7 +2807,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\m_delay_val_int[4]_i_3__0_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1153" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1152" *) 
   LUT5 #(
     .INIT(32'hF1F51050)) 
     \s_delay_val_int[2]_i_2__0 
@@ -2852,7 +2856,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(\m_delay_val_int[4]_i_3__0_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[4]_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1162" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1161" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \s_delay_val_int[4]_i_3__0 
@@ -2861,7 +2865,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I2(s_state[0]),
         .I3(s_state[1]),
         .O(\s_delay_val_int[4]_i_3__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1153" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1152" *) 
   LUT5 #(
     .INIT(32'hA9994440)) 
     \s_delay_val_int[4]_i_4__0 
@@ -2910,7 +2914,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(\m_delay_val_int[4]_i_3__0_n_0 ),
         .I4(not_bs_finished_dom_ch),
         .O(s_ovflw_i_1__0_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1150" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1149" *) 
   LUT5 #(
     .INIT(32'hFFFFEA00)) 
     s_ovflw_i_2__0
@@ -2920,7 +2924,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I3(\m_delay_val_int_reg[3]_0 ),
         .I4(\m_delay_val_int_reg[4]_0 ),
         .O(s_ovflw134_in));
-  (* SOFT_HLUTNM = "soft_lutpair1148" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1147" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     s_ovflw_i_3__0
@@ -2934,20 +2938,20 @@ module la_receiver_0_delay_controller_wrap_0
         .D(s_ovflw_i_1__0_n_0),
         .Q(s_ovflw_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1173" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \s_state[0]_i_1__0 
        (.I0(s_state[0]),
         .O(\s_state[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1168" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \s_state[1]_i_1__0 
        (.I0(s_state[0]),
         .I1(s_state[1]),
         .O(\s_state[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1166" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \s_state[2]_i_1__0 
@@ -2965,7 +2969,7 @@ module la_receiver_0_delay_controller_wrap_0
         .I4(dec_run_reg_n_0),
         .I5(meq_min_reg_n_0),
         .O(\s_state[3]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1164" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \s_state[3]_i_2__0 
@@ -3257,7 +3261,7 @@ module la_receiver_0_delay_controller_wrap_1
   wire \sdataoutc[2]_i_1__1_n_0 ;
   wire \sdataoutc[3]_i_1__1_n_0 ;
 
-  (* SOFT_HLUTNM = "soft_lutpair1190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1189" *) 
   LUT4 #(
     .INIT(16'h4D44)) 
     \action[0]_i_1__1 
@@ -3266,7 +3270,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(msxor_ctd[0]),
         .I3(msxor_cti[0]),
         .O(\action[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1189" *) 
   LUT4 #(
     .INIT(16'h22B2)) 
     \action[1]_i_1__1 
@@ -3303,7 +3307,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(data_mux_i_1__1_n_0),
         .Q(data_mux_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1196" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[0]_i_1__1 
@@ -3311,7 +3315,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[0]),
         .O(\data_out[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1196" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[1]_i_1__1 
@@ -3319,7 +3323,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[1]),
         .O(\data_out[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1197" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[2]_i_1__1 
@@ -3327,7 +3331,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[2]),
         .O(\data_out[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1197" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[3]_i_1__1 
@@ -3385,7 +3389,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(dec_run_i_1__1_n_0),
         .Q(dec_run_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1174" *) 
   LUT5 #(
     .INIT(32'hFFFFCCFE)) 
     delay_change_i_1__1
@@ -3411,7 +3415,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(inc_run_reg_n_0),
         .I5(meq_max),
         .O(inc_run_i_1__1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1195" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     inc_run_i_2__1
@@ -3419,7 +3423,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(s_state[1]),
         .I2(s_state[3]),
         .O(dec_run));
-  (* SOFT_HLUTNM = "soft_lutpair1189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1188" *) 
   LUT4 #(
     .INIT(16'hCFF7)) 
     inc_run_i_3__1
@@ -3453,7 +3457,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(\s_state[3]_i_1__1_n_0 ),
         .I4(m_delay_mux[1]),
         .O(\m_delay_mux[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1193" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_mux[1]_i_2__1 
@@ -3484,14 +3488,14 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\m_delay_val_int[4]_i_5__1_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\m_delay_val_int[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1198" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_2__1 
        (.I0(meq_min_reg_n_0),
         .I1(dec_run_reg_n_0),
         .O(m_delay_val_int1));
-  (* SOFT_HLUTNM = "soft_lutpair1195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1194" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_3__1 
@@ -3584,7 +3588,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\m_delay_val_int_reg[1]_0 ),
         .I5(\m_delay_val_int_reg[3]_0 ),
         .O(\m_delay_val_int[4]_i_2__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1194" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     \m_delay_val_int[4]_i_3__1 
@@ -3612,7 +3616,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\m_delay_val_int[4]_i_3__1_n_0 ),
         .I5(m_delay_val_int130_out),
         .O(\m_delay_val_int[4]_i_5__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1191" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_val_int[4]_i_6__1 
@@ -3741,7 +3745,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(\mdataoutc[3]_i_1__1_n_0 ),
         .Q(mdataoutc[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1176" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     meq_max_i_1__1
@@ -3757,7 +3761,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(meq_max_i_1__1_n_0),
         .Q(meq_max),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1198" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     meq_min_i_1__1
@@ -3781,7 +3785,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(meq_min_i_1__1_n_0),
         .Q(meq_min_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1186" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_ctd[0]_i_1__1 
@@ -3790,7 +3794,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(p_15_out[3]),
         .I3(p_15_out[2]),
         .O(\msxor_ctd[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1186" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_ctd[1]_i_1__1 
@@ -3799,7 +3803,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(p_15_out[1]),
         .I3(p_15_out[0]),
         .O(\msxor_ctd[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1181" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_2__1 
@@ -3809,7 +3813,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(p_0_in14_in),
         .I4(p_0_in52_in),
         .O(p_15_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1182" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_3__1 
@@ -3819,7 +3823,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_15_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1178" *) 
   LUT5 #(
     .INIT(32'h0047B800)) 
     \msxor_ctd[1]_i_4__1 
@@ -3829,7 +3833,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_15_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1177" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_ctd[1]_i_5__1 
@@ -3851,7 +3855,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(\msxor_ctd[1]_i_1__1_n_0 ),
         .Q(msxor_ctd[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1187" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_cti[0]_i_1__1 
@@ -3860,7 +3864,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(p_14_out[3]),
         .I3(p_14_out[2]),
         .O(\msxor_cti[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1187" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_cti[1]_i_1__1 
@@ -3869,7 +3873,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(p_14_out[1]),
         .I3(p_14_out[0]),
         .O(\msxor_cti[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1181" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_cti[1]_i_2__1 
@@ -3879,7 +3883,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(p_0_in17_in),
         .I4(p_0_in52_in),
         .O(p_14_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1182" *) 
   LUT5 #(
     .INIT(32'h04B00780)) 
     \msxor_cti[1]_i_3__1 
@@ -3889,7 +3893,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_14_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1178" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_4__1 
@@ -3899,7 +3903,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_14_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1177" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_5__1 
@@ -3921,7 +3925,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(\msxor_cti[1]_i_1__1_n_0 ),
         .Q(msxor_cti[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1192" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \pd_hold[0]_i_1__1 
@@ -3929,7 +3933,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(delay_change_reg_n_0),
         .I2(inc_run_reg_n_0),
         .O(pdcount1));
-  (* SOFT_HLUTNM = "soft_lutpair1193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1192" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[1]_i_1__1 
@@ -3938,7 +3942,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1183" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[2]_i_1__1 
@@ -3947,7 +3951,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1184" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[3]_i_1__1 
@@ -3956,7 +3960,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[3]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1190" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[4]_i_1__1 
@@ -3965,7 +3969,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[4]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1190" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[5]_i_1__1 
@@ -3974,7 +3978,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[5]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1184" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[6]_i_1__1 
@@ -3991,7 +3995,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[7]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1183" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[7]_i_2__1 
@@ -4048,7 +4052,7 @@ module la_receiver_0_delay_controller_wrap_1
         .D(\pd_hold[7]_i_2__1_n_0 ),
         .Q(p_0_in),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1180" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     pd_max_i_1__1
@@ -4058,7 +4062,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(pdcount_reg__0[4]),
         .I4(pd_max_i_2__1_n_0),
         .O(pd_max0));
-  (* SOFT_HLUTNM = "soft_lutpair1186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1185" *) 
   LUT4 #(
     .INIT(16'hFF7F)) 
     pd_max_i_2__1
@@ -4087,7 +4091,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(pdcount_reg__0[5]),
         .I4(pd_min_i_2__1_n_0),
         .O(pd_min0));
-  (* SOFT_HLUTNM = "soft_lutpair1186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1185" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     pd_min_i_2__1
@@ -4107,7 +4111,7 @@ module la_receiver_0_delay_controller_wrap_1
     \pdcount[0]_i_1__1 
        (.I0(pdcount_reg__0[0]),
         .O(\pdcount[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1199" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \pdcount[1]_i_1__1 
@@ -4115,7 +4119,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I1(pdcount132_out),
         .I2(pdcount_reg__0[1]),
         .O(\pdcount[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1175" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \pdcount[2]_i_1__1 
@@ -4124,7 +4128,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(pdcount_reg__0[2]),
         .I3(pdcount_reg__0[1]),
         .O(\pdcount[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1175" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \pdcount[3]_i_1__1 
@@ -4200,14 +4204,14 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\pdcount[5]_i_8__1_n_0 ),
         .I5(\action_reg_n_0_[0] ),
         .O(\pdcount[5]_i_6__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1199" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_7__1 
        (.I0(pdcount_reg__0[1]),
         .I1(pdcount_reg__0[0]),
         .O(\pdcount[5]_i_7__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1180" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_8__1 
@@ -4270,7 +4274,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\s_state[3]_i_1__1_n_0 ),
         .I5(s_delay_mux[1]),
         .O(\s_delay_mux[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1200" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \s_delay_mux[1]_i_2__1 
@@ -4319,7 +4323,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\m_delay_val_int[4]_i_3__1_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1179" *) 
   LUT5 #(
     .INIT(32'hF1F51050)) 
     \s_delay_val_int[2]_i_2__1 
@@ -4368,7 +4372,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(\m_delay_val_int[4]_i_3__1_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[4]_i_2__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1188" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \s_delay_val_int[4]_i_3__1 
@@ -4377,7 +4381,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I2(s_state[0]),
         .I3(s_state[1]),
         .O(\s_delay_val_int[4]_i_3__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1179" *) 
   LUT5 #(
     .INIT(32'hA9994440)) 
     \s_delay_val_int[4]_i_4__1 
@@ -4426,7 +4430,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(\m_delay_val_int[4]_i_3__1_n_0 ),
         .I4(not_bs_finished_dom_ch),
         .O(s_ovflw_i_1__1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1176" *) 
   LUT5 #(
     .INIT(32'hFFFFEA00)) 
     s_ovflw_i_2__1
@@ -4436,7 +4440,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I3(\m_delay_val_int_reg[3]_0 ),
         .I4(\m_delay_val_int_reg[4]_0 ),
         .O(s_ovflw134_in));
-  (* SOFT_HLUTNM = "soft_lutpair1175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1174" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     s_ovflw_i_3__1
@@ -4450,20 +4454,20 @@ module la_receiver_0_delay_controller_wrap_1
         .D(s_ovflw_i_1__1_n_0),
         .Q(s_ovflw_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1200" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \s_state[0]_i_1__1 
        (.I0(s_state[0]),
         .O(\s_state[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1195" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \s_state[1]_i_1__1 
        (.I0(s_state[0]),
         .I1(s_state[1]),
         .O(\s_state[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1193" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \s_state[2]_i_1__1 
@@ -4481,7 +4485,7 @@ module la_receiver_0_delay_controller_wrap_1
         .I4(dec_run_reg_n_0),
         .I5(meq_min_reg_n_0),
         .O(\s_state[3]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1191" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \s_state[3]_i_2__1 
@@ -4773,7 +4777,7 @@ module la_receiver_0_delay_controller_wrap_2
   wire \sdataoutc[2]_i_1__2_n_0 ;
   wire \sdataoutc[3]_i_1__2_n_0 ;
 
-  (* SOFT_HLUTNM = "soft_lutpair1217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
   LUT4 #(
     .INIT(16'h4D44)) 
     \action[0]_i_1__2 
@@ -4782,7 +4786,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(msxor_ctd[0]),
         .I3(msxor_cti[0]),
         .O(\action[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
   LUT4 #(
     .INIT(16'h22B2)) 
     \action[1]_i_1__2 
@@ -4819,7 +4823,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(data_mux_i_1__2_n_0),
         .Q(data_mux_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[0]_i_1__2 
@@ -4827,7 +4831,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[0]),
         .O(\data_out[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[1]_i_1__2 
@@ -4835,7 +4839,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[1]),
         .O(\data_out[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[2]_i_1__2 
@@ -4843,7 +4847,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(data_mux_reg_n_0),
         .I2(mdataoutc[2]),
         .O(\data_out[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1224" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \data_out[3]_i_1__2 
@@ -4901,7 +4905,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(dec_run_i_1__2_n_0),
         .Q(dec_run_reg_n_0),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1201" *) 
   LUT5 #(
     .INIT(32'hFFFFCCFE)) 
     delay_change_i_1__2
@@ -4927,7 +4931,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(inc_run_reg_n_0),
         .I5(meq_max),
         .O(inc_run_i_1__2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1222" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     inc_run_i_2__2
@@ -4935,7 +4939,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(s_state[1]),
         .I2(s_state[3]),
         .O(dec_run));
-  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
   LUT4 #(
     .INIT(16'hCFF7)) 
     inc_run_i_3__2
@@ -4969,7 +4973,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(\s_state[3]_i_1__2_n_0 ),
         .I4(m_delay_mux[1]),
         .O(\m_delay_mux[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_mux[1]_i_2__2 
@@ -5000,14 +5004,14 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\m_delay_val_int[4]_i_5__2_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\m_delay_val_int[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_2__2 
        (.I0(meq_min_reg_n_0),
         .I1(dec_run_reg_n_0),
         .O(m_delay_val_int1));
-  (* SOFT_HLUTNM = "soft_lutpair1222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \m_delay_val_int[0]_i_3__2 
@@ -5100,7 +5104,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\m_delay_val_int_reg[1]_0 ),
         .I5(\m_delay_val_int_reg[3]_0 ),
         .O(\m_delay_val_int[4]_i_2__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     \m_delay_val_int[4]_i_3__2 
@@ -5128,7 +5132,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\m_delay_val_int[4]_i_3__2_n_0 ),
         .I5(m_delay_val_int130_out),
         .O(\m_delay_val_int[4]_i_5__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
   LUT4 #(
     .INIT(16'h1000)) 
     \m_delay_val_int[4]_i_6__2 
@@ -5257,7 +5261,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(\mdataoutc[3]_i_1__2_n_0 ),
         .Q(mdataoutc[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1203" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     meq_max_i_1__2
@@ -5273,7 +5277,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(meq_max_i_1__2_n_0),
         .Q(meq_max),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1225" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     meq_min_i_1__2
@@ -5297,7 +5301,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(meq_min_i_1__2_n_0),
         .Q(meq_min_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1213" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_ctd[0]_i_1__2 
@@ -5306,7 +5310,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(p_15_out[3]),
         .I3(p_15_out[2]),
         .O(\msxor_ctd[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1213" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_ctd[1]_i_1__2 
@@ -5315,7 +5319,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(p_15_out[1]),
         .I3(p_15_out[0]),
         .O(\msxor_ctd[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1208" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_2__2 
@@ -5325,7 +5329,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(p_0_in14_in),
         .I4(p_0_in52_in),
         .O(p_15_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1209" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_ctd[1]_i_3__2 
@@ -5335,7 +5339,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_15_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1205" *) 
   LUT5 #(
     .INIT(32'h0047B800)) 
     \msxor_ctd[1]_i_4__2 
@@ -5345,7 +5349,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_15_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1204" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_ctd[1]_i_5__2 
@@ -5367,7 +5371,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(\msxor_ctd[1]_i_1__2_n_0 ),
         .Q(msxor_ctd[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1214" *) 
   LUT4 #(
     .INIT(16'hE996)) 
     \msxor_cti[0]_i_1__2 
@@ -5376,7 +5380,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(p_14_out[3]),
         .I3(p_14_out[2]),
         .O(\msxor_cti[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1214" *) 
   LUT4 #(
     .INIT(16'hFEE8)) 
     \msxor_cti[1]_i_1__2 
@@ -5385,7 +5389,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(p_14_out[1]),
         .I3(p_14_out[0]),
         .O(\msxor_cti[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1208" *) 
   LUT5 #(
     .INIT(32'h0B400870)) 
     \msxor_cti[1]_i_2__2 
@@ -5395,7 +5399,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(p_0_in17_in),
         .I4(p_0_in52_in),
         .O(p_14_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1209" *) 
   LUT5 #(
     .INIT(32'h04B00780)) 
     \msxor_cti[1]_i_3__2 
@@ -5405,7 +5409,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(p_0_in17_in),
         .I4(p_0_in64_in),
         .O(p_14_out[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1205" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_4__2 
@@ -5415,7 +5419,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(\mdataouta_reg_n_0_[0] ),
         .I4(p_0_in14_in),
         .O(p_14_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1204" *) 
   LUT5 #(
     .INIT(32'h00B84700)) 
     \msxor_cti[1]_i_5__2 
@@ -5437,7 +5441,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(\msxor_cti[1]_i_1__2_n_0 ),
         .Q(msxor_cti[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \pd_hold[0]_i_1__2 
@@ -5445,7 +5449,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(delay_change_reg_n_0),
         .I2(inc_run_reg_n_0),
         .O(pdcount1));
-  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[1]_i_1__2 
@@ -5454,7 +5458,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1210" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[2]_i_1__2 
@@ -5463,7 +5467,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1211" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[3]_i_1__2 
@@ -5472,7 +5476,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[3]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1217" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[4]_i_1__2 
@@ -5481,7 +5485,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[4]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1217" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[5]_i_1__2 
@@ -5490,7 +5494,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[5]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1211" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[6]_i_1__2 
@@ -5507,7 +5511,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(delay_change_reg_n_0),
         .I3(dec_run_reg_n_0),
         .O(\pd_hold[7]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1210" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \pd_hold[7]_i_2__2 
@@ -5564,7 +5568,7 @@ module la_receiver_0_delay_controller_wrap_2
         .D(\pd_hold[7]_i_2__2_n_0 ),
         .Q(p_0_in),
         .R(not_bs_finished_dom_ch));
-  (* SOFT_HLUTNM = "soft_lutpair1208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1207" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     pd_max_i_1__2
@@ -5574,7 +5578,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(pdcount_reg__0[4]),
         .I4(pd_max_i_2__2_n_0),
         .O(pd_max0));
-  (* SOFT_HLUTNM = "soft_lutpair1213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1212" *) 
   LUT4 #(
     .INIT(16'hFF7F)) 
     pd_max_i_2__2
@@ -5598,7 +5602,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(pdcount_reg__0[5]),
         .I4(pd_min_i_2__2_n_0),
         .O(pd_min0));
-  (* SOFT_HLUTNM = "soft_lutpair1213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1212" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     pd_min_i_2__2
@@ -5618,7 +5622,7 @@ module la_receiver_0_delay_controller_wrap_2
     \pdcount[0]_i_1__2 
        (.I0(pdcount_reg__0[0]),
         .O(\pdcount[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \pdcount[1]_i_1__2 
@@ -5626,7 +5630,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I1(pdcount132_out),
         .I2(pdcount_reg__0[1]),
         .O(\pdcount[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1202" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \pdcount[2]_i_1__2 
@@ -5635,7 +5639,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(pdcount_reg__0[2]),
         .I3(pdcount_reg__0[1]),
         .O(\pdcount[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1202" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \pdcount[3]_i_1__2 
@@ -5711,14 +5715,14 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\pdcount[5]_i_8__2_n_0 ),
         .I5(\action_reg_n_0_[0] ),
         .O(\pdcount[5]_i_6__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1226" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_7__2 
        (.I0(pdcount_reg__0[1]),
         .I1(pdcount_reg__0[0]),
         .O(\pdcount[5]_i_7__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1207" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \pdcount[5]_i_8__2 
@@ -5781,7 +5785,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\s_state[3]_i_1__2_n_0 ),
         .I5(s_delay_mux[1]),
         .O(\s_delay_mux[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \s_delay_mux[1]_i_2__2 
@@ -5830,7 +5834,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\m_delay_val_int[4]_i_3__2_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1206" *) 
   LUT5 #(
     .INIT(32'hF1F51050)) 
     \s_delay_val_int[2]_i_2__2 
@@ -5879,7 +5883,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(\m_delay_val_int[4]_i_3__2_n_0 ),
         .I5(not_bs_finished_dom_ch),
         .O(\s_delay_val_int[4]_i_2__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1215" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \s_delay_val_int[4]_i_3__2 
@@ -5888,7 +5892,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I2(s_state[0]),
         .I3(s_state[1]),
         .O(\s_delay_val_int[4]_i_3__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1206" *) 
   LUT5 #(
     .INIT(32'hA9994440)) 
     \s_delay_val_int[4]_i_4__2 
@@ -5937,7 +5941,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(\m_delay_val_int[4]_i_3__2_n_0 ),
         .I4(not_bs_finished_dom_ch),
         .O(s_ovflw_i_1__2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1203" *) 
   LUT5 #(
     .INIT(32'hFFFFEA00)) 
     s_ovflw_i_2__2
@@ -5947,7 +5951,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I3(\m_delay_val_int_reg[3]_0 ),
         .I4(\m_delay_val_int_reg[4]_0 ),
         .O(s_ovflw134_in));
-  (* SOFT_HLUTNM = "soft_lutpair1202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1201" *) 
   LUT3 #(
     .INIT(8'hBA)) 
     s_ovflw_i_3__2
@@ -5961,20 +5965,20 @@ module la_receiver_0_delay_controller_wrap_2
         .D(s_ovflw_i_1__2_n_0),
         .Q(s_ovflw_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1227" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \s_state[0]_i_1__2 
        (.I0(s_state[0]),
         .O(\s_state[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1222" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \s_state[1]_i_1__2 
        (.I0(s_state[0]),
         .I1(s_state[1]),
         .O(\s_state[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1220" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \s_state[2]_i_1__2 
@@ -5992,7 +5996,7 @@ module la_receiver_0_delay_controller_wrap_2
         .I4(dec_run_reg_n_0),
         .I5(meq_min_reg_n_0),
         .O(\s_state[3]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1218" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \s_state[3]_i_2__2 
@@ -6280,7 +6284,7 @@ module la_receiver_0_gearbox_4_to_7
         .I4(Q[4]),
         .I5(dataout[32]),
         .O(data_different_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1108" *) 
   LUT5 #(
     .INIT(32'h7FFFFFFE)) 
     data_different_i_4
@@ -6297,7 +6301,7 @@ module la_receiver_0_gearbox_4_to_7
         .I1(dataout[34]),
         .I2(dataout[33]),
         .O(data_different_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1118" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1117" *) 
   LUT4 #(
     .INIT(16'h4000)) 
     flag1_i_2
@@ -6306,7 +6310,7 @@ module la_receiver_0_gearbox_4_to_7
         .I2(dataout[34]),
         .I3(dataout[28]),
         .O(flag1_reg));
-  (* SOFT_HLUTNM = "soft_lutpair1118" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1117" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     flag2_i_2
@@ -6315,7 +6319,7 @@ module la_receiver_0_gearbox_4_to_7
         .I2(dataout[33]),
         .I3(dataout[34]),
         .O(flag2_reg_0));
-  (* SOFT_HLUTNM = "soft_lutpair1109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1108" *) 
   LUT3 #(
     .INIT(8'h01)) 
     flag2_i_3
@@ -7131,7 +7135,7 @@ module la_receiver_0_gearbox_4_to_7
         .DOD(dummy_18),
         .WCLK(\c_delay_in_reg[4] ),
         .WE(1'b1));
-  (* SOFT_HLUTNM = "soft_lutpair1120" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1119" *) 
   LUT3 #(
     .INIT(8'hD1)) 
     \mux[0]_i_1 
@@ -7139,7 +7143,7 @@ module la_receiver_0_gearbox_4_to_7
         .I1(\reset_out_reg_n_0_[1] ),
         .I2(mux[0]),
         .O(\mux[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1110" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1109" *) 
   LUT5 #(
     .INIT(32'hF6EDFB76)) 
     \mux[0]_i_2 
@@ -7149,7 +7153,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[3]),
         .I4(jog_int),
         .O(\mux[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1120" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1119" *) 
   LUT3 #(
     .INIT(8'hE2)) 
     \mux[1]_i_1 
@@ -7157,7 +7161,7 @@ module la_receiver_0_gearbox_4_to_7
         .I1(\reset_out_reg_n_0_[1] ),
         .I2(mux[1]),
         .O(\mux[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1110" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1109" *) 
   LUT5 #(
     .INIT(32'h01A4005A)) 
     \mux[1]_i_2 
@@ -7184,7 +7188,7 @@ module la_receiver_0_gearbox_4_to_7
     \packet_buf0[23]_i_1 
        (.I0(dataout[27]),
         .O(E));
-  (* SOFT_HLUTNM = "soft_lutpair1112" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1111" *) 
   LUT5 #(
     .INIT(32'hFF00E171)) 
     \read_addra[0]_i_1 
@@ -7194,7 +7198,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(jog_int),
         .I4(read_addra[3]),
         .O(p_0_out[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1115" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1114" *) 
   LUT5 #(
     .INIT(32'h01022212)) 
     \read_addra[1]_i_1 
@@ -7204,7 +7208,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(jog_int),
         .I4(read_addra[2]),
         .O(p_0_out[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1111" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1110" *) 
   LUT5 #(
     .INIT(32'h00960600)) 
     \read_addra[2]_i_1 
@@ -7214,7 +7218,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[2]),
         .I4(read_addra[1]),
         .O(p_0_out[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1113" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1112" *) 
   LUT5 #(
     .INIT(32'h00609D00)) 
     \read_addra[3]_i_1 
@@ -7248,7 +7252,7 @@ module la_receiver_0_gearbox_4_to_7
         .D(p_0_out[3]),
         .Q(read_addra[3]),
         .R(\reset_out_reg_n_0_[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair1114" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1113" *) 
   LUT5 #(
     .INIT(32'h57474764)) 
     \read_addrb[0]_i_1 
@@ -7258,7 +7262,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[2]),
         .I4(read_addra[1]),
         .O(\read_addrb[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1115" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1114" *) 
   LUT5 #(
     .INIT(32'hA8AA382F)) 
     \read_addrb[1]_i_1 
@@ -7268,7 +7272,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[1]),
         .I4(read_addra[2]),
         .O(\read_addrb[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1116" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1115" *) 
   LUT5 #(
     .INIT(32'h00160482)) 
     \read_addrb[2]_i_1 
@@ -7278,7 +7282,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[2]),
         .I4(read_addra[1]),
         .O(\read_addrb[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1116" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1115" *) 
   LUT5 #(
     .INIT(32'h00384700)) 
     \read_addrb[3]_i_1 
@@ -7312,7 +7316,7 @@ module la_receiver_0_gearbox_4_to_7
         .D(\read_addrb[3]_i_1_n_0 ),
         .Q(read_addrb[3]),
         .R(\reset_out_reg_n_0_[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair1112" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1111" *) 
   LUT5 #(
     .INIT(32'hFF02E171)) 
     \read_addrc[0]_i_1 
@@ -7322,7 +7326,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(jog_int),
         .I4(read_addra[3]),
         .O(\read_addrc[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1114" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1113" *) 
   LUT5 #(
     .INIT(32'hCFEAFCBF)) 
     \read_addrc[1]_i_1 
@@ -7332,7 +7336,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(read_addra[3]),
         .I4(read_addra[0]),
         .O(\read_addrc[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1111" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1110" *) 
   LUT5 #(
     .INIT(32'h02111222)) 
     \read_addrc[2]_i_1 
@@ -7342,7 +7346,7 @@ module la_receiver_0_gearbox_4_to_7
         .I3(jog_int),
         .I4(read_addra[3]),
         .O(\read_addrc[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1113" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1112" *) 
   LUT5 #(
     .INIT(32'h01600D60)) 
     \read_addrc[3]_i_1 
@@ -7382,7 +7386,7 @@ module la_receiver_0_gearbox_4_to_7
         .D(read_enable),
         .Q(read_enable_dom_ch),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1117" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1116" *) 
   LUT5 #(
     .INIT(32'hFFFF1000)) 
     read_enable_i_1
@@ -7421,7 +7425,7 @@ module la_receiver_0_gearbox_4_to_7
     \write_addr[0]_i_1 
        (.I0(write_addr[0]),
         .O(\write_addr[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1117" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1116" *) 
   LUT4 #(
     .INIT(16'h2666)) 
     \write_addr[1]_i_1 
@@ -7430,7 +7434,7 @@ module la_receiver_0_gearbox_4_to_7
         .I2(write_addr[2]),
         .I3(write_addr[3]),
         .O(\write_addr[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1119" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1118" *) 
   LUT4 #(
     .INIT(16'h3878)) 
     \write_addr[2]_i_1 
@@ -7439,7 +7443,7 @@ module la_receiver_0_gearbox_4_to_7
         .I2(write_addr[2]),
         .I3(write_addr[3]),
         .O(\write_addr[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1119" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1118" *) 
   LUT4 #(
     .INIT(16'h3F80)) 
     \write_addr[3]_i_1 
@@ -7477,33 +7481,42 @@ endmodule
 (* ORIG_REF_NAME = "interpreter" *) 
 module la_receiver_0_interpreter
    (raw_signal_update,
+    sampler_idle,
     \buf_idx_reg[2]_0 ,
     \buf_idx_reg[2]_1 ,
     raw_signal_result,
     Q,
     pixel_clk,
     \shifter_reg[15] ,
-    update,
-    \packet_buf0_reg[25] ,
+    update1_out,
+    \packet_buf0_reg[24] ,
     \packet_buf0_reg[26] ,
     \packet_buf0_reg[26]_0 ,
-    \packet_buf0_reg[25]_0 ,
+    \packet_buf0_reg[26]_1 ,
+    valid_reg,
+    \packet_buf0_reg[24]_0 ,
+    acq_data_valid,
     \packet_buf1_reg[23] );
   output raw_signal_update;
+  output sampler_idle;
   output \buf_idx_reg[2]_0 ;
   output \buf_idx_reg[2]_1 ;
   output [255:0]raw_signal_result;
   input [0:0]Q;
   input pixel_clk;
   input \shifter_reg[15] ;
-  input update;
-  input \packet_buf0_reg[25] ;
+  input update1_out;
+  input \packet_buf0_reg[24] ;
   input \packet_buf0_reg[26] ;
-  input [25:0]\packet_buf0_reg[26]_0 ;
-  input \packet_buf0_reg[25]_0 ;
+  input \packet_buf0_reg[26]_0 ;
+  input [25:0]\packet_buf0_reg[26]_1 ;
+  input valid_reg;
+  input \packet_buf0_reg[24]_0 ;
+  input acq_data_valid;
   input [23:0]\packet_buf1_reg[23] ;
 
   wire [0:0]Q;
+  wire acq_data_valid;
   wire [15:13]bitset_buf;
   wire \bitset_buf_reg[15]_rep_n_0 ;
   wire bitset_buf_reg_c_n_0;
@@ -7877,10 +7890,11 @@ module la_receiver_0_interpreter
   wire [47:0]p_0_in_8;
   wire [63:0]p_0_in_9;
   wire [31:0]p_6_out;
-  wire \packet_buf0_reg[25] ;
-  wire \packet_buf0_reg[25]_0 ;
+  wire \packet_buf0_reg[24] ;
+  wire \packet_buf0_reg[24]_0 ;
   wire \packet_buf0_reg[26] ;
-  wire [25:0]\packet_buf0_reg[26]_0 ;
+  wire \packet_buf0_reg[26]_0 ;
+  wire [25:0]\packet_buf0_reg[26]_1 ;
   wire [23:0]\packet_buf1_reg[23] ;
   wire \payload_buf[0][47]_i_1_n_0 ;
   wire \payload_buf[1][47]_i_1_n_0 ;
@@ -7912,13 +7926,15 @@ module la_receiver_0_interpreter
   wire pixel_clk;
   wire [255:0]raw_signal_result;
   wire raw_signal_update;
+  wire sampler_idle;
   wire \shifter_reg[15] ;
   wire [255:0]\unzip_pipeline[0]_0 ;
   wire [31:16]\unzip_pipeline[1]_33 ;
   wire update;
+  wire update1_out;
   wire \update_pipeline_reg[0]_1 ;
   wire \update_pipeline_reg[1]_srl16_n_0 ;
-  wire update_reg_n_0;
+  wire valid_reg;
 
   FDCE \bitset_buf_reg[13] 
        (.C(pixel_clk),
@@ -7953,26 +7969,26 @@ module la_receiver_0_interpreter
         .D(1'b1),
         .Q(bitset_buf_reg_c_n_0));
   LUT6 #(
-    .INIT(64'h0777FFFF08880000)) 
+    .INIT(64'h153FFFFF2A000000)) 
     \buf_idx[2]_i_1 
        (.I0(\buf_idx_reg[2]_1 ),
-        .I1(\buf_idx_reg[2]_0 ),
-        .I2(\packet_buf0_reg[26]_0 [25]),
-        .I3(\packet_buf0_reg[26]_0 [24]),
-        .I4(\packet_buf0_reg[25]_0 ),
+        .I1(\packet_buf0_reg[26]_1 [24]),
+        .I2(\packet_buf0_reg[26]_1 [25]),
+        .I3(\buf_idx_reg[2]_0 ),
+        .I4(valid_reg),
         .I5(\buf_idx_reg_n_0_[2] ),
         .O(\buf_idx[2]_i_1_n_0 ));
   FDCE \buf_idx_reg[0] 
        (.C(pixel_clk),
         .CE(1'b1),
         .CLR(\shifter_reg[15] ),
-        .D(\packet_buf0_reg[26] ),
+        .D(\packet_buf0_reg[26]_0 ),
         .Q(\buf_idx_reg[2]_1 ));
   FDCE \buf_idx_reg[1] 
        (.C(pixel_clk),
         .CE(1'b1),
         .CLR(\shifter_reg[15] ),
-        .D(\packet_buf0_reg[25] ),
+        .D(\packet_buf0_reg[26] ),
         .Q(\buf_idx_reg[2]_0 ));
   FDCE \buf_idx_reg[2] 
        (.C(pixel_clk),
@@ -12007,59 +12023,65 @@ module la_receiver_0_interpreter
        (.I0(\gen_unzip[14].pipeline_n_0 ),
         .I1(gen_unzip_c_0_n_0),
         .O(gen_unzip_gate_rep_n_0));
-  LUT5 #(
-    .INIT(32'h01000000)) 
+  LUT6 #(
+    .INIT(64'h0000002000000000)) 
     \payload_buf[0][47]_i_1 
-       (.I0(\buf_idx_reg_n_0_[2] ),
-        .I1(\buf_idx_reg[2]_1 ),
-        .I2(\buf_idx_reg[2]_0 ),
-        .I3(\packet_buf0_reg[25]_0 ),
-        .I4(Q),
-        .O(\payload_buf[0][47]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h04000000)) 
-    \payload_buf[1][47]_i_1 
-       (.I0(\buf_idx_reg_n_0_[2] ),
-        .I1(\buf_idx_reg[2]_1 ),
-        .I2(\buf_idx_reg[2]_0 ),
-        .I3(\packet_buf0_reg[25]_0 ),
-        .I4(Q),
-        .O(\payload_buf[1][47]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h04000000)) 
-    \payload_buf[2][47]_i_1 
-       (.I0(\buf_idx_reg[2]_1 ),
+       (.I0(Q),
         .I1(\buf_idx_reg[2]_0 ),
-        .I2(\buf_idx_reg_n_0_[2] ),
-        .I3(Q),
-        .I4(\packet_buf0_reg[25]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
+        .O(\payload_buf[0][47]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000200000000000)) 
+    \payload_buf[1][47]_i_1 
+       (.I0(Q),
+        .I1(\buf_idx_reg[2]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
+        .O(\payload_buf[1][47]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000008000000000)) 
+    \payload_buf[2][47]_i_1 
+       (.I0(Q),
+        .I1(\buf_idx_reg[2]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
         .O(\payload_buf[2][47]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h40000000)) 
+  LUT6 #(
+    .INIT(64'h0000800000000000)) 
     \payload_buf[3][47]_i_1 
-       (.I0(\buf_idx_reg_n_0_[2] ),
-        .I1(\buf_idx_reg[2]_1 ),
-        .I2(\buf_idx_reg[2]_0 ),
-        .I3(Q),
-        .I4(\packet_buf0_reg[25]_0 ),
+       (.I0(Q),
+        .I1(\buf_idx_reg[2]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
         .O(\payload_buf[3][47]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h04000000)) 
+  LUT6 #(
+    .INIT(64'h0020000000000000)) 
     \payload_buf[4][47]_i_1 
-       (.I0(\buf_idx_reg[2]_1 ),
-        .I1(\buf_idx_reg_n_0_[2] ),
-        .I2(\buf_idx_reg[2]_0 ),
-        .I3(\packet_buf0_reg[25]_0 ),
-        .I4(Q),
+       (.I0(Q),
+        .I1(\buf_idx_reg[2]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
         .O(\payload_buf[4][47]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h08000000)) 
+  LUT6 #(
+    .INIT(64'h2000000000000000)) 
     \payload_buf[5][31]_i_1 
-       (.I0(\buf_idx_reg_n_0_[2] ),
-        .I1(\buf_idx_reg[2]_1 ),
-        .I2(\buf_idx_reg[2]_0 ),
-        .I3(\packet_buf0_reg[25]_0 ),
-        .I4(Q),
+       (.I0(Q),
+        .I1(\buf_idx_reg[2]_0 ),
+        .I2(\packet_buf0_reg[24]_0 ),
+        .I3(\buf_idx_reg[2]_1 ),
+        .I4(\buf_idx_reg_n_0_[2] ),
+        .I5(acq_data_valid),
         .O(\payload_buf[5][31]_i_1_n_0 ));
   FDRE \payload_buf_reg[0][0] 
        (.C(pixel_clk),
@@ -12160,37 +12182,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[0][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(p_6_out[8]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(p_6_out[9]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(p_6_out[10]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(p_6_out[11]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(p_6_out[12]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(p_6_out[13]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][2] 
@@ -12202,61 +12224,61 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[0][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(p_6_out[14]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(p_6_out[15]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][32] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [8]),
+        .D(\packet_buf0_reg[26]_1 [8]),
         .Q(p_6_out[16]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][33] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [9]),
+        .D(\packet_buf0_reg[26]_1 [9]),
         .Q(p_6_out[17]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][34] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [10]),
+        .D(\packet_buf0_reg[26]_1 [10]),
         .Q(p_6_out[18]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][35] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [11]),
+        .D(\packet_buf0_reg[26]_1 [11]),
         .Q(p_6_out[19]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][36] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [12]),
+        .D(\packet_buf0_reg[26]_1 [12]),
         .Q(p_6_out[20]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][37] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [13]),
+        .D(\packet_buf0_reg[26]_1 [13]),
         .Q(p_6_out[21]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][38] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [14]),
+        .D(\packet_buf0_reg[26]_1 [14]),
         .Q(p_6_out[22]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][39] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [15]),
+        .D(\packet_buf0_reg[26]_1 [15]),
         .Q(p_6_out[23]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][3] 
@@ -12268,49 +12290,49 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[0][40] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [16]),
+        .D(\packet_buf0_reg[26]_1 [16]),
         .Q(p_6_out[24]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][41] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [17]),
+        .D(\packet_buf0_reg[26]_1 [17]),
         .Q(p_6_out[25]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][42] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [18]),
+        .D(\packet_buf0_reg[26]_1 [18]),
         .Q(p_6_out[26]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][43] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [19]),
+        .D(\packet_buf0_reg[26]_1 [19]),
         .Q(p_6_out[27]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][44] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [20]),
+        .D(\packet_buf0_reg[26]_1 [20]),
         .Q(p_6_out[28]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][45] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [21]),
+        .D(\packet_buf0_reg[26]_1 [21]),
         .Q(p_6_out[29]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][46] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [22]),
+        .D(\packet_buf0_reg[26]_1 [22]),
         .Q(p_6_out[30]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][47] 
        (.C(pixel_clk),
         .CE(\payload_buf[0][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [23]),
+        .D(\packet_buf0_reg[26]_1 [23]),
         .Q(p_6_out[31]),
         .R(1'b0));
   FDRE \payload_buf_reg[0][4] 
@@ -12448,37 +12470,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[1][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(\payload_buf_reg[1]_34 [24]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(\payload_buf_reg[1]_34 [25]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(\payload_buf_reg[1]_34 [26]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(\payload_buf_reg[1]_34 [27]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(\payload_buf_reg[1]_34 [28]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(\payload_buf_reg[1]_34 [29]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][2] 
@@ -12490,61 +12512,61 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[1][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(\payload_buf_reg[1]_34 [30]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(\payload_buf_reg[1]_34 [31]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][32] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [8]),
+        .D(\packet_buf0_reg[26]_1 [8]),
         .Q(\payload_buf_reg[1]_34 [32]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][33] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [9]),
+        .D(\packet_buf0_reg[26]_1 [9]),
         .Q(\payload_buf_reg[1]_34 [33]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][34] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [10]),
+        .D(\packet_buf0_reg[26]_1 [10]),
         .Q(\payload_buf_reg[1]_34 [34]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][35] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [11]),
+        .D(\packet_buf0_reg[26]_1 [11]),
         .Q(\payload_buf_reg[1]_34 [35]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][36] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [12]),
+        .D(\packet_buf0_reg[26]_1 [12]),
         .Q(\payload_buf_reg[1]_34 [36]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][37] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [13]),
+        .D(\packet_buf0_reg[26]_1 [13]),
         .Q(\payload_buf_reg[1]_34 [37]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][38] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [14]),
+        .D(\packet_buf0_reg[26]_1 [14]),
         .Q(\payload_buf_reg[1]_34 [38]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][39] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [15]),
+        .D(\packet_buf0_reg[26]_1 [15]),
         .Q(\payload_buf_reg[1]_34 [39]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][3] 
@@ -12556,49 +12578,49 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[1][40] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [16]),
+        .D(\packet_buf0_reg[26]_1 [16]),
         .Q(\payload_buf_reg[1]_34 [40]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][41] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [17]),
+        .D(\packet_buf0_reg[26]_1 [17]),
         .Q(\payload_buf_reg[1]_34 [41]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][42] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [18]),
+        .D(\packet_buf0_reg[26]_1 [18]),
         .Q(\payload_buf_reg[1]_34 [42]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][43] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [19]),
+        .D(\packet_buf0_reg[26]_1 [19]),
         .Q(\payload_buf_reg[1]_34 [43]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][44] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [20]),
+        .D(\packet_buf0_reg[26]_1 [20]),
         .Q(\payload_buf_reg[1]_34 [44]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][45] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [21]),
+        .D(\packet_buf0_reg[26]_1 [21]),
         .Q(\payload_buf_reg[1]_34 [45]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][46] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [22]),
+        .D(\packet_buf0_reg[26]_1 [22]),
         .Q(\payload_buf_reg[1]_34 [46]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][47] 
        (.C(pixel_clk),
         .CE(\payload_buf[1][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [23]),
+        .D(\packet_buf0_reg[26]_1 [23]),
         .Q(\payload_buf_reg[1]_34 [47]),
         .R(1'b0));
   FDRE \payload_buf_reg[1][4] 
@@ -12736,37 +12758,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[2][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(\payload_buf_reg[2]_35 [24]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(\payload_buf_reg[2]_35 [25]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(\payload_buf_reg[2]_35 [26]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(\payload_buf_reg[2]_35 [27]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(\payload_buf_reg[2]_35 [28]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(\payload_buf_reg[2]_35 [29]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][2] 
@@ -12778,61 +12800,61 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[2][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(\payload_buf_reg[2]_35 [30]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(\payload_buf_reg[2]_35 [31]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][32] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [8]),
+        .D(\packet_buf0_reg[26]_1 [8]),
         .Q(\payload_buf_reg[2]_35 [32]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][33] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [9]),
+        .D(\packet_buf0_reg[26]_1 [9]),
         .Q(\payload_buf_reg[2]_35 [33]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][34] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [10]),
+        .D(\packet_buf0_reg[26]_1 [10]),
         .Q(\payload_buf_reg[2]_35 [34]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][35] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [11]),
+        .D(\packet_buf0_reg[26]_1 [11]),
         .Q(\payload_buf_reg[2]_35 [35]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][36] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [12]),
+        .D(\packet_buf0_reg[26]_1 [12]),
         .Q(\payload_buf_reg[2]_35 [36]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][37] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [13]),
+        .D(\packet_buf0_reg[26]_1 [13]),
         .Q(\payload_buf_reg[2]_35 [37]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][38] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [14]),
+        .D(\packet_buf0_reg[26]_1 [14]),
         .Q(\payload_buf_reg[2]_35 [38]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][39] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [15]),
+        .D(\packet_buf0_reg[26]_1 [15]),
         .Q(\payload_buf_reg[2]_35 [39]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][3] 
@@ -12844,49 +12866,49 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[2][40] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [16]),
+        .D(\packet_buf0_reg[26]_1 [16]),
         .Q(\payload_buf_reg[2]_35 [40]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][41] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [17]),
+        .D(\packet_buf0_reg[26]_1 [17]),
         .Q(\payload_buf_reg[2]_35 [41]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][42] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [18]),
+        .D(\packet_buf0_reg[26]_1 [18]),
         .Q(\payload_buf_reg[2]_35 [42]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][43] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [19]),
+        .D(\packet_buf0_reg[26]_1 [19]),
         .Q(\payload_buf_reg[2]_35 [43]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][44] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [20]),
+        .D(\packet_buf0_reg[26]_1 [20]),
         .Q(\payload_buf_reg[2]_35 [44]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][45] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [21]),
+        .D(\packet_buf0_reg[26]_1 [21]),
         .Q(\payload_buf_reg[2]_35 [45]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][46] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [22]),
+        .D(\packet_buf0_reg[26]_1 [22]),
         .Q(\payload_buf_reg[2]_35 [46]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][47] 
        (.C(pixel_clk),
         .CE(\payload_buf[2][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [23]),
+        .D(\packet_buf0_reg[26]_1 [23]),
         .Q(\payload_buf_reg[2]_35 [47]),
         .R(1'b0));
   FDRE \payload_buf_reg[2][4] 
@@ -13024,37 +13046,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[3][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(\payload_buf_reg[3]_36 [24]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(\payload_buf_reg[3]_36 [25]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(\payload_buf_reg[3]_36 [26]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(\payload_buf_reg[3]_36 [27]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(\payload_buf_reg[3]_36 [28]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(\payload_buf_reg[3]_36 [29]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][2] 
@@ -13066,61 +13088,61 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[3][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(\payload_buf_reg[3]_36 [30]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(\payload_buf_reg[3]_36 [31]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][32] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [8]),
+        .D(\packet_buf0_reg[26]_1 [8]),
         .Q(\payload_buf_reg[3]_36 [32]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][33] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [9]),
+        .D(\packet_buf0_reg[26]_1 [9]),
         .Q(\payload_buf_reg[3]_36 [33]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][34] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [10]),
+        .D(\packet_buf0_reg[26]_1 [10]),
         .Q(\payload_buf_reg[3]_36 [34]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][35] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [11]),
+        .D(\packet_buf0_reg[26]_1 [11]),
         .Q(\payload_buf_reg[3]_36 [35]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][36] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [12]),
+        .D(\packet_buf0_reg[26]_1 [12]),
         .Q(\payload_buf_reg[3]_36 [36]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][37] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [13]),
+        .D(\packet_buf0_reg[26]_1 [13]),
         .Q(\payload_buf_reg[3]_36 [37]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][38] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [14]),
+        .D(\packet_buf0_reg[26]_1 [14]),
         .Q(\payload_buf_reg[3]_36 [38]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][39] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [15]),
+        .D(\packet_buf0_reg[26]_1 [15]),
         .Q(\payload_buf_reg[3]_36 [39]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][3] 
@@ -13132,49 +13154,49 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[3][40] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [16]),
+        .D(\packet_buf0_reg[26]_1 [16]),
         .Q(\payload_buf_reg[3]_36 [40]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][41] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [17]),
+        .D(\packet_buf0_reg[26]_1 [17]),
         .Q(\payload_buf_reg[3]_36 [41]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][42] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [18]),
+        .D(\packet_buf0_reg[26]_1 [18]),
         .Q(\payload_buf_reg[3]_36 [42]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][43] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [19]),
+        .D(\packet_buf0_reg[26]_1 [19]),
         .Q(\payload_buf_reg[3]_36 [43]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][44] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [20]),
+        .D(\packet_buf0_reg[26]_1 [20]),
         .Q(\payload_buf_reg[3]_36 [44]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][45] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [21]),
+        .D(\packet_buf0_reg[26]_1 [21]),
         .Q(\payload_buf_reg[3]_36 [45]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][46] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [22]),
+        .D(\packet_buf0_reg[26]_1 [22]),
         .Q(\payload_buf_reg[3]_36 [46]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][47] 
        (.C(pixel_clk),
         .CE(\payload_buf[3][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [23]),
+        .D(\packet_buf0_reg[26]_1 [23]),
         .Q(\payload_buf_reg[3]_36 [47]),
         .R(1'b0));
   FDRE \payload_buf_reg[3][4] 
@@ -13312,37 +13334,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[4][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(\payload_buf_reg[4]_37 [24]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(\payload_buf_reg[4]_37 [25]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(\payload_buf_reg[4]_37 [26]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(\payload_buf_reg[4]_37 [27]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(\payload_buf_reg[4]_37 [28]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(\payload_buf_reg[4]_37 [29]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][2] 
@@ -13354,61 +13376,61 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[4][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(\payload_buf_reg[4]_37 [30]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(\payload_buf_reg[4]_37 [31]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][32] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [8]),
+        .D(\packet_buf0_reg[26]_1 [8]),
         .Q(\payload_buf_reg[4]_37 [32]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][33] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [9]),
+        .D(\packet_buf0_reg[26]_1 [9]),
         .Q(\payload_buf_reg[4]_37 [33]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][34] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [10]),
+        .D(\packet_buf0_reg[26]_1 [10]),
         .Q(\payload_buf_reg[4]_37 [34]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][35] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [11]),
+        .D(\packet_buf0_reg[26]_1 [11]),
         .Q(\payload_buf_reg[4]_37 [35]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][36] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [12]),
+        .D(\packet_buf0_reg[26]_1 [12]),
         .Q(\payload_buf_reg[4]_37 [36]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][37] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [13]),
+        .D(\packet_buf0_reg[26]_1 [13]),
         .Q(\payload_buf_reg[4]_37 [37]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][38] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [14]),
+        .D(\packet_buf0_reg[26]_1 [14]),
         .Q(\payload_buf_reg[4]_37 [38]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][39] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [15]),
+        .D(\packet_buf0_reg[26]_1 [15]),
         .Q(\payload_buf_reg[4]_37 [39]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][3] 
@@ -13420,49 +13442,49 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[4][40] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [16]),
+        .D(\packet_buf0_reg[26]_1 [16]),
         .Q(\payload_buf_reg[4]_37 [40]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][41] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [17]),
+        .D(\packet_buf0_reg[26]_1 [17]),
         .Q(\payload_buf_reg[4]_37 [41]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][42] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [18]),
+        .D(\packet_buf0_reg[26]_1 [18]),
         .Q(\payload_buf_reg[4]_37 [42]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][43] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [19]),
+        .D(\packet_buf0_reg[26]_1 [19]),
         .Q(\payload_buf_reg[4]_37 [43]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][44] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [20]),
+        .D(\packet_buf0_reg[26]_1 [20]),
         .Q(\payload_buf_reg[4]_37 [44]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][45] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [21]),
+        .D(\packet_buf0_reg[26]_1 [21]),
         .Q(\payload_buf_reg[4]_37 [45]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][46] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [22]),
+        .D(\packet_buf0_reg[26]_1 [22]),
         .Q(\payload_buf_reg[4]_37 [46]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][47] 
        (.C(pixel_clk),
         .CE(\payload_buf[4][47]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [23]),
+        .D(\packet_buf0_reg[26]_1 [23]),
         .Q(\payload_buf_reg[4]_37 [47]),
         .R(1'b0));
   FDRE \payload_buf_reg[4][4] 
@@ -13600,37 +13622,37 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[5][24] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [0]),
+        .D(\packet_buf0_reg[26]_1 [0]),
         .Q(\payload_buf_reg[5]_38 [24]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][25] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [1]),
+        .D(\packet_buf0_reg[26]_1 [1]),
         .Q(\payload_buf_reg[5]_38 [25]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][26] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [2]),
+        .D(\packet_buf0_reg[26]_1 [2]),
         .Q(\payload_buf_reg[5]_38 [26]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][27] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [3]),
+        .D(\packet_buf0_reg[26]_1 [3]),
         .Q(\payload_buf_reg[5]_38 [27]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][28] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [4]),
+        .D(\packet_buf0_reg[26]_1 [4]),
         .Q(\payload_buf_reg[5]_38 [28]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][29] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [5]),
+        .D(\packet_buf0_reg[26]_1 [5]),
         .Q(\payload_buf_reg[5]_38 [29]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][2] 
@@ -13642,13 +13664,13 @@ module la_receiver_0_interpreter
   FDRE \payload_buf_reg[5][30] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [6]),
+        .D(\packet_buf0_reg[26]_1 [6]),
         .Q(\payload_buf_reg[5]_38 [30]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][31] 
        (.C(pixel_clk),
         .CE(\payload_buf[5][31]_i_1_n_0 ),
-        .D(\packet_buf0_reg[26]_0 [7]),
+        .D(\packet_buf0_reg[26]_1 [7]),
         .Q(\payload_buf_reg[5]_38 [31]),
         .R(1'b0));
   FDRE \payload_buf_reg[5][3] 
@@ -13693,6 +13715,12 @@ module la_receiver_0_interpreter
         .D(\packet_buf1_reg[23] [9]),
         .Q(\payload_buf_reg[5]_38 [9]),
         .R(1'b0));
+  FDPE sampler_idle_reg
+       (.C(pixel_clk),
+        .CE(1'b1),
+        .D(\packet_buf0_reg[24] ),
+        .PRE(\shifter_reg[15] ),
+        .Q(sampler_idle));
   FDRE \update_pipeline_reg[0] 
        (.C(pixel_clk),
         .CE(Q),
@@ -13708,14 +13736,14 @@ module la_receiver_0_interpreter
         .A3(1'b1),
         .CE(Q),
         .CLK(pixel_clk),
-        .D(update_reg_n_0),
+        .D(update),
         .Q(\update_pipeline_reg[1]_srl16_n_0 ));
   FDCE update_reg
        (.C(pixel_clk),
         .CE(1'b1),
         .CLR(\shifter_reg[15] ),
-        .D(update),
-        .Q(update_reg_n_0));
+        .D(update1_out),
+        .Q(update));
 endmodule
 
 (* ORIG_REF_NAME = "la_receiver" *) 
@@ -13724,8 +13752,9 @@ module la_receiver_0_la_receiver
     lock_level,
     raw_signal_result,
     raw_signal_update,
-    acq_data_out,
     acq_data_valid,
+    sampler_idle,
+    acq_data_out,
     refclkin,
     reset,
     clkin1_p,
@@ -13736,8 +13765,9 @@ module la_receiver_0_la_receiver
   output [2:0]lock_level;
   output [255:0]raw_signal_result;
   output raw_signal_update;
-  output [47:0]acq_data_out;
   output acq_data_valid;
+  output sampler_idle;
+  output [50:0]acq_data_out;
   input refclkin;
   input reset;
   input clkin1_p;
@@ -13745,18 +13775,20 @@ module la_receiver_0_la_receiver
   input [3:0]datain1_p;
   input [3:0]datain1_n;
 
-  wire [47:0]acq_data_out;
+  wire [50:0]acq_data_out;
   wire acq_data_valid;
   wire [5:4]acq_packet_type;
   wire clkin1_n;
   wire clkin1_p;
-  wire data_interpreter_n_1;
   wire data_interpreter_n_2;
+  wire data_interpreter_n_3;
   wire [3:0]datain1_n;
   wire [3:0]datain1_p;
   wire decode_n_1;
   wire decode_n_28;
   wire decode_n_29;
+  wire decode_n_30;
+  wire decode_n_58;
   wire [2:0]lock_level;
   wire pixel_clk;
   wire [255:0]raw_signal_result;
@@ -13769,36 +13801,44 @@ module la_receiver_0_la_receiver
   wire rx_n_4;
   wire rx_reset_n_0;
   wire [27:0]rxd1;
-  wire update;
+  wire sampler_idle;
+  wire update1_out;
 
   la_receiver_0_interpreter data_interpreter
        (.Q(rst_n),
-        .\buf_idx_reg[2]_0 (data_interpreter_n_1),
-        .\buf_idx_reg[2]_1 (data_interpreter_n_2),
-        .\packet_buf0_reg[25] (decode_n_1),
-        .\packet_buf0_reg[25]_0 (decode_n_28),
-        .\packet_buf0_reg[26] (decode_n_29),
-        .\packet_buf0_reg[26]_0 ({acq_packet_type,acq_data_out[47:24]}),
-        .\packet_buf1_reg[23] (acq_data_out[23:0]),
+        .acq_data_valid(acq_data_valid),
+        .\buf_idx_reg[2]_0 (data_interpreter_n_2),
+        .\buf_idx_reg[2]_1 (data_interpreter_n_3),
+        .\packet_buf0_reg[24] (decode_n_1),
+        .\packet_buf0_reg[24]_0 (decode_n_29),
+        .\packet_buf0_reg[26] (decode_n_28),
+        .\packet_buf0_reg[26]_0 (decode_n_30),
+        .\packet_buf0_reg[26]_1 ({acq_packet_type,acq_data_out[50:27]}),
+        .\packet_buf1_reg[23] (acq_data_out[26:3]),
         .pixel_clk(pixel_clk),
         .raw_signal_result(raw_signal_result),
         .raw_signal_update(raw_signal_update),
+        .sampler_idle(sampler_idle),
         .\shifter_reg[15] (rx_reset_n_0),
-        .update(update));
+        .update1_out(update1_out),
+        .valid_reg(decode_n_58));
   la_receiver_0_packet_decoder decode
        (.E(rx_n_4),
-        .Q({acq_packet_type,acq_data_out[47:24]}),
-        .acq_data_out(acq_data_out[23:0]),
+        .Q({acq_packet_type,acq_data_out[50:27]}),
+        .acq_data_out(acq_data_out[26:0]),
         .acq_data_valid(acq_data_valid),
-        .\buf_idx_reg[0] (decode_n_29),
-        .\buf_idx_reg[0]_0 (data_interpreter_n_2),
-        .\buf_idx_reg[1] (decode_n_1),
-        .\buf_idx_reg[1]_0 (decode_n_28),
-        .\buf_idx_reg[1]_1 (data_interpreter_n_1),
+        .\buf_idx_reg[0] (decode_n_30),
+        .\buf_idx_reg[0]_0 (data_interpreter_n_3),
+        .\buf_idx_reg[1] (decode_n_28),
+        .\buf_idx_reg[1]_0 (decode_n_29),
+        .\buf_idx_reg[1]_1 (data_interpreter_n_2),
+        .\buf_idx_reg[2] (decode_n_58),
         .pixel_clk(pixel_clk),
         .rx_data(rxd1),
+        .sampler_idle(sampler_idle),
+        .sampler_idle_reg(decode_n_1),
         .\shifter_reg[15] (rx_reset_n_0),
-        .update(update));
+        .update1_out(update1_out));
   la_receiver_0_serdes_7to1_ddr_rx_top rx
        (.E(rx_n_4),
         .bs_finished_reg(rx_n_34),
@@ -14076,85 +14116,125 @@ endmodule
 (* ORIG_REF_NAME = "packet_decoder" *) 
 module la_receiver_0_packet_decoder
    (acq_data_valid,
-    \buf_idx_reg[1] ,
+    sampler_idle_reg,
     Q,
+    \buf_idx_reg[1] ,
     \buf_idx_reg[1]_0 ,
     \buf_idx_reg[0] ,
-    update,
     acq_data_out,
+    \buf_idx_reg[2] ,
+    update1_out,
     rx_data,
     pixel_clk,
     \shifter_reg[15] ,
+    sampler_idle,
     \buf_idx_reg[0]_0 ,
     \buf_idx_reg[1]_1 ,
     E);
   output acq_data_valid;
-  output \buf_idx_reg[1] ;
+  output sampler_idle_reg;
   output [25:0]Q;
+  output \buf_idx_reg[1] ;
   output \buf_idx_reg[1]_0 ;
   output \buf_idx_reg[0] ;
-  output update;
-  output [23:0]acq_data_out;
+  output [26:0]acq_data_out;
+  output \buf_idx_reg[2] ;
+  output update1_out;
   input [27:0]rx_data;
   input pixel_clk;
   input \shifter_reg[15] ;
+  input sampler_idle;
   input \buf_idx_reg[0]_0 ;
   input \buf_idx_reg[1]_1 ;
   input [0:0]E;
 
   wire [0:0]E;
   wire [25:0]Q;
-  wire [23:0]acq_data_out;
+  wire [26:0]acq_data_out;
   wire acq_data_valid;
   wire [3:0]acq_packet_type;
-  wire \buf_idx[2]_i_3_n_0 ;
   wire \buf_idx_reg[0] ;
   wire \buf_idx_reg[0]_0 ;
   wire \buf_idx_reg[1] ;
   wire \buf_idx_reg[1]_0 ;
   wire \buf_idx_reg[1]_1 ;
+  wire \buf_idx_reg[2] ;
   wire pixel_clk;
   wire [27:0]rx_data;
+  wire sampler_idle;
+  wire sampler_idle_i_2_n_0;
+  wire sampler_idle_reg;
   wire \shifter_reg[15] ;
-  wire update;
+  wire update1_out;
   wire update_i_2_n_0;
 
+  LUT6 #(
+    .INIT(64'h0000000040001000)) 
+    \acq_data_out[0]_INST_0 
+       (.I0(acq_packet_type[3]),
+        .I1(Q[25]),
+        .I2(Q[24]),
+        .I3(acq_packet_type[0]),
+        .I4(acq_packet_type[1]),
+        .I5(acq_packet_type[2]),
+        .O(acq_data_out[0]));
+  LUT6 #(
+    .INIT(64'h0000000040040000)) 
+    \acq_data_out[1]_INST_0 
+       (.I0(acq_packet_type[3]),
+        .I1(acq_packet_type[1]),
+        .I2(Q[24]),
+        .I3(acq_packet_type[0]),
+        .I4(Q[25]),
+        .I5(acq_packet_type[2]),
+        .O(acq_data_out[1]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFDFF7DBE)) 
+    \acq_data_out[2]_INST_0 
+       (.I0(acq_packet_type[1]),
+        .I1(Q[24]),
+        .I2(acq_packet_type[0]),
+        .I3(Q[25]),
+        .I4(acq_packet_type[3]),
+        .I5(acq_packet_type[2]),
+        .O(acq_data_out[2]));
   (* SOFT_HLUTNM = "soft_lutpair1107" *) 
-  LUT4 #(
-    .INIT(16'h0F70)) 
+  LUT5 #(
+    .INIT(32'h0FFF7000)) 
     \buf_idx[0]_i_1 
        (.I0(Q[25]),
         .I1(Q[24]),
         .I2(\buf_idx_reg[1]_0 ),
-        .I3(\buf_idx_reg[0]_0 ),
+        .I3(acq_data_valid),
+        .I4(\buf_idx_reg[0]_0 ),
         .O(\buf_idx_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair1107" *) 
-  LUT5 #(
-    .INIT(32'h07FF7000)) 
+  LUT6 #(
+    .INIT(64'h07FFFFFF70000000)) 
     \buf_idx[1]_i_1 
-       (.I0(Q[24]),
-        .I1(Q[25]),
+       (.I0(Q[25]),
+        .I1(Q[24]),
         .I2(\buf_idx_reg[0]_0 ),
         .I3(\buf_idx_reg[1]_0 ),
-        .I4(\buf_idx_reg[1]_1 ),
+        .I4(acq_data_valid),
+        .I5(\buf_idx_reg[1]_1 ),
         .O(\buf_idx_reg[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair1108" *) 
-  LUT5 #(
-    .INIT(32'h80200800)) 
-    \buf_idx[2]_i_2 
-       (.I0(\buf_idx[2]_i_3_n_0 ),
-        .I1(Q[24]),
-        .I2(Q[25]),
+  LUT6 #(
+    .INIT(64'h0000000040041000)) 
+    \buf_idx[1]_i_2 
+       (.I0(acq_packet_type[3]),
+        .I1(Q[25]),
+        .I2(Q[24]),
         .I3(acq_packet_type[0]),
         .I4(acq_packet_type[1]),
+        .I5(acq_packet_type[2]),
         .O(\buf_idx_reg[1]_0 ));
-  LUT3 #(
-    .INIT(8'h10)) 
-    \buf_idx[2]_i_3 
-       (.I0(acq_packet_type[3]),
-        .I1(acq_packet_type[2]),
-        .I2(acq_data_valid),
-        .O(\buf_idx[2]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1107" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \buf_idx[2]_i_2 
+       (.I0(\buf_idx_reg[1]_0 ),
+        .I1(acq_data_valid),
+        .O(\buf_idx_reg[2] ));
   FDCE \packet_buf0_reg[0] 
        (.C(pixel_clk),
         .CE(E),
@@ -14322,97 +14402,97 @@ module la_receiver_0_packet_decoder
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[0]),
-        .Q(acq_data_out[0]));
+        .Q(acq_data_out[3]));
   FDCE \packet_buf1_reg[10] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[10]),
-        .Q(acq_data_out[10]));
+        .Q(acq_data_out[13]));
   FDCE \packet_buf1_reg[11] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[11]),
-        .Q(acq_data_out[11]));
+        .Q(acq_data_out[14]));
   FDCE \packet_buf1_reg[12] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[12]),
-        .Q(acq_data_out[12]));
+        .Q(acq_data_out[15]));
   FDCE \packet_buf1_reg[13] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[13]),
-        .Q(acq_data_out[13]));
+        .Q(acq_data_out[16]));
   FDCE \packet_buf1_reg[14] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[14]),
-        .Q(acq_data_out[14]));
+        .Q(acq_data_out[17]));
   FDCE \packet_buf1_reg[15] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[15]),
-        .Q(acq_data_out[15]));
+        .Q(acq_data_out[18]));
   FDCE \packet_buf1_reg[16] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[16]),
-        .Q(acq_data_out[16]));
+        .Q(acq_data_out[19]));
   FDCE \packet_buf1_reg[17] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[17]),
-        .Q(acq_data_out[17]));
+        .Q(acq_data_out[20]));
   FDCE \packet_buf1_reg[18] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[18]),
-        .Q(acq_data_out[18]));
+        .Q(acq_data_out[21]));
   FDCE \packet_buf1_reg[19] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[19]),
-        .Q(acq_data_out[19]));
+        .Q(acq_data_out[22]));
   FDCE \packet_buf1_reg[1] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[1]),
-        .Q(acq_data_out[1]));
+        .Q(acq_data_out[4]));
   FDCE \packet_buf1_reg[20] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[20]),
-        .Q(acq_data_out[20]));
+        .Q(acq_data_out[23]));
   FDCE \packet_buf1_reg[21] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[21]),
-        .Q(acq_data_out[21]));
+        .Q(acq_data_out[24]));
   FDCE \packet_buf1_reg[22] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[22]),
-        .Q(acq_data_out[22]));
+        .Q(acq_data_out[25]));
   FDCE \packet_buf1_reg[23] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[23]),
-        .Q(acq_data_out[23]));
+        .Q(acq_data_out[26]));
   FDCE \packet_buf1_reg[24] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
@@ -14436,65 +14516,82 @@ module la_receiver_0_packet_decoder
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[2]),
-        .Q(acq_data_out[2]));
+        .Q(acq_data_out[5]));
   FDCE \packet_buf1_reg[3] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[3]),
-        .Q(acq_data_out[3]));
+        .Q(acq_data_out[6]));
   FDCE \packet_buf1_reg[4] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[4]),
-        .Q(acq_data_out[4]));
+        .Q(acq_data_out[7]));
   FDCE \packet_buf1_reg[5] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[5]),
-        .Q(acq_data_out[5]));
+        .Q(acq_data_out[8]));
   FDCE \packet_buf1_reg[6] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[6]),
-        .Q(acq_data_out[6]));
+        .Q(acq_data_out[9]));
   FDCE \packet_buf1_reg[7] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[7]),
-        .Q(acq_data_out[7]));
+        .Q(acq_data_out[10]));
   FDCE \packet_buf1_reg[8] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[8]),
-        .Q(acq_data_out[8]));
+        .Q(acq_data_out[11]));
   FDCE \packet_buf1_reg[9] 
        (.C(pixel_clk),
         .CE(rx_data[27]),
         .CLR(\shifter_reg[15] ),
         .D(rx_data[9]),
-        .Q(acq_data_out[9]));
+        .Q(acq_data_out[12]));
+  LUT4 #(
+    .INIT(16'hBF80)) 
+    sampler_idle_i_1
+       (.I0(acq_packet_type[3]),
+        .I1(sampler_idle_i_2_n_0),
+        .I2(acq_data_valid),
+        .I3(sampler_idle),
+        .O(sampler_idle_reg));
   LUT6 #(
-    .INIT(64'h0000000000004000)) 
-    update_i_1
-       (.I0(update_i_2_n_0),
+    .INIT(64'h0000000002000240)) 
+    sampler_idle_i_2
+       (.I0(acq_packet_type[1]),
         .I1(acq_packet_type[0]),
-        .I2(acq_packet_type[1]),
-        .I3(acq_data_valid),
-        .I4(acq_packet_type[2]),
-        .I5(acq_packet_type[3]),
-        .O(update));
-  (* SOFT_HLUTNM = "soft_lutpair1108" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
+        .I2(Q[24]),
+        .I3(Q[25]),
+        .I4(acq_packet_type[3]),
+        .I5(acq_packet_type[2]),
+        .O(sampler_idle_i_2_n_0));
+  LUT5 #(
+    .INIT(32'h00400000)) 
+    update_i_1
+       (.I0(acq_packet_type[2]),
+        .I1(Q[25]),
+        .I2(update_i_2_n_0),
+        .I3(acq_packet_type[3]),
+        .I4(acq_data_valid),
+        .O(update1_out));
+  LUT3 #(
+    .INIT(8'h80)) 
     update_i_2
        (.I0(Q[24]),
-        .I1(Q[25]),
+        .I1(acq_packet_type[0]),
+        .I2(acq_packet_type[1]),
         .O(update_i_2_n_0));
   FDCE valid_reg
        (.C(pixel_clk),
@@ -15140,7 +15237,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I4(\c_delay_in_target_reg_n_0_[1] ),
         .I5(\c_delay_in_reg_n_0_[1] ),
         .O(\FSM_onehot_state2[4]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
   LUT4 #(
     .INIT(16'hFEFF)) 
     \FSM_onehot_state2[4]_i_6 
@@ -15199,14 +15296,14 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
     \bcount[0]_i_1 
        (.I0(bcount_reg__0[0]),
         .O(p_0_in__2[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \bcount[1]_i_1 
        (.I0(bcount_reg__0[0]),
         .I1(bcount_reg__0[1]),
         .O(p_0_in__2[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \bcount[2]_i_1 
@@ -15230,7 +15327,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I1(bs_finished_reg_2),
         .I2(bs_finished_reg_1),
         .O(bcount));
-  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \bcount[3]_i_3 
@@ -15329,7 +15426,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
     \bsstate[1]_i_1 
        (.I0(locked_out_dom_ch),
         .O(\bsstate[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
   LUT5 #(
     .INIT(32'hEE4CCC4C)) 
     \bsstate[1]_i_2 
@@ -15339,7 +15436,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I3(bs_finished_reg_2),
         .I4(bslip_ack_dom_ch),
         .O(\bsstate[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \bsstate[1]_i_3 
@@ -15360,7 +15457,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .D(\bsstate[1]_i_2_n_0 ),
         .Q(bs_finished_reg_1),
         .S(\bsstate[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
   LUT4 #(
     .INIT(16'hC200)) 
     \bstate[0]_i_1 
@@ -15369,7 +15466,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I2(\bstate_reg[0]_1 ),
         .I3(locked_out_dom_ch_reg_0),
         .O(\bstate[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
   LUT4 #(
     .INIT(16'hA8A0)) 
     \bstate[1]_i_1 
@@ -15449,7 +15546,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I3(out[0]),
         .I4(\c_loop_cnt[1]_i_2_n_0 ),
         .O(\c_delay_in[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1238" *) 
   LUT3 #(
     .INIT(8'h1E)) 
     \c_delay_in[2]_i_3 
@@ -15497,7 +15594,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I4(\c_delay_in_target_reg_n_0_[3] ),
         .I5(\c_delay_in_reg_n_0_[3] ),
         .O(\c_delay_in[3]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \c_delay_in[3]_i_5 
@@ -15560,7 +15657,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
     \c_delay_in_target[0]_i_1 
        (.I0(\c_delay_in_reg_n_0_[0] ),
         .O(\c_delay_in_target[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
   LUT5 #(
     .INIT(32'h55AA6295)) 
     \c_delay_in_target[1]_i_1 
@@ -15570,7 +15667,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I3(\c_delay_in_reg_n_0_[0] ),
         .I4(\c_delay_in_reg_n_0_[4] ),
         .O(c_delay_in_target__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
   LUT5 #(
     .INIT(32'hA5559552)) 
     \c_delay_in_target[2]_i_1 
@@ -15580,7 +15677,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I3(\c_delay_in_reg_n_0_[1] ),
         .I4(\c_delay_in_reg_n_0_[4] ),
         .O(c_delay_in_target__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
   LUT5 #(
     .INIT(32'h56661115)) 
     \c_delay_in_target[3]_i_1 
@@ -15597,7 +15694,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I1(not_rx_mmcm_lckd_intd4),
         .I2(out[1]),
         .O(\c_delay_in_target[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
   LUT5 #(
     .INIT(32'h98949484)) 
     \c_delay_in_target[4]_i_2 
@@ -15656,7 +15753,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I4(out[0]),
         .I5(\c_loop_cnt_reg_n_0_[1] ),
         .O(\c_loop_cnt[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1228" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \c_loop_cnt[1]_i_2 
@@ -15746,7 +15843,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .D(\cdataoutb_reg[3]_srl2_n_0 ),
         .Q(cdataoutc[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
   LUT4 #(
     .INIT(16'hA0AE)) 
     chfound_i_1
@@ -15971,7 +16068,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .SHIFTIN2(1'b0),
         .SHIFTOUT1(NLW_iserdes_cs_SHIFTOUT1_UNCONNECTED),
         .SHIFTOUT2(NLW_iserdes_cs_SHIFTOUT2_UNCONNECTED));
-  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
   LUT4 #(
     .INIT(16'hDFFF)) 
     jog_i_2
@@ -15986,21 +16083,21 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .D(\bsstate_reg[0]_0 ),
         .Q(jog_int_reg),
         .R(\bsstate[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1235" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \lock_level[0]_INST_0 
        (.I0(not_rx_mmcm_lckd_intd4_reg_0),
         .I1(not_rx_mmcm_lckd_intd4),
         .O(lock_level[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \lock_level[1]_INST_0 
        (.I0(locked_out_dom_ch),
         .I1(not_rx_mmcm_lckd_intd4_reg_0),
         .O(lock_level[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \lock_level[2]_INST_0 
@@ -16859,7 +16956,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .PSINCDEC(1'b0),
         .PWRDWN(1'b0),
         .RST(reset));
-  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
   LUT1 #(
     .INIT(2'h1)) 
     not_bs_finished_dom_ch_i_1
@@ -16871,7 +16968,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .D(not_bs_finished_dom_ch_i_1_n_0),
         .Q(not_bs_finished_dom_ch),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1243" *) 
   LUT2 #(
     .INIT(4'h7)) 
     not_rx_mmcm_lckd_intd4_i_1
@@ -16907,14 +17004,14 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
     \scount[0]_i_1 
        (.I0(\scount_reg_n_0_[0] ),
         .O(p_0_in__1[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \scount[1]_i_1 
        (.I0(\scount_reg_n_0_[0] ),
         .I1(\scount_reg_n_0_[1] ),
         .O(p_0_in__1[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1239" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \scount[2]_i_1 
@@ -16922,7 +17019,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I1(\scount_reg_n_0_[1] ),
         .I2(\scount_reg_n_0_[2] ),
         .O(p_0_in__1[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \scount[3]_i_1 
@@ -16931,7 +17028,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I2(\scount_reg_n_0_[2] ),
         .I3(\scount_reg_n_0_[3] ),
         .O(p_0_in__1[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1233" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \scount[4]_i_1 
@@ -17011,7 +17108,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I4(bs_finished_reg_1),
         .I5(slip_count[1]),
         .O(\slip_count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1236" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \slip_count[2]_i_1 
@@ -17020,7 +17117,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I2(\slip_count[2]_i_2_n_0 ),
         .I3(slip_count[2]),
         .O(\slip_count[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1229" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \slip_count[2]_i_2 
@@ -17052,14 +17149,14 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
     \state2_count[0]_i_1 
        (.I0(state2_count_reg__0[0]),
         .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \state2_count[1]_i_1 
        (.I0(state2_count_reg__0[0]),
         .I1(state2_count_reg__0[1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1241" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \state2_count[2]_i_1 
@@ -17067,7 +17164,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I1(state2_count_reg__0[1]),
         .I2(state2_count_reg__0[2]),
         .O(\state2_count[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \state2_count[3]_i_1 
@@ -17076,7 +17173,7 @@ module la_receiver_0_serdes_1_to_7_mmcm_idelay_ddr
         .I2(state2_count_reg__0[2]),
         .I3(state2_count_reg__0[3]),
         .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1231" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \state2_count[4]_i_1 
@@ -32626,133 +32723,133 @@ module la_receiver_0_uncompress_pipeline__parameterized14
         .CLR(\shifter_reg[15] ),
         .D(\bitset_out_reg[9]_inst_data_interpreter_gen_unzip_c_6 ),
         .Q(\bitset_pipeline[0]_15 [9]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[111]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [6]),
+        .I1(\bitset_pipeline[0]_15 [6]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[6]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[127]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [7]),
+        .I1(\bitset_pipeline[0]_15 [7]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[7]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[143]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [8]),
+        .I1(\bitset_pipeline[0]_15 [8]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[8]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[159]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [9]),
+        .I1(\bitset_pipeline[0]_15 [9]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[9]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[15]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [0]),
+        .I1(\bitset_pipeline[0]_15 [0]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[175]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [10]),
+        .I1(\bitset_pipeline[0]_15 [10]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[10]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[191]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [11]),
+        .I1(\bitset_pipeline[0]_15 [11]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[11]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[207]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [12]),
+        .I1(\bitset_pipeline[0]_15 [12]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[12]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[223]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [13]),
+        .I1(\bitset_pipeline[0]_15 [13]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[13]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[239]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [14]),
+        .I1(\bitset_pipeline[0]_15 [14]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[14]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[255]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [15]),
+        .I1(\bitset_pipeline[0]_15 [15]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[15]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[31]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [1]),
+        .I1(\bitset_pipeline[0]_15 [1]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[47]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [2]),
+        .I1(\bitset_pipeline[0]_15 [2]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[2]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[63]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [3]),
+        .I1(\bitset_pipeline[0]_15 [3]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[3]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[79]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [4]),
+        .I1(\bitset_pipeline[0]_15 [4]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[4]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \data_out[95]_i_1 
        (.I0(Q),
-        .I1(\update_pipeline_reg[0]_1 ),
-        .I2(\bitset_pipeline[0]_15 [5]),
+        .I1(\bitset_pipeline[0]_15 [5]),
+        .I2(\update_pipeline_reg[0]_1 ),
         .O(E[5]));
   FDRE \unzip_out_reg[0] 
        (.C(pixel_clk),

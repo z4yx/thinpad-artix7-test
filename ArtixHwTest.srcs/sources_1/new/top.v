@@ -35,6 +35,7 @@ module top(
     output [31:0] gpio0,
     input clk,
     input rst_in,
+    input step_clk,
     input [1:0] step_btn,
     output txd,
     input rxd,
@@ -57,7 +58,7 @@ clk_wiz_0  inclk
     .clk_in1(clk)
 );
 
-reg [255:0] testdata_in;
+reg [255:0] testdata_in,testdata_manual;
 reg [1:0] start_sample;
 sampler_0 la(
     .sample_clk    (clk),
@@ -76,7 +77,12 @@ always@(posedge clk or posedge rst_in) begin
 end
 always@(posedge clk or posedge rst_in) begin 
     if(rst_in) testdata_in <= 256'h1;
+    else if(gpio1[0])testdata_in<=testdata_manual;
     else testdata_in <= {testdata_in[254:0], testdata_in[255]};
+end
+always@(posedge step_clk or posedge rst_in) begin 
+    if(rst_in) testdata_manual <= 256'h1;
+    else testdata_manual <= {testdata_manual[254:0], testdata_manual[255]};
 end
 
 always@(posedge clk or posedge rst_in) begin

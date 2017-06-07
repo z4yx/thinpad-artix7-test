@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: user.org:user:la_receiver:1.2
-// IP Revision: 1
+// IP VLNV: user.org:user:la_receiver:1.4
+// IP Revision: 5
 
 `timescale 1ns/1ps
 
@@ -60,6 +60,7 @@ module la_receiver_0 (
   raw_signal_update,
   lock_level,
   rx_pixel_clk,
+  sampler_idle,
   reset,
   refclkin,
   clkin1_p,
@@ -68,13 +69,14 @@ module la_receiver_0 (
   datain1_n
 );
 
-output wire [47 : 0] acq_data_out;
+output wire [50 : 0] acq_data_out;
 output wire acq_data_valid;
 output wire [255 : 0] raw_signal_result;
 output wire raw_signal_update;
 output wire [2 : 0] lock_level;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 rx_pixel_clk CLK" *)
 output wire rx_pixel_clk;
+output wire sampler_idle;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 input wire reset;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 refclkin CLK" *)
@@ -94,6 +96,7 @@ input wire [3 : 0] datain1_n;
     .raw_signal_update(raw_signal_update),
     .lock_level(lock_level),
     .rx_pixel_clk(rx_pixel_clk),
+    .sampler_idle(sampler_idle),
     .reset(reset),
     .refclkin(refclkin),
     .clkin1_p(clkin1_p),

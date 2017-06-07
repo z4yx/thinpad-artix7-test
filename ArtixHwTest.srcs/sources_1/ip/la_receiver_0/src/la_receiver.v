@@ -7,6 +7,7 @@ module la_receiver (
             raw_signal_update,
             lock_level,
             rx_pixel_clk,
+            sampler_idle,
 //input
             reset,
             refclkin,
@@ -23,7 +24,7 @@ input wire      refclkin;               // Reference clock for input delay contr
 input wire      clkin1_p,  clkin1_n;            // lvds channel 1 clock input
 input wire[3:0] datain1_p, datain1_n;  
 
-output wire[47:0] acq_data_out;
+output wire[48+3-1:0] acq_data_out;
 output wire acq_data_valid;
 
 output wire[CHANNEL*DATA_BITS-1:0] raw_signal_result;
@@ -31,6 +32,7 @@ output wire raw_signal_update;
 
 output wire[2:0]  lock_level;
 output wire rx_pixel_clk;
+output wire sampler_idle;
 
 wire[27:0] rxd1;
 wire rst_n;
@@ -59,16 +61,18 @@ packet_decoder decode(
     .rst_n      (rst_n),
     .rxd        (rxd1),
     .packet_type(acq_packet_type),
-    .payload    (acq_data_out),
+    .payload    (acq_data_out[3+:48]),
     .valid      (acq_data_valid)
 );
 
 interpreter #(.CHANNEL(CHANNEL),.DATA_BITS(DATA_BITS)) data_interpreter(
     .clk        (rx_pixel_clk),
     .rst_n      (rst_n),
+    .sampler_idle(sampler_idle),
     .packet_type(acq_packet_type),
     .payload_valid(acq_data_valid),
-    .payload    (acq_data_out),
+    .payload    (acq_data_out[3 +: 48]),
+    .packet_type_compact(acq_data_out[0 +: 3]),
     .data_update_out(raw_signal_update),
     .data_out   (raw_signal_result)
 );

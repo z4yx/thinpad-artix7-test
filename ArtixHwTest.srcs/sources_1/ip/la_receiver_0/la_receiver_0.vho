@@ -46,20 +46,21 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: user.org:user:la_receiver:1.2
--- IP Revision: 1
+-- IP VLNV: user.org:user:la_receiver:1.4
+-- IP Revision: 5
 
 -- The following code must appear in the VHDL architecture header.
 
 ------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
 COMPONENT la_receiver_0
   PORT (
-    acq_data_out : OUT STD_LOGIC_VECTOR(47 DOWNTO 0);
+    acq_data_out : OUT STD_LOGIC_VECTOR(50 DOWNTO 0);
     acq_data_valid : OUT STD_LOGIC;
     raw_signal_result : OUT STD_LOGIC_VECTOR(255 DOWNTO 0);
     raw_signal_update : OUT STD_LOGIC;
     lock_level : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     rx_pixel_clk : OUT STD_LOGIC;
+    sampler_idle : OUT STD_LOGIC;
     reset : IN STD_LOGIC;
     refclkin : IN STD_LOGIC;
     clkin1_p : IN STD_LOGIC;
@@ -82,6 +83,7 @@ your_instance_name : la_receiver_0
     raw_signal_update => raw_signal_update,
     lock_level => lock_level,
     rx_pixel_clk => rx_pixel_clk,
+    sampler_idle => sampler_idle,
     reset => reset,
     refclkin => refclkin,
     clkin1_p => clkin1_p,
