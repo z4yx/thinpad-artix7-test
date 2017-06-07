@@ -10,7 +10,8 @@ module packetizer (
             diff_bitset,
             sample_running);
 
-`define PACKET_T_NOP 6'h2a
+`define PACKET_T_IDLE 6'h2a
+`define PACKET_T_NOP 6'h00
 `define PACKET_T_FIRST 6'h11
 `define PACKET_T_NEXT  6'h22
 `define PACKET_T_LAST  6'h33
@@ -136,7 +137,18 @@ assign packet = {1'b0, packet_type[5:3], payload[47:24],
                 1'b1, packet_type[2:0], payload[23:0]};
 
 reg[2:0] tx_state;
-reg nop_packet;
+reg nop_packet,idle_packet;
+reg sample_running_sync,sample_running_txclk;
+
+always @(posedge tx_clock or negedge tx_clock_rst_n) begin
+    if(~tx_clock_rst_n)begin
+        sample_running_txclk = 0;
+        sample_running_sync <= 0;
+    end else begin
+        sample_running_sync <= sample_running;
+        sample_running_txclk <= sample_running_sync;
+    end
+end
 
 txmit_fifo txmit_fifo_inst(
     .rst(begin_of_sample),
@@ -153,6 +165,7 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin
     if(~tx_clock_rst_n)begin 
         tx_state <= 3'h2;
         nop_packet <= 1;
+        idle_packet <= 1;
     end
     else
     case (tx_state)
@@ -161,18 +174,26 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin
         end    
         3'h2: begin 
             tx_state <= 3'h1;
+            idle_packet <= ~sample_running_txclk;
             nop_packet <= packet_fifo_empty;
         end
     endcase
 end
 
-wire [5:0] nop_type = `PACKET_T_NOP;
+wire [5:0] nop_type,idle_type;
+assign nop_type = `PACKET_T_NOP;
+assign idle_type = `PACKET_T_IDLE;
 always@(*)begin 
-    if(nop_packet)begin 
+    if(idle_packet)begin 
         if(tx_state == 3'h2)
-            out_data <= {1'b1, nop_type[2:0], 24'haaaaaa};
+            out_data <= {1'b1, idle_type[2:0], 24'haaaaaa};
         else
-            out_data <= {1'b0, nop_type[5:3], 24'h555555};
+            out_data <= {1'b0, idle_type[5:3], 24'h555555};
+    end else if(nop_packet)begin 
+        if(tx_state == 3'h2)
+            out_data <= {1'b1, nop_type[2:0], 24'h010101};
+        else
+            out_data <= {1'b0, nop_type[5:3], 24'h101010};
     end else begin 
         if(tx_state == 3'h2)
             out_data <= packet_out[27:0];
