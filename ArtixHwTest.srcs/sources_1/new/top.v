@@ -35,7 +35,7 @@ module top(
     output [31:0] gpio0,
     input clk,
     input rst_in,
-    input step_btn,
+    input [1:0] step_btn,
     output txd,
     input rxd,
     output         clkout1_p,  clkout1_n,          // lvds channel 1 clock output
@@ -67,12 +67,12 @@ sampler_0 la(
     .dataout1_p(dataout1_p),
     .dataout1_n(dataout1_n),
     .start_sample  (start_sample[1]),
-    .stop_sample  (0),
+    .stop_sample  (step_btn[1]),
     .data_in       (testdata_in)
 );
 always@(posedge clk or posedge rst_in) begin 
     if(rst_in) start_sample <= 0;
-    else start_sample <= {start_sample[0], step_btn};
+    else start_sample <= {start_sample[0], step_btn[0]};
 end
 always@(posedge clk or posedge rst_in) begin 
     if(rst_in) testdata_in <= 256'h1;
