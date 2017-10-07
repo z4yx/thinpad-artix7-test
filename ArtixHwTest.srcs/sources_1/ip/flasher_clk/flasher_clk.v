@@ -1,4 +1,7 @@
-// (c) Copyright 1995-2017 Xilinx, Inc. All rights reserved.
+
+// file: flasher_clk.v
+// 
+// (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -44,30 +47,44 @@
 // THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 // PART OF THIS FILE AT ALL TIMES.
 // 
-// DO NOT MODIFY THIS FILE.
+//----------------------------------------------------------------------------
+// User entered comments
+//----------------------------------------------------------------------------
+// None
+//
+//----------------------------------------------------------------------------
+//  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
+//   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
+//----------------------------------------------------------------------------
+// clk_out1___150.000______0.000______50.0______146.589____157.402
+//
+//----------------------------------------------------------------------------
+// Input Clock   Freq (MHz)    Input Jitter (UI)
+//----------------------------------------------------------------------------
+// __primary__________50.000____________0.010
 
-// IP VLNV: xilinx.com:ip:fifo_generator:13.1
-// IP Revision: 4
+`timescale 1ps/1ps
 
-// The following must be inserted into your Verilog file for this
-// core to be instantiated. Change the instance name and port connections
-// (in parentheses) to your own signal names.
+(* CORE_GENERATION_INFO = "flasher_clk,clk_wiz_v5_4_0_0,{component_name=flasher_clk,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=20.000,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
-//----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-fifo_for_tb your_instance_name (
-  .rst(rst),        // input wire rst
-  .wr_clk(wr_clk),  // input wire wr_clk
-  .rd_clk(rd_clk),  // input wire rd_clk
-  .din(din),        // input wire [255 : 0] din
-  .wr_en(wr_en),    // input wire wr_en
-  .rd_en(rd_en),    // input wire rd_en
-  .dout(dout),      // output wire [255 : 0] dout
-  .full(full),      // output wire full
-  .empty(empty)    // output wire empty
-);
-// INST_TAG_END ------ End INSTANTIATION Template ---------
+module flasher_clk 
+ (
+  // Clock out ports
+  output        clk_out1,
+  // Status and control signals
+  output        locked,
+ // Clock in ports
+  input         clk_in1
+ );
 
-// You must compile the wrapper file fifo_for_tb.v when simulating
-// the core, fifo_for_tb. When compiling the wrapper file, be sure to
-// reference the Verilog simulation library.
+  flasher_clk_clk_wiz inst
+  (
+  // Clock out ports  
+  .clk_out1(clk_out1),
+  // Status and control signals               
+  .locked(locked),
+ // Clock in ports
+  .clk_in1(clk_in1)
+  );
 
+endmodule
