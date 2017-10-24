@@ -4,7 +4,9 @@ module flasher_top (/*autoport*/
       gpio1,
       ext_ram_data,
       flash_data,
+      rxd,
 //output
+      gpio0,
       ext_ram_addr,
       ext_ram_be_n,
       ext_ram_ce_n,
@@ -17,12 +19,18 @@ module flasher_top (/*autoport*/
       flash_ce_n,
       flash_byte_n,
       flash_we_n,
+      txd,
 //input
       clk);
 input wire clk;
 // input wire rst;
 
 inout wire [31:0] gpio1;
+output reg [31:0] gpio0;
+
+input wire rxd;
+output wire txd;
+assign txd = rxd;
 
 inout wire[31:0] ext_ram_data;
 output wire[19:0] ext_ram_addr;
@@ -30,6 +38,15 @@ output wire[3:0] ext_ram_be_n;
 output wire ext_ram_ce_n;
 output wire ext_ram_oe_n;
 output wire ext_ram_we_n;
+
+/*
+inout wire[31:0] base_ram_data;
+output wire[19:0] base_ram_addr;
+output wire[3:0] base_ram_be_n;
+output wire base_ram_ce_n;
+output wire base_ram_oe_n;
+output wire base_ram_we_n;
+*/
 
 output wire [21:0]flash_address;
 output wire flash_rp_n;
@@ -60,9 +77,18 @@ assign ale_i = gpio1[29];
 
 assign ext_ram_addr = internal_addr[1 +: 20];
 assign ext_ram_ce_n = internal_addr[22];
+//assign ext_ram_ce_n = internal_addr[22] | ~internal_addr[21]; //active low, be careful
 assign ext_ram_be_n = {~higher_bank,~higher_bank,higher_bank,higher_bank};
 assign ext_ram_oe_n = oe_o_n;
 assign ext_ram_we_n = we_o_n;
+
+/*
+assign base_ram_addr = internal_addr[1 +: 20];
+assign base_ram_ce_n = internal_addr[22] | internal_addr[21]; //active low, be careful
+assign base_ram_be_n = {~higher_bank,~higher_bank,higher_bank,higher_bank};
+assign base_ram_oe_n = oe_o_n;
+assign base_ram_we_n = we_o_n;
+*/
 
 assign flash_address = internal_addr[0 +: 22];
 assign flash_ce_n = ~internal_addr[22];
@@ -123,5 +149,13 @@ bridge host_bridge(
     .data_t(internal_data_t),
     .clk   (sysclk)
 );
+
+always @(posedge sysclk) begin : proc_gpio0
+  if(~pll_locked) begin
+    gpio0 <= 0;
+  end else begin
+    gpio0 <= internal_addr;
+  end
+end
 
 endmodule
