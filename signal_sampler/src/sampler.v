@@ -6,7 +6,7 @@ module sampler (
             dataout1_p,
             dataout1_n,
 //input
-            txmit_ref_clk,
+            ref_50M_clk,
             sample_clk,
             start_sample,
             stop_sample,
@@ -16,7 +16,7 @@ module sampler (
 parameter integer CHANNEL = 16;
 parameter integer DATA_BITS = 16;
 
-input wire txmit_ref_clk;
+input wire ref_50M_clk;
 
 input wire sample_clk;
 input wire start_sample;
@@ -28,6 +28,10 @@ output wire        clkout1_n ;
 output wire    [3:0]   dataout1_p ;
 output wire    [3:0]   dataout1_n ;
 
+wire start_sample_sync;
+wire stop_sample_sync;
+wire[DATA_BITS*CHANNEL-1:0] data_in_sync;
+
 reg[2:0] state;
 wire running, bos;
 wire sample_clk_rstn;
@@ -37,6 +41,24 @@ wire[CHANNEL-1:0] diff_bitset;
 wire tx_clock;
 wire tx_clock_rst_n;
 wire[27:0] tx_data;
+
+signal_sync #(.DATA_WIDTH(DATA_BITS*CHANNEL), .SYNC_CYCLE(2)) sync_data(
+    .clk(sample_clk),
+    .data_in(data_in),
+    .data_out(data_in_sync)
+);
+
+signal_sync #(.DATA_WIDTH(1), .SYNC_CYCLE(2)) sync_start(
+    .clk(sample_clk),
+    .data_in(start_sample),
+    .data_out(start_sample_sync)
+);
+
+signal_sync #(.DATA_WIDTH(1), .SYNC_CYCLE(2)) sync_stop(
+    .clk(sample_clk),
+    .data_in(stop_sample),
+    .data_out(stop_sample_sync)
+);
 
 rstctrl ctrl(
     .clk      (sample_clk),
@@ -48,7 +70,7 @@ sample_compress #(.CHANNEL(CHANNEL), .DATA_BITS(DATA_BITS))
 compressor(
     .clk            (sample_clk),
     .rst_n          (running),
-    .data_in        (data_in),
+    .data_in        (data_in_sync),
     .data_compressed(data_compressed),
     .diff_bitset    (diff_bitset)
 );
@@ -65,8 +87,8 @@ packetizer packetizer_inst(
 );
 
 serdes_7to1_ddr_tx_top  tx(
-    .clkint             (txmit_ref_clk),  
-    .reset              (reset),
+    .clkint             (ref_50M_clk),  
+    .reset              (0),
     .txd1              (tx_data),
     .tx_pixel_clk      (tx_clock), //output from module
     .tx_pixel_clk_rst_n(tx_clock_rst_n), //output from module
@@ -102,17 +124,17 @@ always @(posedge sample_clk or negedge sample_clk_rstn) begin : proc_state
         init_timer_sync <= {init_timer_sync[0], init_timer_hold};
         case (state)
             0: begin 
-                if(start_sample)
+                if(start_sample_sync)
                     state <= 1;
             end
             1: begin 
-                if(stop_sample)
+                if(stop_sample_sync)
                     state <= 0;
                 else if(init_timer_sync[1])
                     state <= 2;
             end
             2: begin 
-                if(stop_sample)
+                if(stop_sample_sync)
                     state <= 0;
             end
             default : begin

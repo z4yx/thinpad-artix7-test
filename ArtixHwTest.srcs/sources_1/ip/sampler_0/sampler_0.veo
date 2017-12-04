@@ -46,8 +46,8 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: user.org:user:sampler:1.0
-// IP Revision: 4
+// IP VLNV: user.org:user:sampler:1.1
+// IP Revision: 1
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -55,15 +55,15 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 sampler_0 your_instance_name (
-  .clkout1_p(clkout1_p),          // output wire clkout1_p
-  .clkout1_n(clkout1_n),          // output wire clkout1_n
-  .dataout1_p(dataout1_p),        // output wire [3 : 0] dataout1_p
-  .dataout1_n(dataout1_n),        // output wire [3 : 0] dataout1_n
-  .txmit_ref_clk(txmit_ref_clk),  // input wire txmit_ref_clk
-  .sample_clk(sample_clk),        // input wire sample_clk
-  .start_sample(start_sample),    // input wire start_sample
-  .stop_sample(stop_sample),      // input wire stop_sample
-  .data_in(data_in)              // input wire [255 : 0] data_in
+  .clkout1_p(clkout1_p),        // output wire clkout1_p
+  .clkout1_n(clkout1_n),        // output wire clkout1_n
+  .dataout1_p(dataout1_p),      // output wire [3 : 0] dataout1_p
+  .dataout1_n(dataout1_n),      // output wire [3 : 0] dataout1_n
+  .ref_50M_clk(ref_50M_clk),    // input wire ref_50M_clk
+  .sample_clk(sample_clk),      // input wire sample_clk
+  .start_sample(start_sample),  // input wire start_sample
+  .stop_sample(stop_sample),    // input wire stop_sample
+  .data_in(data_in)            // input wire [255 : 0] data_in
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

@@ -28,6 +28,20 @@ set_property -dict {PACKAGE_PIN M17 IOSTANDARD TMDS_33} [get_ports {dataout1_n[2
 set_property -dict {PACKAGE_PIN J24 IOSTANDARD TMDS_33} [get_ports {dataout1_p[3]}]
 set_property -dict {PACKAGE_PIN H24 IOSTANDARD TMDS_33} [get_ports {dataout1_n[3]}]
 
+#Digital Video
+set_property -dict {PACKAGE_PIN J21 IOSTANDARD LVCMOS33} [get_ports video_clk]
+set_property -dict {PACKAGE_PIN N18 IOSTANDARD LVCMOS33} [get_ports {video_pixel[7]}]
+set_property -dict {PACKAGE_PIN N21 IOSTANDARD LVCMOS33} [get_ports {video_pixel[6]}]
+set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports {video_pixel[5]}]
+set_property -dict {PACKAGE_PIN U17 IOSTANDARD LVCMOS33} [get_ports {video_pixel[4]}]
+set_property -dict {PACKAGE_PIN G20 IOSTANDARD LVCMOS33} [get_ports {video_pixel[3]}]
+set_property -dict {PACKAGE_PIN M15 IOSTANDARD LVCMOS33} [get_ports {video_pixel[2]}]
+set_property -dict {PACKAGE_PIN L18 IOSTANDARD LVCMOS33} [get_ports {video_pixel[1]}]
+set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {video_pixel[0]}]
+set_property -dict {PACKAGE_PIN P16 IOSTANDARD LVCMOS33} [get_ports video_hsync]
+set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports video_vsync]
+set_property -dict {PACKAGE_PIN J20 IOSTANDARD LVCMOS33} [get_ports video_de]
+
 #LEDS
 set_property IOSTANDARD LVCMOS33 [get_ports {gpio0[0]}]
 set_property PACKAGE_PIN A17 [get_ports {gpio0[0]}]

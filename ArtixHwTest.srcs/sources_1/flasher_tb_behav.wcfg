@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="5042083333fs"></ZoomStartTime>
-      <ZoomEndTime time="5459583334fs"></ZoomEndTime>
-      <Cursor1Time time="5341583000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1585611706fs"></ZoomEndTime>
+      <Cursor1Time time="355319000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="150"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="26" />
    <wvobject type="logic" fp_name="/flasher_tb/tb_oe_n">

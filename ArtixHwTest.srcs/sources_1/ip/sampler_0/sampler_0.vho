@@ -46,8 +46,8 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: user.org:user:sampler:1.0
--- IP Revision: 4
+-- IP VLNV: user.org:user:sampler:1.1
+-- IP Revision: 1
 
 -- The following code must appear in the VHDL architecture header.
 
@@ -58,7 +58,7 @@ COMPONENT sampler_0
     clkout1_n : OUT STD_LOGIC;
     dataout1_p : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     dataout1_n : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    txmit_ref_clk : IN STD_LOGIC;
+    ref_50M_clk : IN STD_LOGIC;
     sample_clk : IN STD_LOGIC;
     start_sample : IN STD_LOGIC;
     stop_sample : IN STD_LOGIC;
@@ -77,7 +77,7 @@ your_instance_name : sampler_0
     clkout1_n => clkout1_n,
     dataout1_p => dataout1_p,
     dataout1_n => dataout1_n,
-    txmit_ref_clk => txmit_ref_clk,
+    ref_50M_clk => ref_50M_clk,
     sample_clk => sample_clk,
     start_sample => start_sample,
     stop_sample => stop_sample,
