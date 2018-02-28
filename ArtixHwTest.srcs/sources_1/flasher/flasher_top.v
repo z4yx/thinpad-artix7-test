@@ -12,7 +12,6 @@ module flasher_top (/*autoport*/
       ext_ram_ce_n,
       ext_ram_oe_n,
       ext_ram_we_n,
-      flash_address,
       flash_rp_n,
       flash_vpen,
       flash_oe_n,
@@ -33,11 +32,12 @@ output wire txd;
 assign txd = rxd;
 
 inout wire[31:0] ext_ram_data;
-output wire[19:0] ext_ram_addr;
-output wire[3:0] ext_ram_be_n;
-output wire ext_ram_ce_n;
-output wire ext_ram_oe_n;
-output wire ext_ram_we_n;
+(* IOB = "true" *) reg [31:0]ext_ram_data_o, ext_ram_data_i, ext_ram_data_t;
+(* IOB = "true" *) output reg[19:0] ext_ram_addr;
+(* IOB = "true" *) output reg[3:0] ext_ram_be_n;
+(* IOB = "true" *) output reg ext_ram_ce_n;
+(* IOB = "true" *) output reg ext_ram_oe_n;
+(* IOB = "true" *) output reg ext_ram_we_n;
 
 /*
 inout wire[31:0] base_ram_data;
@@ -48,39 +48,46 @@ output wire base_ram_oe_n;
 output wire base_ram_we_n;
 */
 
-output wire [21:0]flash_address;
+inout wire [15:0]flash_data;
+(* IOB = "true" *) reg [15:0]flash_data_o, flash_data_i, flash_data_t;
 output wire flash_rp_n;
 output wire flash_vpen;
-output wire flash_oe_n;
-inout wire [15:0]flash_data;
-output wire flash_ce_n;
+(* IOB = "true" *) output reg flash_oe_n;
+(* IOB = "true" *) output reg flash_ce_n;
 output wire flash_byte_n;
-output wire flash_we_n;
+(* IOB = "true" *) output reg flash_we_n;
 
 wire sysclk, pll_locked;
 reg sysrst, sysrst_pipe;
 reg [3:0] rst_cnt;
 
-(*mark_debug="true"*) wire we_i_n;
-(*mark_debug="true"*) wire oe_i_n;
-(*mark_debug="true"*) wire ale_i;
+wire we_i_n;
+wire oe_i_n;
+wire ale_i;
 wire [23:0] ad_i,ad_t,ad_o;
 
-(*mark_debug="true"*) wire [22:0] internal_addr;
-(*mark_debug="true"*) wire [15:0] internal_data_i,internal_data_o,internal_data_t;
-(*mark_debug="true"*) wire we_o_n, oe_o_n;
+wire [22:0] internal_addr;
+wire [15:0] internal_data_i,internal_data_o,internal_data_t;
+wire we_o_n, oe_o_n;
 wire higher_bank = internal_addr[0];
 
 assign we_i_n = gpio1[31];
 assign oe_i_n = gpio1[30];
 assign ale_i = gpio1[29];
 
-assign ext_ram_addr = internal_addr[1 +: 20];
-assign ext_ram_ce_n = internal_addr[22];
-//assign ext_ram_ce_n = internal_addr[22] | ~internal_addr[21]; //active low, be careful
-assign ext_ram_be_n = {~higher_bank,~higher_bank,higher_bank,higher_bank};
-assign ext_ram_oe_n = oe_o_n;
-assign ext_ram_we_n = we_o_n;
+always @(posedge sysclk) begin : proc_extram
+  begin
+    ext_ram_data_o <= {internal_data_o,internal_data_o};
+    ext_ram_data_i <= ext_ram_data;
+    ext_ram_data_t <= {internal_data_t,internal_data_t};
+    ext_ram_addr <= internal_addr[1 +: 20];
+    //ext_ram_ce_n <= internal_addr[22];
+    ext_ram_ce_n <= internal_addr[22] | ~internal_addr[21]; //active low, be careful
+    ext_ram_be_n <= {~higher_bank,~higher_bank,higher_bank,higher_bank};
+    ext_ram_oe_n <= oe_o_n;
+    ext_ram_we_n <= we_o_n;
+  end
+end
 
 /*
 assign base_ram_addr = internal_addr[1 +: 20];
@@ -90,17 +97,24 @@ assign base_ram_oe_n = oe_o_n;
 assign base_ram_we_n = we_o_n;
 */
 
-assign flash_address = internal_addr[0 +: 22];
-assign flash_ce_n = ~internal_addr[22];
-assign flash_oe_n = oe_o_n;
-assign flash_we_n = we_o_n;
+always @(posedge sysclk) begin : proc_flash
+  begin
+    flash_data_o <= internal_data_o;
+    flash_data_i <= flash_data;
+    flash_data_t <= internal_data_t;
+    flash_ce_n <= ~internal_addr[22];
+    flash_oe_n <= oe_o_n;
+    flash_we_n <= we_o_n;
+  end
+end
+
 assign flash_rp_n = ~sysrst;
 assign flash_byte_n = 1'b1;
 assign flash_vpen = 1'b1;
 
-assign internal_data_i = internal_addr[22] ? flash_data :
-                        internal_addr[0] ? ext_ram_data[16 +: 16] :
-                        ext_ram_data[0 +: 16];
+assign internal_data_i = flash_ce_n ? flash_data_i :
+                        ext_ram_be_n[0] ? ext_ram_data_i[16 +: 16] :
+                        ext_ram_data_i[0 +: 16];
 
 genvar i;
 generate
@@ -109,9 +123,9 @@ generate
         assign ad_i[i] = gpio1[i];
     end
     for (i = 0; i < 16; i=i+1) begin : gen_dat
-        assign ext_ram_data[i] = internal_data_t[i] ? 1'bz : internal_data_o[i];
-        assign ext_ram_data[i+16] = internal_data_t[i] ? 1'bz : internal_data_o[i];
-        assign flash_data[i] = internal_data_t[i] ? 1'bz : internal_data_o[i];
+        assign ext_ram_data[i] = ext_ram_data_t[i] ? 1'bz : ext_ram_data_o[i];
+        assign ext_ram_data[i+16] = ext_ram_data_t[i+16] ? 1'bz : ext_ram_data_o[i+16];
+        assign flash_data[i] = flash_data_t[i] ? 1'bz : flash_data_o[i];
     end
 endgenerate
 

@@ -32,14 +32,31 @@ GPIO  BANK   PIN
 
 module top(
     input [31:0] gpio1,
-    output reg [31:0] gpio0,
+    output [31:0] gpio0,
     input clk,
     input rst_in,
+    
     input step_clk,
-    input [1:0] step_btn,
+    input [3:0] step_btn,
+    
     output txd,
     input rxd,
     
+    //CPLD串口控制器信号
+    output wire uart_rdn,         //读串口信号，低有效
+    output wire uart_wrn,         //写串口信号，低有效
+    input wire uart_dataready,    //串口数据准备好
+    input wire uart_tbre,         //发送数据标志
+    input wire uart_tsre,         //数据发送完毕标志
+    
+    //BaseRAM信号
+    inout wire[31:0] base_ram_data,  //BaseRAM数据，低8位与CPLD串口控制器共享
+    output wire[19:0] base_ram_addr, //BaseRAM地址
+    output wire[3:0] base_ram_be_n,  //BaseRAM字节使能，低有效。如果不使用字节使能，请保持为0
+    output wire base_ram_ce_n,       //BaseRAM片选，低有效
+    output wire base_ram_oe_n,       //BaseRAM读使能，低有效
+    output wire base_ram_we_n,       //BaseRAM写使能，低有效
+
     //Video output
     output wire[7:0] video_pixel,
     output wire video_hsync,
@@ -50,21 +67,6 @@ module top(
     output         clkout1_p,  clkout1_n,          // lvds channel 1 clock output
     output  [3:0]   dataout1_p, dataout1_n         // lvds channel 1 data outputs
     );
-    
-//wire clk_ser, locked;
-assign txd = rxd;
-
-/*
-clk_wiz_0  inclk
-(
-// Clock out ports
-    .clk_out1(clk_ser),
-// Status and control signals
-    .reset(rst_in),
-    .locked(locked),
-// Clock in ports
-    .clk_in1(clk)
-);*/
 
 wire [255:0] testdata_in;
 
@@ -103,11 +105,70 @@ always@(posedge clk or posedge rst_in) begin
     end else begin
         counter<= counter+1;
         counter_slow <= counter_slow + (&counter);
-        gpio0 <= gpio1;
     end
 end
 
 assign testdata_in = {counter_slow,rxd,counter[23:1],running1_auto,counter_manual,gpio1};
+
+//直连串口接收发送演示，从直连串口收到的数据再发送出去
+wire [7:0] ext_uart_rx;
+reg  [7:0] ext_uart_buffer, ext_uart_tx;
+wire ext_uart_ready, ext_uart_busy;
+reg ext_uart_start, ext_uart_avai;
+wire clk_50M=clk;
+
+async_receiver #(.ClkFrequency(50000000),.Baud(9600)) //接收模块，9600无检验位
+    ext_uart_r(
+        .clk(clk_50M),                       //外部时钟信号
+        .RxD(rxd),                           //外部串行信号输入
+        .RxD_data_ready(ext_uart_ready),  //数据接收到标志
+        .RxD_clear(ext_uart_ready),       //清除接收标志
+        .RxD_data(ext_uart_rx)             //接收到的一字节数据
+    );
+    
+always @(posedge clk_50M) begin //接收到缓冲区ext_uart_buffer
+    if(ext_uart_ready)begin
+        ext_uart_buffer <= ext_uart_rx;
+        ext_uart_avai <= 1;
+    end else if(!ext_uart_busy && ext_uart_avai)begin 
+        ext_uart_avai <= 0;
+    end
+end
+always @(posedge clk_50M) begin //将缓冲区ext_uart_buffer发送出去
+    if(!ext_uart_busy && ext_uart_avai)begin 
+        ext_uart_tx <= ext_uart_buffer;
+        ext_uart_start <= 1;
+    end else begin 
+        ext_uart_start <= 0;
+    end
+end
+
+async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发送模块，9600无检验位
+    ext_uart_t(
+        .clk(clk_50M),                  //外部时钟信号
+        .TxD(txd),                      //串行信号输出
+        .TxD_busy(ext_uart_busy),       //发送器忙状态指示
+        .TxD_start(ext_uart_start),    //开始发送信号
+        .TxD_data(ext_uart_tx)        //待发送的数据
+    );
+    
+// 7-Segment display decoder
+reg[7:0] number;
+SEG7_LUT segL(.oSEG1({gpio0[23:16]}), .iDIG(number[3:0]));
+SEG7_LUT segH(.oSEG1({gpio0[31:24]}), .iDIG(number[7:4]));
+
+reg[31:0] auto_read;
+assign uart_rdn = ~step_btn[2] & ~(~auto_read[10] & auto_read[4]);
+assign uart_wrn = ~step_btn[3] & ~(~auto_read[30] & auto_read[24]);
+always @(posedge clk) begin
+    auto_read <= {auto_read[30:0],uart_dataready};
+    if(~uart_rdn)
+        number <= base_ram_data[7:0]; //show received data on segment display
+end
+assign base_ram_ce_n = 1;
+assign base_ram_oe_n = 1;
+assign base_ram_data[7:0] = uart_wrn ? 8'bzzzz_zzzz : number;
+assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
 
 //VGA display pattern generation
 wire [2:0] red,green;
