@@ -158,11 +158,11 @@ SEG7_LUT segL(.oSEG1({gpio0[23:16]}), .iDIG(number[3:0]));
 SEG7_LUT segH(.oSEG1({gpio0[31:24]}), .iDIG(number[7:4]));
 
 reg[31:0] auto_read;
-assign uart_rdn = ~step_btn[2] & ~(~auto_read[10] & auto_read[4]);
-assign uart_wrn = ~step_btn[3] & ~(~auto_read[30] & auto_read[24]);
+assign uart_rdn = ~step_btn[2] & ~(~auto_read[2] & auto_read[1]);
+assign uart_wrn = ~step_btn[3] & ~(~auto_read[3] & auto_read[2]);
 always @(posedge clk) begin
     auto_read <= {auto_read[30:0],uart_dataready};
-    if(~uart_rdn)
+    if(auto_read[1])
         number <= base_ram_data[7:0]; //show received data on segment display
 end
 assign base_ram_ce_n = 1;
