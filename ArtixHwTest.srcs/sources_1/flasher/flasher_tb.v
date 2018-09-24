@@ -41,47 +41,57 @@ initial begin
     
     // write test
     tb_ale = 1;
-    tb_ad = 24'h10;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    #40;
+    tb_we_n = 0;
+    #10 tb_ad = 24'h200010;
+    #100 tb_we_n = 1;
+    
+    #100;
 
     tb_ale = 0;
-    tb_ad = 16'hdead;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    #40;
+    tb_we_n = 0;
+    #10 tb_ad = 16'hdead;
+    #100 tb_we_n = 1;
+    
+    #100;
 
     // read test
-    tb_ad = 24'hzzzzzz;
-    #10 tb_oe_n = 0;
-    #25 tb_oe_n = 1;
+    tb_oe_n = 0;
+    #10 tb_ad = 24'hzzzzzz;
+    #100 tb_oe_n = 1;
     
     #100;
 
     // continuous write test
     tb_ale = 1;
-    tb_ad = 24'h800011;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    tb_ad = 1<<23 | 24'h200011;
+    tb_we_n = 0;
+    #40 tb_we_n = 1;
+    #40;
 
     tb_ale = 0;
     repeat(5)begin 
         #10;
         tb_ad[15:0] = $random();
-        #10 tb_we_n = 0;
-        #20 tb_we_n = 1;
+        tb_we_n = 0;
+        #40 tb_we_n = 1;
+        #40;
     end
     
     // continuous read test
     tb_ale = 1;
-    tb_ad = 24'h800010;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    tb_ad = 1<<23 | 24'h200010;
+    tb_we_n = 0;
+    #40 tb_we_n = 1;
+    #40;
 
     tb_ad = 24'hzzzzzz;
     tb_ale = 0;
     repeat(6)begin 
-        #10 tb_oe_n = 0;
-        #25 tb_oe_n = 1;
+        tb_oe_n = 0;
+        #40 tb_oe_n = 1;
+        #40;
     end
 
     #100;
@@ -89,26 +99,31 @@ initial begin
     // flash test
     tb_ale = 1;
     tb_ad = 24'h400000;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    tb_we_n = 0;
+    #80 tb_we_n = 1;
+    #80;
 
     tb_ale = 0;
     tb_ad = 16'h90;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    tb_we_n = 0;
+    #80 tb_we_n = 1;
+    #80;
 
     tb_ale = 1;
     tb_ad = 24'hC00000;
-    #10 tb_we_n = 0;
-    #20 tb_we_n = 1;
+    tb_we_n = 0;
+    #80 tb_we_n = 1;
+    #80;
 
     tb_ale = 0;
     tb_ad = 24'hzzzzzz;
-    #10 tb_oe_n = 0;
-    #25 tb_oe_n = 1;
+    tb_oe_n = 0;
+    #80 tb_oe_n = 1;
+    #80;
 
-    #10 tb_oe_n = 0;
-    #25 tb_oe_n = 1;
+    tb_oe_n = 0;
+    #80 tb_oe_n = 1;
+    #80;
 end
 
 flasher_top dut(
@@ -200,3 +215,4 @@ s29gl064n01 flash(
 defparam flash.TimingModel = "S29GL064N11TFIV2";
 
 endmodule
+`default_nettype wire

@@ -11,15 +11,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1585611706fs"></ZoomEndTime>
-      <Cursor1Time time="355319000fs"></Cursor1Time>
+      <ZoomStartTime time="6367680000fs"></ZoomStartTime>
+      <ZoomEndTime time="6767680001fs"></ZoomEndTime>
+      <Cursor1Time time="6656666000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="150"></NameColumnWidth>
-      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+      <ValueColumnWidth column_width="83"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
+   <WVObjectSize size="34" />
+   <wvobject type="array" fp_name="/flasher_tb/dut/gpio1">
+      <obj_property name="ElementShortName">gpio1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio1[31:0]</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/flasher_tb/tb_oe_n">
       <obj_property name="ElementShortName">tb_oe_n</obj_property>
       <obj_property name="ObjectShortName">tb_oe_n</obj_property>
@@ -44,6 +48,14 @@
       <obj_property name="ElementShortName">we_sync</obj_property>
       <obj_property name="ObjectShortName">we_sync</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/flasher_tb/dut/host_bridge/we_fall">
+      <obj_property name="ElementShortName">we_fall</obj_property>
+      <obj_property name="ObjectShortName">we_fall</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/flasher_tb/dut/host_bridge/we_rise">
+      <obj_property name="ElementShortName">we_rise</obj_property>
+      <obj_property name="ObjectShortName">we_rise</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/flasher_tb/dut/host_bridge/oe_sync">
       <obj_property name="ElementShortName">oe_sync</obj_property>
       <obj_property name="ObjectShortName">oe_sync</obj_property>
@@ -60,21 +72,30 @@
       <obj_property name="ElementShortName">ale_last</obj_property>
       <obj_property name="ObjectShortName">ale_last</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/flasher_tb/dut/host_bridge/addr_o">
-      <obj_property name="ElementShortName">addr_o[22:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_o[22:0]</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/flasher_tb/dut/host_bridge/addr_inc">
       <obj_property name="ElementShortName">addr_inc</obj_property>
       <obj_property name="ObjectShortName">addr_inc</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/flasher_tb/dut/ad_o">
-      <obj_property name="ElementShortName">ad_o[23:0]</obj_property>
-      <obj_property name="ObjectShortName">ad_o[23:0]</obj_property>
+   <wvobject type="array" fp_name="/flasher_tb/dut/host_bridge/addr_o">
+      <obj_property name="ElementShortName">addr_o[22:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_o[22:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/flasher_tb/dut/host_bridge/we_o_n">
+      <obj_property name="ElementShortName">we_o_n</obj_property>
+      <obj_property name="ObjectShortName">we_o_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/flasher_tb/dut/host_bridge/data_o">
+      <obj_property name="ElementShortName">data_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/flasher_tb/dut/host_bridge/data_t">
+      <obj_property name="ElementShortName">data_t[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_t[15:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/flasher_tb/ext_ram_data">
       <obj_property name="ElementShortName">ext_ram_data[31:0]</obj_property>
       <obj_property name="ObjectShortName">ext_ram_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/flasher_tb/ext_ram_address">
       <obj_property name="ElementShortName">ext_ram_address[19:0]</obj_property>
@@ -120,8 +141,20 @@
       <obj_property name="ElementShortName">flash_rp_n</obj_property>
       <obj_property name="ObjectShortName">flash_rp_n</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/flasher_tb/dut/internal_data_i">
+      <obj_property name="ElementShortName">internal_data_i[15:0]</obj_property>
+      <obj_property name="ObjectShortName">internal_data_i[15:0]</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/flasher_tb/dut/pll_locked">
       <obj_property name="ElementShortName">pll_locked</obj_property>
       <obj_property name="ObjectShortName">pll_locked</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/flasher_tb/dut/ad_o">
+      <obj_property name="ElementShortName">ad_o[23:0]</obj_property>
+      <obj_property name="ObjectShortName">ad_o[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/flasher_tb/dut/host_bridge/ad_t">
+      <obj_property name="ElementShortName">ad_t[23:0]</obj_property>
+      <obj_property name="ObjectShortName">ad_t[23:0]</obj_property>
    </wvobject>
 </wave_config>

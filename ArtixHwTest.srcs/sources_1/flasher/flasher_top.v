@@ -36,9 +36,9 @@ inout wire[31:0] ext_ram_data;
 (* IOB = "true" *) reg [31:0]ext_ram_data_o, ext_ram_data_i, ext_ram_data_t;
 (* IOB = "true" *) output reg[19:0] ext_ram_addr;
 (* IOB = "true" *) output reg[3:0] ext_ram_be_n;
-(* IOB = "true" *) output reg ext_ram_ce_n;
-(* IOB = "true" *) output reg ext_ram_oe_n;
-(* IOB = "true" *) output reg ext_ram_we_n;
+(* IOB = "true" *) output reg ext_ram_ce_n = 1'b1;
+(* IOB = "true" *) output reg ext_ram_oe_n = 1'b1;
+(* IOB = "true" *) output reg ext_ram_we_n = 1'b1;
 
 /*
 inout wire[31:0] base_ram_data;
@@ -54,10 +54,10 @@ inout wire [15:0]flash_data;
 (* IOB = "true" *) reg [15:0]flash_data_o, flash_data_i, flash_data_t;
 output wire flash_rp_n;
 output wire flash_vpen;
-(* IOB = "true" *) output reg flash_oe_n;
-(* IOB = "true" *) output reg flash_ce_n;
+(* IOB = "true" *) output reg flash_oe_n = 1;
+(* IOB = "true" *) output reg flash_ce_n = 1;
 output wire flash_byte_n;
-(* IOB = "true" *) output reg flash_we_n;
+(* IOB = "true" *) output reg flash_we_n = 1;
 
 wire sysclk, pll_locked;
 reg sysrst, sysrst_pipe;
@@ -68,9 +68,9 @@ wire oe_i_n;
 wire ale_i;
 wire [23:0] ad_i,ad_t,ad_o;
 
-wire [22:0] internal_addr;
-wire [15:0] internal_data_i,internal_data_o,internal_data_t;
-wire we_o_n, oe_o_n;
+(*mark_debug="true"*) wire [22:0] internal_addr;
+(*mark_debug="true"*) wire [15:0] internal_data_i,internal_data_o,internal_data_t;
+(*mark_debug="true"*) wire we_o_n, oe_o_n;
 wire higher_bank = internal_addr[0];
 
 assign we_i_n = gpio1[31];
