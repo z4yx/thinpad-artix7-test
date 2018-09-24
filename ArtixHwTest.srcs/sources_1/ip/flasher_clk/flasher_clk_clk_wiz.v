@@ -83,6 +83,8 @@ wire clk_in2_flasher_clk;
     .I (clk_in1));
 
 
+
+
   // Clocking PRIMITIVE
   //------------------------------------
 
@@ -183,6 +185,9 @@ wire clk_in2_flasher_clk;
   BUFG clkf_buf
    (.O (clkfbout_buf_flasher_clk),
     .I (clkfbout_flasher_clk));
+
+
+
 
 
 

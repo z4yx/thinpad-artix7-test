@@ -1,8 +1,8 @@
-// Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2017.1 (lin64) Build 1846317 Fri Apr 14 18:54:47 MDT 2017
-// Date        : Fri Oct  6 15:30:59 2017
-// Host        : nuc6i7 running 64-bit Ubuntu 16.04.2 LTS
+// Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+// Date        : Mon Sep 24 01:42:24 2018
+// Host        : nuc6i7 running 64-bit Ubuntu 18.04.1 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/zhang/ThinpadNG_Artix7Test/ArtixHwTest.srcs/sources_1/ip/flasher_clk/flasher_clk_stub.v
 // Design      : flasher_clk
