@@ -12,6 +12,7 @@ module flasher_top (/*autoport*/
       ext_ram_ce_n,
       ext_ram_oe_n,
       ext_ram_we_n,
+      flash_address,
       flash_rp_n,
       flash_vpen,
       flash_oe_n,
@@ -48,6 +49,7 @@ output wire base_ram_oe_n;
 output wire base_ram_we_n;
 */
 
+(* IOB = "true" *) output reg [21:0]flash_address;
 inout wire [15:0]flash_data;
 (* IOB = "true" *) reg [15:0]flash_data_o, flash_data_i, flash_data_t;
 output wire flash_rp_n;
@@ -81,8 +83,8 @@ always @(posedge sysclk) begin : proc_extram
     ext_ram_data_i <= ext_ram_data;
     ext_ram_data_t <= {internal_data_t,internal_data_t};
     ext_ram_addr <= internal_addr[1 +: 20];
-    //ext_ram_ce_n <= internal_addr[22];
-    ext_ram_ce_n <= internal_addr[22] | ~internal_addr[21]; //active low, be careful
+    ext_ram_ce_n <= internal_addr[22];
+    //ext_ram_ce_n <= internal_addr[22] | ~internal_addr[21]; //active low, be careful
     ext_ram_be_n <= {~higher_bank,~higher_bank,higher_bank,higher_bank};
     ext_ram_oe_n <= oe_o_n;
     ext_ram_we_n <= we_o_n;
@@ -99,6 +101,7 @@ assign base_ram_we_n = we_o_n;
 
 always @(posedge sysclk) begin : proc_flash
   begin
+    flash_address <= internal_addr[0 +: 22];
     flash_data_o <= internal_data_o;
     flash_data_i <= flash_data;
     flash_data_t <= internal_data_t;
@@ -112,8 +115,8 @@ assign flash_rp_n = ~sysrst;
 assign flash_byte_n = 1'b1;
 assign flash_vpen = 1'b1;
 
-assign internal_data_i = flash_ce_n ? flash_data_i :
-                        ext_ram_be_n[0] ? ext_ram_data_i[16 +: 16] :
+assign internal_data_i = internal_addr[22] ? flash_data_i :
+                        internal_addr[0] ? ext_ram_data_i[16 +: 16] :
                         ext_ram_data_i[0 +: 16];
 
 genvar i;
@@ -173,3 +176,4 @@ always @(posedge sysclk) begin : proc_gpio0
 end
 
 endmodule
+`default_nettype wire
