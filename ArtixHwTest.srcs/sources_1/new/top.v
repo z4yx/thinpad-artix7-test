@@ -68,6 +68,19 @@ module top(
     output  [3:0]   dataout1_p, dataout1_n         // lvds channel 1 data outputs
     );
 
+wire clk_test;
+
+main_pll pll_inst
+ (
+  // Clock out ports
+  .        clk_out1(clk_test),
+  // Status and control signals
+  .         reset(rst_in),
+  .        locked(),
+ // Clock in ports
+  .         clk_in1(clk)
+ );
+
 wire [255:0] testdata_in;
 
 sampler_0 la(
@@ -169,6 +182,10 @@ assign base_ram_ce_n = 1;
 assign base_ram_oe_n = 1;
 assign base_ram_data[7:0] = uart_wrn ? 8'bzzzz_zzzz : number;
 assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
+
+(* MARK_DEBUG = "TRUE" *) reg test_dataready, test_rdn;
+always @(posedge clk_test) test_dataready <= uart_dataready;
+always @(posedge clk_test) test_rdn <= uart_rdn;
 
 //VGA display pattern generation
 wire [2:0] red,green;
