@@ -167,9 +167,11 @@ async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发送模块，9600�
     
 // 7-Segment display decoder
 reg[7:0] number;
-SEG7_LUT segL(.oSEG1({gpio0[23:16]}), .iDIG(number[3:0]));
-SEG7_LUT segH(.oSEG1({gpio0[31:24]}), .iDIG(number[7:4]));
+SEG7_LUT segL(.oSEG1({gpio0[16+:8]}), .iDIG(number[3:0]));
+SEG7_LUT segH(.oSEG1({gpio0[24+:8]}), .iDIG(number[7:4]));
+assign gpio0[0+:16] = gpio1[0+:16] ^ gpio1[16+:16];
 
+//CPLD串口接收发送演示，从CPLD串口收到的数据再发送出去
 reg[31:0] auto_read;
 assign uart_rdn = ~step_btn[2] & ~(~auto_read[2] & auto_read[1]);
 assign uart_wrn = ~step_btn[3] & ~(~auto_read[3] & auto_read[2]);
@@ -181,7 +183,7 @@ end
 assign base_ram_ce_n = 1;
 assign base_ram_oe_n = 1;
 assign base_ram_data[7:0] = uart_wrn ? 8'bzzzz_zzzz : number;
-assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
+// assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
 
 (* MARK_DEBUG = "TRUE" *) reg test_dataready, test_rdn;
 always @(posedge clk_test) test_dataready <= uart_dataready;
