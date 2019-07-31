@@ -121,7 +121,15 @@ always@(posedge clk or posedge rst_in) begin
     end
 end
 
-assign testdata_in = {counter_slow,rxd,counter[23:1],running1_auto,counter_manual,gpio1};
+assign testdata_in = {rxd,uart_tsre, uart_tbre,uart_wrn, uart_dataready,uart_rdn, counter_slow,counter_manual,running1_auto,gpio1};
+// assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
+
+(* MARK_DEBUG = "TRUE" *)  reg sample_uart_tsre, sample_uart_tbre, sample_uart_wrn, sample_uart_rdn, sample_uart_dataready;
+always @(posedge clk_test) begin // sampling @ 250MHz
+    {sample_uart_tsre, sample_uart_tbre, sample_uart_wrn, sample_uart_rdn, sample_uart_dataready} <=
+        {uart_tsre, uart_tbre, uart_wrn, uart_rdn, uart_dataready};
+end
+
 
 //直连串口接收发送演示，从直连串口收到的数据再发送出去
 wire [7:0] ext_uart_rx;
@@ -164,30 +172,27 @@ async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发送模块，9600�
         .TxD_start(ext_uart_start),    //开始发送信号
         .TxD_data(ext_uart_tx)        //待发送的数据
     );
-    
-// 7-Segment display decoder
-reg[7:0] number;
-SEG7_LUT segL(.oSEG1({gpio0[16+:8]}), .iDIG(number[3:0]));
-SEG7_LUT segH(.oSEG1({gpio0[24+:8]}), .iDIG(number[7:4]));
-assign gpio0[0+:16] = gpio1[0+:16] ^ gpio1[16+:16];
 
 //CPLD串口接收发送演示，从CPLD串口收到的数据再发送出去
 reg[31:0] auto_read;
-assign uart_rdn = ~step_btn[2] & ~(~auto_read[2] & auto_read[1]);
+reg[7:0] cpld_recv;
+assign uart_rdn = ~(~auto_read[2] & auto_read[1]);
 assign uart_wrn = ~step_btn[3] & ~(~auto_read[3] & auto_read[2]);
 always @(posedge clk) begin
     auto_read <= {auto_read[30:0],uart_dataready};
     if(auto_read[1])
-        number <= base_ram_data[7:0]; //show received data on segment display
+        cpld_recv <= base_ram_data[7:0]; //show received data on segment display
 end
 assign base_ram_ce_n = 1;
 assign base_ram_oe_n = 1;
-assign base_ram_data[7:0] = uart_wrn ? 8'bzzzz_zzzz : number;
-// assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
+assign base_ram_data[7:0] = uart_wrn ? 8'bzzzz_zzzz : cpld_recv;
 
-(* MARK_DEBUG = "TRUE" *) reg test_dataready, test_rdn;
-always @(posedge clk_test) test_dataready <= uart_dataready;
-always @(posedge clk_test) test_rdn <= uart_rdn;
+// 7-Segment display decoder
+wire [7:0] seg_content;
+SEG7_LUT segL(.oSEG1({gpio0[16+:8]}), .iDIG(seg_content[3:0]));
+SEG7_LUT segH(.oSEG1({gpio0[24+:8]}), .iDIG(seg_content[7:4]));
+assign gpio0[0+:16] = step_btn[2] ? {12'h0, step_btn} : (gpio1[0+:16] ^ gpio1[16+:16]);
+assign seg_content = step_btn[2] ? counter_manual[7:0] : cpld_recv;
 
 //VGA display pattern generation
 wire [2:0] red,green;
