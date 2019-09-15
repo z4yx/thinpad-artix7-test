@@ -45,18 +45,46 @@ always @(posedge sample_clk or posedge begin_of_sample) begin : proc_wr_en_hold
     end
 end
 
-
-sample_fifo_0 sample_fifo(
-    .rst(begin_of_sample),
-    .wr_clk(sample_clk),
-    .rd_clk(tx_clock),
-    .din({data_compressed, diff_bitset}),
-    .wr_en(sample_running & (wr_en_hold | (&diff_bitset))),
-    .rd_en(rd_en),
-    .dout({data_from_fifo, diff_from_fifo}),
-    .full(),
-    .valid(rd_valid),
-    .almost_empty(rd_empty)
+xpm_fifo_async #(
+    .CDC_SYNC_STAGES(2),       // DECIMAL
+    .FIFO_MEMORY_TYPE("auto"), // String
+    .FIFO_READ_LATENCY(1),     // DECIMAL
+    .FIFO_WRITE_DEPTH(512),   // DECIMAL
+    .FULL_RESET_VALUE(0),      // DECIMAL
+    .READ_DATA_WIDTH(CHANNEL*DATA_BITS + CHANNEL),      // DECIMAL
+    .READ_MODE("std"),         // String
+    .RELATED_CLOCKS(0),        // DECIMAL
+    .USE_ADV_FEATURES("1800"), // String: almost_empty, data_valid
+    .WRITE_DATA_WIDTH(CHANNEL*DATA_BITS + CHANNEL)     // DECIMAL
+) sample_fifo (
+    .almost_empty(rd_empty),        // 1-bit output: Almost Empty : When asserted, this signal indicates that
+                                      // only one more read can be performed before the FIFO goes to empty.
+    .data_valid(rd_valid),          // 1-bit output: Read Data Valid: When asserted, this signal indicates
+                                      // that valid data is available on the output bus (dout).
+    .dout({data_from_fifo, diff_from_fifo}), // READ_DATA_WIDTH-bit output: Read Data: The output data bus is driven
+                                      // when reading the FIFO.
+    .empty(),                       // 1-bit output: Empty Flag: When asserted, this signal indicates that the
+                                      // FIFO is empty. Read requests are ignored when the FIFO is empty,
+                                      // initiating a read while empty is not destructive to the FIFO.
+    .full(),                        // 1-bit output: Full Flag: When asserted, this signal indicates that the
+                                      // FIFO is full. Write requests are ignored when the FIFO is full,
+                                      // initiating a write when the FIFO is full is not destructive to the
+                                      // contents of the FIFO.
+    .din({data_compressed, diff_bitset}), // WRITE_DATA_WIDTH-bit input: Write Data: The input data bus used when
+                                            // writing the FIFO.
+    .rd_clk(tx_clock),              // 1-bit input: Read clock: Used for read operation. rd_clk must be a free
+                                      // running clock.
+    .rd_en(rd_en),                  // 1-bit input: Read Enable: If the FIFO is not empty, asserting this
+                                      // signal causes data (on dout) to be read from the FIFO. Must be held
+                                      // active-low when rd_rst_busy is active high.
+    .rst(begin_of_sample),          // 1-bit input: Reset: Must be synchronous to wr_clk. The clock(s) can be
+                                      // unstable at the time of applying reset, but reset must be released only
+                                      // after the clock(s) is/are stable.
+    .wr_clk(sample_clk),            // 1-bit input: Write clock: Used for write operation. wr_clk must be a
+                                      // free running clock.
+    .wr_en(sample_running & (wr_en_hold | (&diff_bitset)))// 1-bit input: Write Enable: If the FIFO is not full, asserting this
+                                      // signal causes data (on din) to be written to the FIFO. Must be held
+                                      // active-low when rst or wr_rst_busy is active high.
 );
 
 wire[$clog2(CHANNEL):0] diff_bit_cnt;
@@ -150,15 +178,46 @@ always @(posedge tx_clock or negedge tx_clock_rst_n) begin
     end
 end
 
-txmit_fifo txmit_fifo_inst(
-    .rst(begin_of_sample),
-    .clk(tx_clock),
-    .din(packet),
-    .wr_en(packet_available),
-    .rd_en(tx_state==3'h2),
-    .dout(packet_out),
-    .full(),
-    .empty(packet_fifo_empty)
+
+reg [1:0] txmit_fifo_rst;
+always @(posedge tx_clock) begin
+    txmit_fifo_rst <= {txmit_fifo_rst[0], begin_of_sample};
+end
+
+xpm_fifo_sync #(
+    .DOUT_RESET_VALUE("0"),    // String
+    .FIFO_MEMORY_TYPE("auto"), // String
+    .FIFO_READ_LATENCY(1),     // DECIMAL
+    .FIFO_WRITE_DEPTH(1024),   // DECIMAL
+    .FULL_RESET_VALUE(0),      // DECIMAL
+    .READ_DATA_WIDTH(56),      // DECIMAL
+    .READ_MODE("std"),         // String
+    .WRITE_DATA_WIDTH(56),     // DECIMAL
+    .USE_ADV_FEATURES("0000"), // String
+    .WR_DATA_COUNT_WIDTH(1)    // DECIMAL
+) txmit_fifo_inst (
+    .dout(packet_out),              // READ_DATA_WIDTH-bit output: Read Data: The output data bus is driven
+                                    // when reading the FIFO.
+    .empty(packet_fifo_empty),      // 1-bit output: Empty Flag: When asserted, this signal indicates that the
+                                    // FIFO is empty. Read requests are ignored when the FIFO is empty,
+                                    // initiating a read while empty is not destructive to the FIFO.
+    .full(),                        // 1-bit output: Full Flag: When asserted, this signal indicates that the
+                                    // FIFO is full. Write requests are ignored when the FIFO is full,
+                                    // initiating a write when the FIFO is full is not destructive to the
+                                    // contents of the FIFO.
+    .din(packet),                   // WRITE_DATA_WIDTH-bit input: Write Data: The input data bus used when
+                                    // writing the FIFO.
+    .rd_en(tx_state==3'h2),         // 1-bit input: Read Enable: If the FIFO is not empty, asserting this
+                                    // signal causes data (on dout) to be read from the FIFO. Must be held
+                                    // active-low when rd_rst_busy is active high.
+    .rst(txmit_fifo_rst[1]),        // 1-bit input: Reset: Must be synchronous to wr_clk. The clock(s) can be
+                                    // unstable at the time of applying reset, but reset must be released only
+                                    // after the clock(s) is/are stable.
+    .wr_clk(tx_clock),              // 1-bit input: Write clock: Used for write operation. wr_clk must be a
+                                    // free running clock.
+    .wr_en(packet_available)        // 1-bit input: Write Enable: If the FIFO is not full, asserting this
+                                    // signal causes data (on din) to be written to the FIFO Must be held
+                                    // active-low when rst or wr_rst_busy or rd_rst_busy is active high
 );
 
 always @(posedge tx_clock or negedge tx_clock_rst_n) begin
