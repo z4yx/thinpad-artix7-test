@@ -34,6 +34,7 @@ module top(
     input [31:0] gpio1,
     output [31:0] gpio0,
     input clk,
+    input clk_11M0592,
     input rst_in,
     
     input step_clk,
@@ -124,10 +125,11 @@ end
 assign testdata_in = {rxd,uart_tsre, uart_tbre,uart_wrn, uart_dataready,uart_rdn, counter_slow,counter_manual,running1_auto,gpio1};
 // assign gpio0[2:0] = {uart_tsre, uart_tbre, uart_dataready};
 
-(* MARK_DEBUG = "TRUE" *)  reg sample_uart_tsre, sample_uart_tbre, sample_uart_wrn, sample_uart_rdn, sample_uart_dataready;
+(* MARK_DEBUG = "TRUE" *)  reg sample_uart_tsre, sample_uart_tbre, sample_uart_wrn, sample_uart_rdn, sample_uart_dataready, sample_11M;
 always @(posedge clk_test) begin // sampling @ 250MHz
     {sample_uart_tsre, sample_uart_tbre, sample_uart_wrn, sample_uart_rdn, sample_uart_dataready} <=
         {uart_tsre, uart_tbre, uart_wrn, uart_rdn, uart_dataready};
+    sample_11M <= clk_11M0592;
 end
 
 
