@@ -3,7 +3,7 @@
   <spirit:vendor>user.org</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>sampler</spirit:name>
-  <spirit:version>1.1</spirit:version>
+  <spirit:version>1.2</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>txmit_ref_clk</spirit:name>
@@ -63,7 +63,7 @@
         <spirit:language>Verilog</spirit:language>
         <spirit:modelName>sampler</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_1__ref_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
@@ -71,7 +71,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>23258f72</spirit:value>
+            <spirit:value>567388ab</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -82,7 +82,7 @@
         <spirit:language>Verilog</spirit:language>
         <spirit:modelName>sampler</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_1__ref_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
@@ -90,7 +90,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>50377f9f</spirit:value>
+            <spirit:value>1ee68d25</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -275,8 +275,6 @@
         <spirit:name>src/io.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/serdes_7_to_1_diff_ddr.v</spirit:name>
@@ -314,31 +312,22 @@
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/signal_sync.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/sample_fifo_0/sample_fifo_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/txmit_fifo/txmit_fifo.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>src/sampler.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_92a6bbae</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
+      <spirit:file>
+        <spirit:name>src/signal_sync.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_e8d6d587</spirit:userFileType>
+      </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_1__ref_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.1">
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -382,30 +371,20 @@
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/signal_sync.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/sample_fifo_0/sample_fifo_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/txmit_fifo/txmit_fifo.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>src/sampler.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
+      <spirit:file>
+        <spirit:name>src/signal_sync.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_1__ref_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_fifo_generator_13_2__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.1">
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="fifo_generator" xilinx:version="13.2">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -417,17 +396,21 @@
         <spirit:name>src/tb_serdes_7to1_ddr_behav.wcfg</spirit:name>
         <spirit:fileType>unknown</spirit:fileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/sample_tb_behav.wcfg</spirit:name>
         <spirit:fileType>unknown</spirit:fileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/sampler_v1_1.tcl</spirit:name>
+        <spirit:name>xgui/sampler_v1_2.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_112393e6</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -462,23 +445,142 @@
       <xilinx:displayName>signal sampler</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Tsinghua CST</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>user.org:user:sampler:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>user.org:user:sampler:1.1</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2017-11-22T02:36:57Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2019-09-15T16:00:45Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="user.org:user:sampler:1.0_ARCHIVE_LOCATION">/home/zhang/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
         <xilinx:tag xilinx:name="user.org:user:sampler:1.1_ARCHIVE_LOCATION">/home/zhang/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dedadf5_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25f087a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526ec85_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a2cb82f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40dda141_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@108fdd59_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fd3a21_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b601e5f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f066cfc_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@494ceebb_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@105fd085_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c29506a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@597b2cd1_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32d110d9_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f91d5b3_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c06e71a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f9705bf_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32dedb66_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bc8e87a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@685d2aa0_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54f9d4a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d2ba886_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cf8ade5_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d329598_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@984c980_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2450e3de_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75d856a3_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47e96575_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a872fb1_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38d89b82_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@352988d6_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@321734d8_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27e664b8_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4069953d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5faafb3f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d401852_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2152de03_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@462c7b1_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ef5f842_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53b207ce_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7060c6f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fefe511_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2123e4a7_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7392591d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ada0a3_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29e5b8f4_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47e040a7_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6738fafb_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d416ca3_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@244cb3a8_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ae1c64_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a496d55_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17046093_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40805142_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10ed4f48_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38b29e06_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14a81b0_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@793bbfef_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2604c613_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f9cdf5d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40074de7_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@392e2668_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@272e87fc_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69c16e0d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54356316_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7892f5fc_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25fe50ba_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d796cf_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7eb3b05c_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a338df5_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19aff1cc_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25d4e02f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@438a7222_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a3a4076_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@522138c9_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fce8ed_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@327c5b7b_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@671319d6_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@617870fa_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d696b74_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19ab9501_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b04fcb9_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d2cef1d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a53945c_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ef5f3cd_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13e290c9_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3035714e_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79bcdf9c_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d6af6e2_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bbd4697_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71cedaa5_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a492902_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6084111_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c3d0726_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ecd10a9_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5754ba66_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14f444ef_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bfb31de_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d0a8835_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dc4fb8d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b933fbc_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29de790f_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55c0c50d_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6286d723_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@742df78b_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66d2f81b_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b3cddaa_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6da06cec_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a090192_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@709d8112_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a6b57ce_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3eb7361c_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11e898aa_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63a4d215_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@788d8999_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5de8e63a_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e527ee1_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ca4d343_ARCHIVE_LOCATION">/home/zhang/Projects/teaching/ThinpadNG_Artix7Test/signal_sampler</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2017.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="135053b0"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7862f846"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="da742e85"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="ef4bdce0"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="bf62a55e"/>
+      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="06aa7444"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="9cf9be2a"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="6201063c"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="08944a1c"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="01a3fbf0"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

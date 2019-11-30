@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2017 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,11 +47,12 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: user.org:user:sampler:1.1
-// IP Revision: 1
+// IP VLNV: user.org:user:sampler:1.2
+// IP Revision: 2
 
-(* X_CORE_INFO = "sampler,Vivado 2017.1" *)
+(* X_CORE_INFO = "sampler,Vivado 2018.3" *)
 (* CHECK_LICENSE_TYPE = "sampler_0,sampler,{}" *)
+(* IP_DEFINITION_SOURCE = "package_project" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module sampler_0 (
   clkout1_p,
@@ -69,8 +70,10 @@ output wire clkout1_p;
 output wire clkout1_n;
 output wire [3 : 0] dataout1_p;
 output wire [3 : 0] dataout1_n;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME txmit_ref_clk, FREQ_HZ 100000000, PHASE 0.000, INSERT_VIP 0, XIL_INTERFACENAME ref_50M_clk, FREQ_HZ 100000000, PHASE 0.000, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 txmit_ref_clk CLK, xilinx.com:signal:clock:1.0 ref_50M_clk CLK" *)
 input wire ref_50M_clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sample_clk, FREQ_HZ 100000000, PHASE 0.000, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 sample_clk CLK" *)
 input wire sample_clk;
 input wire start_sample;
