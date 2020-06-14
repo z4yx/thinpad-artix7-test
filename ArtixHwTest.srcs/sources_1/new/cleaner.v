@@ -31,10 +31,21 @@ module cleaner(
 
 reg [3:0] por;
 reg reset_n;
+reg [31:0] lfsr;
+wire done;
+
 always @(posedge clk) begin
     reset_n <= por == 4'h5;
     if (por != 4'h5) begin
         por <= por + 4'h1;
+    end
+end
+
+always @(posedge clk, negedge reset_n) begin
+    if(~reset_n) begin
+        lfsr <= 32'h19260817;
+    end else if(~done) begin
+        lfsr <= {lfsr[0]^lfsr[10]^lfsr[30]^lfsr[31], lfsr[1+:31]};
     end
 end
 
@@ -48,17 +59,19 @@ assign uart_wrn = 1'b1;
 sram_fill u_base_fill (
     .clk         (clk),
     .rst_n       (reset_n),
+    .lfsr        (lfsr),
     .ram_data    (base_ram_data),
     .ram_addr    (base_ram_addr),
     .ram_be_n    (base_ram_be_n),
     .ram_ce_n    (base_ram_ce_n),
     .ram_oe_n    (base_ram_oe_n),
     .ram_we_n    (base_ram_we_n),
-    .done        ()
+    .done        (done)
 );
 sram_fill u_ext_fill (
     .clk         (clk),
     .rst_n       (reset_n),
+    .lfsr        (lfsr),
     .ram_data    (ext_ram_data),
     .ram_addr    (ext_ram_addr),
     .ram_be_n    (ext_ram_be_n),

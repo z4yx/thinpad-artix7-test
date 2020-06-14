@@ -1,6 +1,7 @@
 module sram_fill(
     input wire clk,
     input wire rst_n,
+    input wire[31:0] lfsr,
 
     inout wire[31:0] ram_data,  // SRAM 数据
     output wire[19:0] ram_addr, // SRAM 地址
@@ -20,15 +21,7 @@ assign ram_data = ram_oe_n ? wdata : 32'bz;
 assign ram_addr = addr_cnt[0+:20];
 assign done = addr_cnt[20];
 
-always @(posedge clk, posedge rst_n) begin : lfsr
-    if(~rst_n) begin
-        wdata <= 32'h19260817;
-    end else if(~done) begin
-        wdata <= {wdata[0]^wdata[10]^wdata[30]^wdata[31], wdata[1+:31]};
-    end
-end
-
-always @(posedge clk, posedge rst_n) begin
+always @(posedge clk, negedge rst_n) begin
     if(~rst_n) begin
         addr_cnt <= 21'h0;
         state <= 3'h0;
@@ -48,6 +41,7 @@ always @(posedge clk, posedge rst_n) begin
         end
         3'h2: begin
             state <= 3'h0;
+            wdata <= lfsr;
             addr_cnt <= addr_cnt+1;
         end
         endcase
