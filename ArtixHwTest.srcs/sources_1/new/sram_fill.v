@@ -24,6 +24,7 @@ assign done = addr_cnt[20];
 always @(posedge clk, negedge rst_n) begin
     if(~rst_n) begin
         addr_cnt <= 21'h0;
+        wdata <= 32'h19260817;
         state <= 3'h0;
         ram_be_n <= 4'h0;
         ram_ce_n <= 1'b0;
